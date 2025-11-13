@@ -154,6 +154,8 @@
 		- The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below).
 		- Aspects of the presentation related to the specific names of proposed/baseline methods could be improved to make the experiments more easily readable (see questions below).
 		- The optimization process seems to be computationally expensive. Although the authors propose an approximation denoted, ReMat+TBPTT, no experimental results demonstrate its effectiveness or runtime benefits. This makes it seem less practical than simpler alternatives (e.g., one-run or random canary methods).
+            - No mention of threat models
+            - What we propose is a method to optimize data (canary), one-run methods are auditing algorithms. They recieve canaries as an input; we produce canaries as output.
 	- #### Questions
 	    1. What exactly  is IF-OPT? It doesn’t seem to be clearly defined in the experiments.
 	    2. Could the authors provide runtime/overhead comparisons against the baselines to substantiate claims of scalability? The approximation approach ReMat+TBPTT is proposed but there seem to be no results that show why you should use it over the fully unrolled updates. There are no statements in the paper about how long this canary optimization process takes? Is this attack really practical for auditing?
