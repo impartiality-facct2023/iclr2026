@@ -132,7 +132,9 @@
 	    3. The transferability result is the paper's strongest practical contribution.
 	- #### Weaknesses
 	    1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive. The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
-	    2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
+		- We thank the reviewer for their feedback.
+		- Our statement of
+	- 2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
 	    3. The baseline of MIA is kind of outdated. There are more recent and powerful MIA attacks such as "Zarifzadeh, Sajjad, Philippe Liu, and Reza Shokri. "Low-cost high-power membership inference attacks." Proceedings of the 41st International Conference on Machine Learning. 2024."
 	    4. The entire optimization objective is to maximize the LiRA "hinge" score. The canaries are overfit to this specific MIA. More MIA attacks should be considered.
 	- #### Questions
