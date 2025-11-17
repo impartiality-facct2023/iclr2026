@@ -132,6 +132,7 @@
 	    3. The transferability result is the paper's strongest practical contribution.
 	- #### Weaknesses
 	    1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive. The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
+		- #response
 		- We thank the reviewer for their feedback.
 		- Our statement of scalability should be put into proper context of the baselines we present. The first being truly unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in Line 304, since the computational graph necessary to calculate them grows with the number of training steps. One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
 		- Regarding datasets, we note that CIFAR10 is a standard dataset in privacy auditing of vision models given the sheer computation necessary to find rare privacy-infringing events
