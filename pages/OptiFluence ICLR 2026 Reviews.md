@@ -28,7 +28,7 @@
 		- Our work empirically demonstrates the practical feasibility of optimized canaries as a framework. We do agree formal results would be intriguing but given the lack of relevant literature, and the density of the formalization and modeling already present in the paper; we intend to pursue formal results in future work.
 	- 3.  The bilevel objective requires differentiating through the entire training trajectory, but the paper does not discuss convergence, stability, or variance of this optimization—particularly when truncated backpropagation and rematerialization are used. The claim in Section 6.3 that unrolled optimization yields “exact gradients” appears overstated, since ReMat+TBPTT introduces gradient truncation and therefore only provides approximate updates. It would strengthen the paper to quantify how this approximation impacts final canary detectability.
 		- We do not use the term "exact gradient" lightly. Our "unrolled" baseline on MNIST does indeed take a hyper-gradient that is exact in the sense that we create the complete training run as a single computational graph and differentiate through it using automatic differentiation. This is clearly not scalable, but this is as exact a gradient as weight gradients.
-		- Regarding the impact of
+		- Regarding the impact of truncation parameter $k$: Truncation was born out of necessity to be able to fit the training runs in memory.
 		- To respond to the reviewer point about the impact of truncation, we have devised and ran an additional experiment where we change the length of the backpropagation.
 		- TODO: ==@Mohammad== add the MNIST resutls as well?
 		- CIFAR10 was run on k = 4, and CIFAR100 was run on k = 2, both achieved nearly perfect detectbility.
