@@ -59,6 +59,7 @@
 		- #response
 		- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
 	- Sctachpad
+	  collapsed:: true
 		- Regarding the impact of truncation parameter $k$: Truncation was born out of necessity to be able to fit the training runs of larger models in memory. We do not need truncation for MNIST models for instance (hence the "exact gradient"), effectively $k=MAX$ where $MAX$ is the number of steps of the training steps.
 		- To answer the reviewer comment about resource usage, we have updated Section 6.2 that reports the requested metrics, with an paragraph of explanation of the scalability of our method.
 		- Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
