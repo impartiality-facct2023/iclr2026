@@ -36,9 +36,8 @@
 		       $$\hat{\varepsilon}_{-}=\max \left\{\log \frac{1-\delta-\mathrm{FPR}}{\mathrm{FNR}}, \log \frac{1-\delta-\mathrm{FNR}}{\mathrm{FPR}}\right\}$$
 		  where FPR and FNR (1-TPR) of MIAs are estimated using a Monte Carlo approach.
 		- These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack framing.
-		- ==TODO== Add new results if need be.
-		  
-		  [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. [[Bayesian Estimation of Differential Privacy]]. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
+		- Please also see our response to the relevant question Q5.
+		- [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. [[Bayesian Estimation of Differential Privacy]]. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
 		  [2] Kulynych, Bogdan, Juan Felipe Gomez, Georgios Kaissis, Flavio du Pin Calmon, and Carmela Troncoso. 2024. “Attack-Aware Noise Calibration for Differential Privacy.” arXiv:2407.02191. Preprint, arXiv, November 7. https://doi.org/10.48550/arXiv.2407.02191.
 	- 5.  Because OptiFluence directly maximizes the LiRA hinge-based likelihood-ratio score, the optimized canaries may overfit to this particular attack formulation. The paper does not evaluate the canaries under alternative membership inference metrics (e.g., confidence-, entropy-, or loss-based scores), leaving open the question of whether detectability generalizes to unseen auditing methods.
 		- #response
@@ -80,7 +79,7 @@
 		- Initializations for OptiFluence are chosen according to the IF-INIT procedure explained in Section 5.1 where we find the most influential training samples according to the Normalized Self-Influence Scores and pick the top 3 consistently.
 	- 5. Since the framework is inspired by differential privacy but ultimately empirical, can you clarify how the metric (TPR@FPR) relates to formal ε or δ values? Is there any attempt to estimate lower bounds on ε or compare to DP auditing baselines that produce numeric privacy budgets?
 		- We have addressed this question in W4. We want to additionally note that "DP Auditing" baselines often go beyond auditing with canary samples and produce canary gradients [1] or otherwise change the training procedure [2] to achieve the tightest lower-bounds possible. **Our work is strictly in the space of auditing using canaries in the input (sample) space. The benefit of this type of audit is its versatility (given its architecture-agnosticism) and transferability (that we have demonstrated).**
-		- We nevertheless have included DP-Auditing results in Section 6.2 with the TPR@0.1FPR metric to show where first-party tight audits are not possible optimized canaries can provide useful alternative. Using the
+		- We nevertheless have included DP-Auditing results in Section 6.2 with the TPR@0.1FPR metric to show where first-party tight audits are not possible optimized canaries can provide useful alternative. Using the library
 		-
 		- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
 		- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
