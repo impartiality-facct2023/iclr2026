@@ -23,37 +23,48 @@
 		- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
 	- 2. The central idea—to optimize the log-likelihood ratio via a bilevel objective—is elegant but remains largely heuristic. The paper argues that maximizing the difference in logits between models trained with and without the canary approximates the true likelihood-ratio test (Equation 5), yet provides no formal proof that this surrogate objective is consistent or unbiased. Without theoretical guarantees or approximation bounds, it is unclear whether the optimized canary truly maximizes detectability in general or only within the specific experimental setup.
 		- #response
-		- We largely agree with the reviewer. However, the lack of general bounds is expected given the bi-level characterization of the problem with the training loss objective (of a multi-million parameter neural network) in the constraint set. Even the state-of-the-art optimization results for neural networks are limited to a few layer networks. The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
-		   the memorization and privacy risks that canaries are used to audit.
+		- We agree with the reviewer that formal results would be interesting. However, the lack of general bounds is expected given the bi-level characterization of the problem with the training loss objective (of a multi-million parameter neural network) in the constraint set. Even the state-of-the-art optimization results for neural networks are limited to a few layer networks. 
+        - On the topic of "heursitical" approaches: previously, canaries had to be *hand-crafted* as there was no systematic way to generate canaries. **The important novelty of our work is that we can *automatically* generate canaries that outperform hand-crafted ones.**
 		- Our work empirically demonstrates the practical feasibility of optimized canaries as a framework. We do agree formal results would be intriguing but given the lack of relevant literature, and the density of the formalization and modeling already present in the paper; we intend to pursue formal results in future work.
-		- ==@Nicolas @Florian== Overall, this is a pretty unreasonable request. Can you polish the language if need be?
 	- 3.  The bilevel objective requires differentiating through the entire training trajectory, but the paper does not discuss convergence, stability, or variance of this optimization—particularly when truncated backpropagation and rematerialization are used. The claim in Section 6.3 that unrolled optimization yields “exact gradients” appears overstated, since ReMat+TBPTT introduces gradient truncation and therefore only provides approximate updates. It would strengthen the paper to quantify how this approximation impacts final canary detectability.
-		- We do not use the term "exact gradient" lightly. Our "unrolled" basedline on MNIST does indeed take a hyper-gradient that is exact in the sense that we create the complete training run as a single computational graph and differentiate through it using automatic differentiation. This is clearly not scalable, but this is as exact a gradient as weight gradients.
+		- We do not use the term "exact gradient" lightly. Our "unrolled" baseline on MNIST does indeed take a hyper-gradient that is exact in the sense that we create the complete training run as a single computational graph and differentiate through it using automatic differentiation. This is clearly not scalable, but this is as exact a gradient as weight gradients.
 		- To respond to the reviewer point about the impact of truncation, we have devised and ran an additional experiment where we change the length of the backpropagation.
-		- TODO ==@Arielle== Can you run this experiment?
+		- TODO: ==@Mohammad== add the MNIST resutls as well?
+		- CIFAR10 was run on k = 4, and CIFAR100 was run on k = 2, both achieved nearly perfect detectbility.
 	- 4.  While the paper references differential privacy definitions and ε-bounds (Equation 2), it never formally connects the empirical detectability metric (TPR@FPR) to theoretical privacy parameters ε or δ. The framework is therefore empirical rather than analytical, and the paper should make this distinction explicit.
-		- Prior work has done this already as empirical lower bounds such as [[Bayesian Estimation of Differential Privacy]]
-		- No particular novelty to out work. As we show direct LIRA attack scores instead of going through the proxy of epsilon lower bounds.
-		- In addition, new work [[Attack-Aware Noise Calibration for Differential Privacy]] shows that privacy risks and mitigations can be formalized directly within a privacy attack framing. Thus a characterization in terms of epsilon values is useful but not essential.
+	    - The theoretical privacy parameters $(\varepsilon)$ is an upperbound to the privacy loss that we models, approximate and optimize as we show in Eq. (2) and disucss extensively in Lines 153–164. Furthermore, we do report these upperbounds in our DP-Auditing result in Table 2. Therefore, we interpret the reviewer's comments to be about  *$\varepsilon$ lowerbounds* which are empirical quantities.
+	    - There is indeed a long list of works that have already tackled the calculation of these lowerbounds from membership inference attacks (MIAs). For example, from Zanella-Béguelin et al.[1]:
+            $$\hat{\varepsilon}_{-}=\max \left\{\log \frac{1-\delta-\mathrm{FPR}}{\mathrm{FNR}}, \log \frac{1-\delta-\mathrm{FNR}}{\mathrm{FPR}}\right\}$$
+where FPR and FNR (1-TPR) of MIAs are estimated using a Monte Carlo approach. 
+
+        - These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack success framing.
+        
+        - ==TODO== Add new results if need be.
+        
+        [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. Bayesian Estimation of Differential Privacy. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
+        [2] Kulynych, Bogdan, Juan Felipe Gomez, Georgios Kaissis, Flavio du Pin Calmon, and Carmela Troncoso. 2024. “Attack-Aware Noise Calibration for Differential Privacy.” arXiv:2407.02191. Preprint, arXiv, November 7. https://doi.org/10.48550/arXiv.2407.02191.
+
+
 	- 5.  Because OptiFluence directly maximizes the LiRA hinge-based likelihood-ratio score, the optimized canaries may overfit to this particular attack formulation. The paper does not evaluate the canaries under alternative membership inference metrics (e.g., confidence-, entropy-, or loss-based scores), leaving open the question of whether detectability generalizes to unseen auditing methods.
-		- TODO ==@Florian== you can probably answer this better
-		- Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
-		- We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
+        - As discussed, attacks give a lower bound on privacy leakage. So it does not really matter if one "overfit" to one attack or not given that, by definition, we want the strongest possible attack to achieve the best possible lower bound. Since LiRA is a much stronger attack than the others mentioned, it makes sense to use it.
+		
 	- 6. The reported transferability of canaries across architectures (e.g., ResNet-9 → ResNet-50) is intriguing but lacks theoretical explanation. The paper attributes it qualitatively to shared representation geometry, yet provides no analysis of why optimized samples remain highly distinguishable under different model dynamics. This weakens the claim that OptiFluence supports “third-party audits without retraining.”
-		- TODO @Nicolas/@Florian can you help here?
-		- We do not make any theoretical claim about transferability but we agree that this is an exciting venue for future work.
-		- We validate our transferability claim empirically. To the best of our knowledge, in prior cases of   transferability (such as adversarial examples), the community have not been able to characterize a theoretical reasoning for this phenomenon.
+        - As discussed in our answer to W2, given the absence of formal results for bi-level optimization problems involving large neural networks; we cannot make meaningful theoretical claims. This is even more true for the phenomenon of transferability where the shape of the hypothesis class (weight space) is different between optimization (e.g. ResNet9) and evaluation (WideResNet). Therefore, we do not make any theoretical claim about transferability but validate our transferability claim empirically.
+        
+        - We agree that formal characterization of transferbaility is an exciting venue for future work. However, to the best of our knowledge, in prior cases of  transferability, such as adversarial examples, the community have not been able to characterize a theoretical reasoning for this phenomenon either. Yet it is useful to know that this property exists and it has been studied empirically extensively as a result.
+        
 	- 7. Figures 4 and 6 show that optimized canaries—particularly on CIFAR-10—often appear visually unnatural or out-of-distribution. This raises the possibility that their detectability stems from atypical low-level statistics rather than genuine memorization.
-		- TODO We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
-		- To the best of our knowledge, "Memorization" unlike differential privacy does not have an agreed-upon definition which precludes a rigorous claim on what constitutes "genuine memorization."
-		- A canary, under the DP definition, does not even need to come from a particular data distribution. Therefore, our canaries fit the definition of the privacy canary.
-		- We understand that it might be desirable to add a constraint on the "naturalness," or what is often done in adversarial examples, to bound the amount of perturbation. But as we have said, given the fact that any sample
-		- Finally, we note that prior work in privacy auditing uses far more unnatrual-looking canaries. See <CITE> where a square pattern is used for example. Therefore, not even prior work acknolwedges the need for naturalness-looking for auditing purposes.
+        - We understand memorization is an umbrella term used in different context in machine learning. However, we respectfully disagree with the reviewer about learning "atypical low-level statistics" is not "genuine memorization." Since ultimately it does not matter how the model overfits to training samples, as long as it does and we can detect it. 
+        - A canary, under the DP definition, does not need to come from a particular data distribution at all. As long as the model's behavior detectabily changes if the canary is in the training set, it fits the definition. We note that prior work in privacy auditing uses far more unnatrual-looking canaries. See [1] for example where a square pattern is used for example. Therefore, not even prior work acknolwedges the need for naturalness for auditing purposes.
+        
 	- 8. The method involves repeated model retraining with unrolled optimization, rematerialization, and truncated backpropagation—all computationally demanding procedures. However, the paper does not report runtime, GPU memory usage, or total training cost. Without this information, it is difficult to assess whether the framework is truly scalable beyond small benchmark datasets.
-		- To answer the reviewer comment about resource usage, we have compiled Section <XXX> in the appendix that reports the requested metrics.
-		- TODO  ==@Arielle== Can you take care of this?
+		- To answer the reviewer comment about resource usage, we have updated Section 6.2 that reports the requested metrics, with an paragraph of explanation of the scalability of our method.
+        - ==@Arielle== TODO: added the experiments.
+        - To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 	- Minor comments:
 	    1. The acronym ERM (Empirical Risk Minimization) is used without definition and should be introduced upon first mention.
+    - Sctachpad
+        - Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
 	- #### Questions
 	    1.  The anonymous code link provided in the submission does not open. Could you please share a working repository or include a zip file in the supplementary material to ensure full reproducibility?
 		- ==@Mohammad==
@@ -61,8 +72,10 @@
 		- ==@Mohammad==
 	- 3. The paper claims that unrolled optimization provides “exact gradients,” yet the use of truncated backpropagation and rematerialization implies an approximation. Could you quantify how this truncation affects the final canary detectability? For instance, how does TPR@FPR vary as the truncation window K changes?
 		- ==@Arielle==
+        - CIFAR10 was run on k = 4, and CIFAR100 was run on k = 2, both achieved nearly perfect detectbility.
 	- 4. What measures were taken to ensure optimization stability across seeds and models? Do different initialization points (e.g., influence-selected seeds vs. random) lead to consistent canary detectability, or is the outcome highly variable?
 		- ==@Arielle==, ==@Mohammad==
+        - For each experimental setting, we ran three trials with different random initializations and reported the mean and variance of FPR@0.1%TPR. The variances are included in Table 1 for the main results and shown as error bars in Figure 3 for the ablation studies.
 	- 5. Since the framework is inspired by differential privacy but ultimately empirical, can you clarify how the metric (TPR@FPR) relates to formal ε or δ values? Is there any attempt to estimate lower bounds on ε or compare to DP auditing baselines that produce numeric privacy budgets?
 		- ==@Mohammad==
 		- Above should probably be enough
@@ -88,6 +101,10 @@
 		- #response
 		- Question of runtime addressed above
 		- Our final design for OptiFluence has several characteristics that simplifies scaling challenges. a) modularity; b) scalability knobs with truncation and influence calculation using EK-FAC approximations (which are scaled to transformers [[Studying Large Language Model Generalization with Influence Functions]]); c) first-party privacy auditing has a significant overhead. By showing transferability, one cost is amortized to multiple models; and even multiple parties.
+    - Scratchpad
+        - On "Overfitting": We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
+        - We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
+
 - ### Reviewer_mvjG
   collapsed:: true
 	- **Rating:** 8
@@ -115,8 +132,9 @@
 	- #### Weaknesses
 	    **[W1]** Not a serious weakness/dealbreaker, but it would be desirable to see results on more involved datasets than CIFAR-10 and MNIST. These datasets are popular classic datasets, so to speak, but it would be interesting to see if these results generalize to much larger datasets or datasets with many more classes than 10 (viz. CIFAR-100), more interesting sample distributions, or (this next part is not needed, so the authors can safely ignore this, but it would be appealing) other modalities than image datasets.
 		- TODO ==@Arielle== Let's do a CIFAR-100 example. Should not be that hard.
+		- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
 	- **[W2]** Seeing as how attack success (unsurprisingly) degrades for low values of $\varepsilon$ for DP-SGD auditing, could the authors please add experiments on lower values of $\varepsilon$ (viz. 1 and <1)? While these values may yield lower utility of the model, theoretically they are desirable (especially <1) and it would be useful to see how Optifluence (and its baselines) perform in this regime.
-		- TODO ==@Arielle== Let's re-run with a eps 1 and 0.5.
+		- We have updated the DP-SGD auditing results in table3 of Section 6.2 Validation with smaller epsilon = {0.5, 1}.
 	- #### Questions
 	    **[Q1]** Can you address W1 and add results on more datasets in different regimes (more classes, samples, different distributions)?
 	    
@@ -124,6 +142,10 @@
 	    
 	    **[Q3]** Update: The other reviewers rightly point out the need to justify and corroborate the efficiency of unrolled updates in your paradigm with empirical evidence (runtime and memory used) and on more involved/expensive settings than CIFAR-10 and MNIST. Can the authors please address that? This is *key to me maintaining my current score*.
 		- TODO ==@Arielle== Please add an reference to the answer when you've done the response to the other reviewer.
+		- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
+    - Scratchpad
+        - The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
+		   the memorization and privacy risks that canaries are used to audit.
 - ### Reviewer_5zJV
   collapsed:: true
 	- **Rating:** 4
@@ -161,8 +183,7 @@
 		- By methodically isolating canary optimization from privacy evaluation, as discussed, we do our due diligence to report metrics only on unseen circumstances. What is more, **we see that under the most stringent circumstances, namely a different architecture,  our canaries achieve high detectability which indicates generalizability rather than overfitting.**
 	- #### Questions
 	    1. The "scalable" claim is tested on CIFAR-10. What is the actual wall-clock time and VRAM cost?  How can you claim this is feasible for large-scale models?
-		- TODO @Arielle Complete this:
-			- We report wall-cock time and VRAM usage in Section X.X and in response to reviewer.
+        - We added table 2 in Section 6.2 for a measured wall-cock time and peak VRAM usage in response to reviewer for both the canary initialization step and the optimization step, we also added an additional paragraph for the explanation of the scalability of our method.
 		- As discussed in our earlier response, our method is scalable because it provides knobs to trade-off memory with time and accuracy without harming the effectiveness of our canaries. We take this opportunity to answer the scalability question from a different angle: our canary-based method enables effective 3rd party auditing through transferability. We have shown that canaries trained on small models are effective on larger models.
 		- In the bigger scope of auditing, this means, for example that a  public agency with limited compute can optimize a privacy canary, and ask the company to simply include this canary in its training runs of larger models. This is a much scalable approach to auditing than the existing first-party approaches which requires agency to have the size of the compute that matches the company to do privacy audits.
 		- ==@Nicolas @Florian== Do you think the above helps or might hurt?
@@ -205,6 +226,8 @@
 		- To address your question, in our updated manuscript, we have expanded our existing short description of this baseline in Line 326 ("One of our baselines in this section is a novel method based on first-order optimization of influence functions, called IF-Opt...").
 	- 2. Could the authors provide runtime/overhead comparisons against the baselines to substantiate claims of scalability? The approximation approach ReMat+TBPTT is proposed but there seem to be no results that show why you should use it over the fully unrolled updates. There are no statements in the paper about how long this canary optimization process takes? Is this attack really practical for auditing?
 		- TODO ==@Arielle==
+        - To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well. The baselines are in a different setting since they do not optimize, it's more like heuristic with a constant runtime and only on CPU computation, which is why the detectability compared to our method is significanlty lower.
+    
 		- The (exact) unrolled gradients of Section 5.2 (the Unrolled-OPT baseline) are so memory intensive that we could not fit the computational graph for any reasonable resent  model on CIFAR10 model to fit in memory; while we could train a Resnet50 and WideResNet model using the ReMat+TBPTT approach.
 	- 3. Given the higher computational cost, what practical advantage does OptiFluence offer over one-run or random canary insertion attacks?
 		- #response
