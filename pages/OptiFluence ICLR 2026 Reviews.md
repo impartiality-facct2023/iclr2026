@@ -79,8 +79,7 @@
 		- For all of the baselines, we run three trials with different random initializations and report the mean and variance of FPR@0.1%TPR. The variances are included in Table 1 for the main results and shown as error bars in Figure 3 for the ablation studies.
 		- Initializations for OptiFluence are chosen according to the IF-INIT procedure explained in Section 5.1 where we find the most influential training samples according to the Normalized Self-Influence Scores and pick the top 3 consistently.
 	- 5. Since the framework is inspired by differential privacy but ultimately empirical, can you clarify how the metric (TPR@FPR) relates to formal ε or δ values? Is there any attempt to estimate lower bounds on ε or compare to DP auditing baselines that produce numeric privacy budgets?
-		- ==@Mohammad==
-		- Above should probably be enough
+		- As discussed above, estimating $varepsilon$ lower-bounds are
 		- Lower bounds requires many many attacks to establish meaningful bounds and even those are loose
 	- 6. The optimization directly targets the LiRA hinge-based statistic. Would the optimized canaries remain highly detectable under alternative membership inference attacks (e.g., confidence-, entropy-, or loss-based)? Have you evaluated cross-auditor robustness?
 		- The LiRA hinge loss (although poorly named) follows from likelihood tests with a prior assumption of normalcy (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
