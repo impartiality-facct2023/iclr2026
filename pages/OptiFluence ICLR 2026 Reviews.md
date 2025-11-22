@@ -36,7 +36,7 @@
 		- There is indeed a long list of works that have already tackled the calculation of these lowerbounds from the results of membership inference attacks (MIAs). For example, from Zanella-Béguelin et al.[1]:
 		       $$\hat{\varepsilon}_{-}=\max \left\{\log \frac{1-\delta-\mathrm{FPR}}{\mathrm{FNR}}, \log \frac{1-\delta-\mathrm{FNR}}{\mathrm{FPR}}\right\}$$
 		  where FPR and FNR (1-TPR) of MIAs are estimated using a Monte Carlo approach.
-			- These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack success framing.
+			- These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack framing.
 			- ==TODO== Add new results if need be.
 			  
 			  [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. Bayesian Estimation of Differential Privacy. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
@@ -52,7 +52,7 @@
 	- 8. The method involves repeated model retraining with unrolled optimization, rematerialization, and truncated backpropagation—all computationally demanding procedures. However, the paper does not report runtime, GPU memory usage, or total training cost. Without this information, it is difficult to assess whether the framework is truly scalable beyond small benchmark datasets.
 		- To answer the reviewer comment about resource usage, we have updated Section 6.2 that reports the requested metrics, with an paragraph of explanation of the scalability of our method.
 			- #response
-			- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
+			- To answer the reviewer’s comment regarding emperical evidences for efficiency of our method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 	- Minor comments:
 	    1. The acronym ERM (Empirical Risk Minimization) is used without definition and should be introduced upon first mention.
 		- #response
