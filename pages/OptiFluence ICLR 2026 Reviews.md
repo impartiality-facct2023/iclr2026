@@ -48,7 +48,7 @@
 		- We agree that formal characterization of transferbaility is an exciting venue for future work. However, to the best of our knowledge, in prior cases of  transferability, such as adversarial examples, the community have not been able to characterize a theoretical reasoning for this phenomenon either. Yet it is useful to know that this property exists and it has been studied empirically extensively as a result.
 	- 7. Figures 4 and 6 show that optimized canaries—particularly on CIFAR-10—often appear visually unnatural or out-of-distribution. This raises the possibility that their detectability stems from atypical low-level statistics rather than genuine memorization.
 		- We understand memorization is an umbrella term used in different context in machine learning. However, we respectfully disagree with the reviewer that learning "atypical low-level statistics" is not "genuine memorization." Since ultimately it does not matter how the model overfits to training samples, as long as it does and we can detect it.
-		- A canary, under the DP definition, does not need to come from a particular data distribution at all. As long as the model's behavior detectably changes in [[response]] to the existence of the canary in the training set, it fits the definition. We note that prior work in privacy auditing uses far more unnatrual-looking canaries. See [1] for example where a square pattern is used. Therefore, not even prior work acknolwedges the need for naturalness of privacy canaries for auditing purposes.
+		- A canary, under the DP definition, does not need to come from a particular data distribution at all. As long as the model's behavior detectably changes in response to the existence of the canary in the training set, it fits the definition. We note that prior work in privacy auditing uses far more unnatrual-looking canaries. See [1] for example where a square pattern is used. Therefore, not even prior work acknolwedges the need for naturalness of privacy canaries for auditing purposes.
 	- 8. The method involves repeated model retraining with unrolled optimization, rematerialization, and truncated backpropagation—all computationally demanding procedures. However, the paper does not report runtime, GPU memory usage, or total training cost. Without this information, it is difficult to assess whether the framework is truly scalable beyond small benchmark datasets.
 		- To answer the reviewer comment about resource usage, we have updated Section 6.2 that reports the requested metrics, with an paragraph of explanation of the scalability of our method.
 			- #response
@@ -56,7 +56,7 @@
 	- Minor comments:
 	    1. The acronym ERM (Empirical Risk Minimization) is used without definition and should be introduced upon first mention.
 		- #response
-			- We have updated the manuscript to explain the model as the result of the empirical risk (loss) minim
+		- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
 	- Sctachpad
 		- Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
 	- #### Questions
