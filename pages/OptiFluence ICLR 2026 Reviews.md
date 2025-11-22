@@ -55,7 +55,8 @@
 			- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 	- Minor comments:
 	    1. The acronym ERM (Empirical Risk Minimization) is used without definition and should be introduced upon first mention.
-		-
+		- #response
+			- We have updated the manuscript to explain the model as the result of the empirical risk (loss) minim
 	- Sctachpad
 		- Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
 	- #### Questions
