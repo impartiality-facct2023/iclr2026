@@ -81,7 +81,11 @@
 		- We have addressed this question in W4. We want to additionally note that "DP Auditing" baselines often go beyond auditing with canary samples and produce canary gradients [1] or otherwise change the training procedure [2] to achieve the tightest lower-bounds possible. **Our work is strictly in the space of auditing using canaries in the input (sample) space. The benefit of this type of audit is its versatility (given its architecture-agnosticism) and transferability (that we have demonstrated).**
 		- We nevertheless have included DP-Auditing results in Section 6.2 (Table 3) with the TPR@0.1FPR metric to show **where first-party tight audits are not possible optimized, canaries can provide a useful alternative.** Additionally, to answer the reviewers question, using the [`privacy-estimates`](https://github.com/microsoft/responsible-ai-toolbox-privacy) by Zanella-Béguelin et al, we have calculated the following lower bounds for a MNIST model trained with DP-SGD with $\varepsilon \in \{1, 2, 6, 8\}$ and measured the lower-bounds. Given the time-sensitivity of the rebuttal we reduced our number of shadow models to 5K (instead of 20K) and the results are as follows:
 		  | $\varepsilon$ | TPR@0.1FPR | $\hat\varepsilon_{-}$|
-		  | | |
+		  |1| | |
+		  |2| | |
+		  |
+		-
+		-
 		-
 		-
 		- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
