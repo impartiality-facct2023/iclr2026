@@ -83,7 +83,8 @@
 		  | $\varepsilon$ | TPR@0.1FPR | $\hat\varepsilon_{-}$|
 		  |1| | |
 		  |2| | |
-		  |
+		  |6| | |
+		  |8| | |
 		-
 		-
 		-
