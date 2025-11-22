@@ -68,7 +68,7 @@
 	    1.  The anonymous code link provided in the submission does not open. Could you please share a working repository or include a zip file in the supplementary material to ensure full reproducibility?
 		- ==TODO== Update Repo
 	- 2. Could you provide a more rigorous justification for treating the logit difference (Equation 5) as a valid surrogate for the likelihood-ratio statistic? Specifically, under what assumptions does maximizing this surrogate guarantee improved membership distinguishability, and can any theoretical bound or consistency argument be established?
-		- Carlini et al. [1, Section VI.A "Logit scaling the loss function"] provide a justification for using scaled logits directly instead of confidence values. Notably in Figure 4 it is shown that scaled logits provide a more Gaussian distribution of samples. This is helpful because it allows a parametric modeling of null and alternative distributions $Q_in$ and $Q_out$
+		- Carlini et al. [1, Section IV.C] provide a justification for using scaled logits directly instead of confidence values. Notably in Figure 4 it is shown that scaled logits provide a more Gaussian distribution of samples. Gaussinanity is important because it allows a parametric modeling of null and alternative distributions $Q_in$ and $Q_out$
 		- Please see our answer to the related W2.
 	- 3. The paper claims that unrolled optimization provides “exact gradients,” yet the use of truncated backpropagation and rematerialization implies an approximation. Could you quantify how this truncation affects the final canary detectability? For instance, how does TPR@FPR vary as the truncation window K changes?
 		- ==@Arielle==
