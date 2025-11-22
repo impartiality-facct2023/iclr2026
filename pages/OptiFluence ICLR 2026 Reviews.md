@@ -66,9 +66,9 @@
 		- To answer the reviewer’s concern regarding the computational efficiency of our method, we have updated Section 6.2 to include **Table 2 which reports the wall-time clock and VRAM usage.** We have also included a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. The latter demonstrates the scalability of our method: to fit the CIFAR100 model's training run in memory, we were able to reduce our truncation parameter $k$ for TBPTT from 4 to 2. Reminder that this parameter controls how many training steps are  included in the canary gradient calculation (see Figure 2(c)). The resulting canary still managed to achieve near-perfect detectability on CIFAR-100.
 	- #### Questions
 	    1.  The anonymous code link provided in the submission does not open. Could you please share a working repository or include a zip file in the supplementary material to ensure full reproducibility?
-		- ==@Mohammad==
+		- ==TODO== Update Repo
 	- 2. Could you provide a more rigorous justification for treating the logit difference (Equation 5) as a valid surrogate for the likelihood-ratio statistic? Specifically, under what assumptions does maximizing this surrogate guarantee improved membership distinguishability, and can any theoretical bound or consistency argument be established?
-		- ==@Mohammad==
+		- Besides
 	- 3. The paper claims that unrolled optimization provides “exact gradients,” yet the use of truncated backpropagation and rematerialization implies an approximation. Could you quantify how this truncation affects the final canary detectability? For instance, how does TPR@FPR vary as the truncation window K changes?
 		- ==@Arielle==
 			- CIFAR10 was run on k = 4, and CIFAR100 was run on k = 2, both achieved nearly perfect detectbility.
