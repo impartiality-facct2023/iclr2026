@@ -77,7 +77,7 @@
 		- CIFAR10 was run on k = 4, and CIFAR100 was run on k = 2, both achieved nearly perfect detectbility.
 	- 4. What measures were taken to ensure optimization stability across seeds and models? Do different initialization points (e.g., influence-selected seeds vs. random) lead to consistent canary detectability, or is the outcome highly variable?
 		- For each experimental setting, we ran three trials with different random initializations and reported the mean and variance of FPR@0.1%TPR. The variances are included in Table 1 for the main results and shown as error bars in Figure 3 for the ablation studies.
-		- It should be mentioned that initializations for OptiFluence are chosen according to the IF-INIT procedure explained in Section 5.1 where we evaluate most influential training samples
+		- Initializations for OptiFluence are chosen according to the IF-INIT procedure explained in Section 5.1 where we evaluate most influential training samples.
 	- 5. Since the framework is inspired by differential privacy but ultimately empirical, can you clarify how the metric (TPR@FPR) relates to formal ε or δ values? Is there any attempt to estimate lower bounds on ε or compare to DP auditing baselines that produce numeric privacy budgets?
 		- ==@Mohammad==
 		- Above should probably be enough
