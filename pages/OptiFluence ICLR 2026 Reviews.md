@@ -94,15 +94,15 @@
 		- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
 		- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
 	- 6. The optimization directly targets the LiRA hinge-based statistic. Would the optimized canaries remain highly detectable under alternative membership inference attacks (e.g., confidence-, entropy-, or loss-based)? Have you evaluated cross-auditor robustness?
+		- #response
 		- The LiRA hinge loss (although poorly named) follows from likelihood tests with a prior assumption of Gaussianity (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
 		- Can the reviewer kindly let us know, under what conditions they think it makes sense to use the aforementioned confidence-, entorpy-, or loss-based attacks; instead of LiRA?
-		- ==@Nicolas @Florian== this one is pretty unreasonable to me. Does the above suffice?
 	- 7. The transferability of optimized canaries across architectures is one of the key selling points of the paper. Can you provide a theoretical or empirical explanation for why canaries optimized on ResNet-9 remain highly detectable on ResNet-50 or WideResNet? Is this phenomenon architecture-dependent or data-dependent?
 		- #response
 		- As discussed, a theoretical study of this phenomenon is outside of the scope of the current paper.
 		- We provide the following observational explanation of this phenomenon:
 			- All models (i.e. hypothesis classes) seek to learn the same concept  from the data.
-			- A transferable canary indicates that the notion of a canary is not a function of the minutaie of the hypothesis class, but rather the concept itself.
+			- A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself.
 			- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—and entirely different learner!
 			- We like to note however that the space of canaries is potentially much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
 	- 8.  Some optimized canaries, particularly in CIFAR-10, appear visually unnatural or off-manifold. Have you attempted to quantify the degree of deviation from the data distribution (e.g., via FID, nearest-neighbor distance, or classifier confidence)? Could detectability be driven by such distributional shifts rather than true memorization?
