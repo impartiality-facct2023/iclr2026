@@ -19,8 +19,14 @@
 	- > Q3: ...Could you quantify how this truncation affects the final canary detectability? For instance, how does TPR@FPR vary as the truncation window K changes?
 	- In practice, we did not observe a meaningful impact to tuning $k$. We have added ==Figure XX== to the Appendix to showcase the effect of $k$ on the canary loss where we compare "no truncation," $k=4$ and $k=2$ for MNIST. However, **lower $k$ does not in fact impact the TPR@lowFPR scores of our attacks. As even canaries trained with $k=2$ remain nearly perfectly detectable.**
 	- Therefore, **we treat $k$ as not ML hyper-parameter that needs to be tuned.** Our suggestion to the practitioners is to use the largest $k$ that allows them to train accurate models with the memory they have access to; since larger $k$ by definition indicates a more accurate canary gradient; but that additional accuracy may not necessary to achieve highly detectable canaries.
-	- W
-	-
+	- > W4: While the paper references differential privacy definitions and ε-bounds (Equation 2), it never formally connects the empirical detectability metric (TPR@FPR) to theoretical privacy parameters ε or δ. The framework is therefore empirical rather than analytical
+	- The theoretical privacy parameters $(\varepsilon)$ is an upperbound to the privacy loss that we models, approximate and optimize as we show in Eq. (2) and disucss extensively in Lines 153–164. Furthermore, we do report these upperbounds in our DP-Auditing result in Table 2. Therefore, we interpret the reviewer's comments to be about  $\varepsilon$ *lowerbounds* which are empirical quantities.
+	- There is indeed a long list of works that have already tackled the calculation of these lowerbounds from the results of membership inference attacks (MIAs). For example, from Zanella-Béguelin et al.[1]:
+	       $$\hat{\varepsilon}_{-}=\max \left\{\log \frac{1-\delta-\mathrm{FPR}}{\mathrm{FNR}}, \log \frac{1-\delta-\mathrm{FNR}}{\mathrm{FPR}}\right\}$$
+	  where FPR and FNR (1-TPR) of MIAs are estimated using a Monte Carlo approach.
+	- These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack framing.
+	- [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. [[Bayesian Estimation of Differential Privacy]]. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
+	  [2] Kulynych, Bogdan, Juan Felipe Gomez, Georgios Kaissis, Flavio du Pin Calmon, and Carmela Troncoso. 2024. “Attack-Aware Noise Calibration for Differential Privacy.” arXiv:2407.02191. Preprint, arXiv, November 7. https://doi.org/10.48550/arXiv.2407.02191.
 -
 - # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
