@@ -148,6 +148,9 @@
 			  While Section 6.2 claims strong cross-architecture transfer, the supporting evidence in Appendix C.4 (two MLPs on MNIST) is insufficient to substantiate general transferability.
 			- In Line 424-426, we already share that we have trained multiple model architectures (ResNets 18, 50 and WideResNet) with canaries trained on ResNet9 and achieved nearly perfect (99% TPR@0.1FPR). So our transferability results are not only on MLPs.
 			- > Q1. Continued: The authors should explain why optimized canaries can transfer between architectures (e.g., shared feature space, loss geometry)
+				- We can provide the following observational explanation of this phenomenon:
+				- > All models (i.e. hypothesis classes) seek to learn the same concept  from the data. A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself. For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
+				- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability of canaries would make sense in the first place.
 -
 -
 -
