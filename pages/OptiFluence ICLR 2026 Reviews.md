@@ -92,8 +92,10 @@
 		- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
 		- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
 	- > W2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
-		- Prior work [1], shows that AUC "is often uncorrleated with low false-positive success rates." AUC is considered an average-case success attack metric for the attacker, while TPR@lowFPR is a more stringent worst-case metric. Therefore, we chose to report the worst-case metric.
-		- We note that we already share ROC curves in Figure 7 in Appendix C.3. We are happy to add AUC numbers (area under these curves) to each figure, if doing so alleviate reviewer's concern. We note however, that
+		- We note that we already share ROC curves in Figure 7 in Appendix C.3. We are happy to add AUC numbers (area under these curves) to each figure, if doing so alleviate reviewer's concern.
+		- The reason we do not already report AUC numbers is that prior work [1] shows that AUC "is often uncorrleated with low false-positive success rates." AUC is considered an average-case success attack metric for the attacker, while TPR@lowFPR is a more stringent worst-case metric. Therefore, we chose to report the worst-case metric.
+	-
+		-
 -
 -
 -
