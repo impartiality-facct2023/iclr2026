@@ -151,6 +151,8 @@
 				- A theoretical study of this phenomenon is outside of the scope of the current paper. We can provide the following observational explanation of this phenomenon:
 				- > All models (i.e. hypothesis classes) seek to learn the same concept  from the data. A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself. For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
 				- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability of canaries would make sense in the first place.
+				- Please also see our response to Reviewer_VkF8.
+			-
 			-
 -
 -
