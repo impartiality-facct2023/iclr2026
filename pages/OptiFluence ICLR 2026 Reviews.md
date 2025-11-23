@@ -5,8 +5,7 @@
 	- ### Reviewer_VkF8
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where additions are marked in blue, and fixes are marked in red.
 		- > W1/Q1: The files at the anonymous link do not open.
-		- We apologize for the link not working. The Open Science service we used went offline making the code unavailable. In the rebuttal revision we have submitted a zipped file for the code.
-		- ==TODO== Here's the anonymized link:
+		- We apologize for the link not working. The Open Science service we used has gone offline making the code unavailable. In the rebuttal revision we have submitted a zipped file for the code.
 		- > W2: ...Without theoretical guarantees or approximation bounds, it is unclear whether the optimized canary truly maximizes detectability in general or only within the specific experimental setup.
 		- We agree with the reviewer that formal results would be interesting. However, the lack of general bounds is expected given the bi-level characterization of the problem with the training loss objective (of a multi-million parameter neural network) in the constraint set. Even the state-of-the-art optimization results for neural networks are limited to a few layer networks.
 		- On the topic of "heursitical" approaches: previously, canaries had to be *hand-crafted* as there was no systematic way to generate canaries. **The important novelty of our work is that we can *automatically* generate canaries that outperform hand-crafted ones.**
