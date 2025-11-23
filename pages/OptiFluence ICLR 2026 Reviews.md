@@ -120,6 +120,7 @@
 			- On "Overfitting": We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
 			- We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
 - ### Reviewer_mvjG
+  collapsed:: true
 	- **Rating:** 8
 	- **Confidence:** 3
 	- #### Summary
@@ -156,11 +157,10 @@
 	    **[Q3]** Update: The other reviewers rightly point out the need to justify and corroborate the efficiency of unrolled updates in your paradigm with empirical evidence (runtime and memory used) and on more involved/expensive settings than CIFAR-10 and MNIST. Can the authors please address that? This is *key to me maintaining my current score*.
 		- TODO ==@Arielle== Please add an reference to the answer when you've done the response to the other reviewer.
 		- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
-			- Scratchpad
-				- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
-				  the memorization and privacy risks that canaries are used to audit.
+	- Scratchpad
+		- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
+		  the memorization and privacy risks that canaries are used to audit.
 - ### Reviewer_5zJV
-  collapsed:: true
 	- **Rating:** 4
 	- **Confidence:** 4
 	- #### Summary
