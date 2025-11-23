@@ -101,7 +101,7 @@
 	- > The entire optimization objective is to maximize the LiRA "hinge" score. The canaries are overfit to this specific MIA. More MIA attacks should be considered.
 		- The LiRA hinge loss follows from likelihood tests with a prior assumption of Gaussianity (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
 		- Furthermore, attacks give a lower bound on privacy leakage. So it does not really matter if one "overfit" to one attack or not given that, by definition, we want the strongest possible attack to achieve the best possible lower bound. Since LiRA's statistic is a much stronger attack than other scores (such as confidence values, or cross entropy losses), it makes sense to focus on it.
-		- In response to your and Reviewer VkF8's feedback, we have added a paragraph to expalin
+		- In response to your and Reviewer VkF8's feedback, in the updated manuscript, we have added a paragraph to further expand the derivation of our privacy loss. See our response to VkF8's Q2.
 -
 -
 -
