@@ -111,9 +111,11 @@
 		- In the end, our guiding principle is the detectability using memebrship inference attacks; whatever means achieve this is considered fair game in privacy auditing (including changing the training procedure in substantial ways; see [[Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning]]). Our perturbed samples are far less invasive.
 	- 9.  The paper emphasizes scalability, yet unrolled optimization and rematerialization are computationally heavy. Could you please report the runtime, GPU memory footprint, and training cost for the CIFAR-10 experiments? How would the approach scale to larger datasets or transformer architectures?
 		- #response
-		- Question of runtime are addressed above with the new Table 2.
+		- > Could you please report the runtime, GPU memory footprint, and training cost for the CIFAR-10 experiments?
+			- Question of runtime and memory usage are addressed above with the new Table 2.
 		- Our final design for OptiFluence has several characteristics that simplifies scaling challenges. a) modularity; b) scalability knobs with truncation and influence calculation using EK-FAC approximations (which are scaled to transformers [[Studying Large Language Model Generalization with Influence Functions]]); c) first-party privacy auditing has a significant overhead. By showing transferability, one cost is amortized to multiple models; and even multiple parties.
 		- Scratchpad
+		  collapsed:: true
 			- On "Overfitting": We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
 			- We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
 - ### Reviewer_mvjG
