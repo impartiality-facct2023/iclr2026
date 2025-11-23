@@ -212,6 +212,7 @@
 				- On "Overfitting": We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
 				- We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
 - ### Reviewer_mvjG
+  collapsed:: true
 	- **Rating:** 8
 	- **Confidence:** 3
 	- #### Summary
