@@ -221,31 +221,24 @@
 		- Presentation: 4
 		- Contribution: 3
 	- #### Strengths
-	    **[S1]** Very well-motivated and concretely described methodology, with an attention to detail to practical concerns like compute and memory costs, yielding a practical design that vastly outperforms baselines, which is outstanding.
-	    
-	    **[S2]** Use of influence functions to initialize canary is very well motivated and grounded in existing research, and its utility firmly corroborated by ablation studies.
-	    
-	    **[S3]** Speaking of which, all the components of the OptiFluence method are covered and ablated in the ablation study section, which very clearly shows each component’s significance. Put another way, I think this is a very well executed ablation study section. In addition, figure 3 provides a good overview of how all the components come together to yield strong canaries (high TPR at very low FPR) as compared to other (ablated) variants.
-	    
-	    **[S4]** Good takeaways, viz. pointing out the limitations of mislabeling for canary generation, illustrating how initializing with influence functions provides a more effective and principled approach.
-	    
-	    **[S5]** Transferability of generated canaries is a huge positive and contributes to efficient auditing practices.
-	    
-	    **[S6]** Auditing (with and without DP-SGD) is well done, with strong choices of auditing methods and well-executed DP-SGD training with a Renyi DP based accountant.
-	    
-	    **[S7]** The authors provide an anonymized link to the code and relevant hyperparameters in the appendix, aiding in reproducibility of their results.
+	  collapsed:: true
+		- **[S1]** Very well-motivated and concretely described methodology, with an attention to detail to practical concerns like compute and memory costs, yielding a practical design that vastly outperforms baselines, which is outstanding.
+		- **[S2]** Use of influence functions to initialize canary is very well motivated and grounded in existing research, and its utility firmly corroborated by ablation studies.
+		- **[S3]** Speaking of which, all the components of the OptiFluence method are covered and ablated in the ablation study section, which very clearly shows each component’s significance. Put another way, I think this is a very well executed ablation study section. In addition, figure 3 provides a good overview of how all the components come together to yield strong canaries (high TPR at very low FPR) as compared to other (ablated) variants.
+		- **[S4]** Good takeaways, viz. pointing out the limitations of mislabeling for canary generation, illustrating how initializing with influence functions provides a more effective and principled approach.
+		- **[S5]** Transferability of generated canaries is a huge positive and contributes to efficient auditing practices.
+		- **[S6]** Auditing (with and without DP-SGD) is well done, with strong choices of auditing methods and well-executed DP-SGD training with a Renyi DP based accountant.
+		- **[S7]** The authors provide an anonymized link to the code and relevant hyperparameters in the appendix, aiding in reproducibility of their results.
 	- #### Weaknesses
-	    **[W1]** Not a serious weakness/dealbreaker, but it would be desirable to see results on more involved datasets than CIFAR-10 and MNIST. These datasets are popular classic datasets, so to speak, but it would be interesting to see if these results generalize to much larger datasets or datasets with many more classes than 10 (viz. CIFAR-100), more interesting sample distributions, or (this next part is not needed, so the authors can safely ignore this, but it would be appealing) other modalities than image datasets.
-		- TODO ==@Arielle== Let's do a CIFAR-100 example. Should not be that hard.
-		- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
-	- **[W2]** Seeing as how attack success (unsurprisingly) degrades for low values of $\varepsilon$ for DP-SGD auditing, could the authors please add experiments on lower values of $\varepsilon$ (viz. 1 and <1)? While these values may yield lower utility of the model, theoretically they are desirable (especially <1) and it would be useful to see how Optifluence (and its baselines) perform in this regime.
-		- We have updated the DP-SGD auditing results in table3 of Section 6.2 Validation with smaller epsilon = {0.5, 1}.
+		- **[W1]** Not a serious weakness/dealbreaker, but it would be desirable to see results on more involved datasets than CIFAR-10 and MNIST. These datasets are popular classic datasets, so to speak, but it would be interesting to see if these results generalize to much larger datasets or datasets with many more classes than 10 (viz. CIFAR-100), more interesting sample distributions, or (this next part is not needed, so the authors can safely ignore this, but it would be appealing) other modalities than image datasets.
+			- TODO ==@Arielle== Let's do a CIFAR-100 example. Should not be that hard.
+			- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
+		- **[W2]** Seeing as how attack success (unsurprisingly) degrades for low values of $\varepsilon$ for DP-SGD auditing, could the authors please add experiments on lower values of $\varepsilon$ (viz. 1 and <1)? While these values may yield lower utility of the model, theoretically they are desirable (especially <1) and it would be useful to see how Optifluence (and its baselines) perform in this regime.
+			- We have updated the DP-SGD auditing results in table3 of Section 6.2 Validation with smaller epsilon = {0.5, 1}.
 	- #### Questions
-	    **[Q1]** Can you address W1 and add results on more datasets in different regimes (more classes, samples, different distributions)?
-	    
-	    **[Q2]** Can you investigate the efficacy of Optifluence and its baselines in low $\varepsilon$ (high privacy) regimes for DP-SGD auditing?
-	    
-	    **[Q3]** Update: The other reviewers rightly point out the need to justify and corroborate the efficiency of unrolled updates in your paradigm with empirical evidence (runtime and memory used) and on more involved/expensive settings than CIFAR-10 and MNIST. Can the authors please address that? This is *key to me maintaining my current score*.
+		- **[Q1]** Can you address W1 and add results on more datasets in different regimes (more classes, samples, different distributions)?
+		- **[Q2]** Can you investigate the efficacy of Optifluence and its baselines in low $\varepsilon$ (high privacy) regimes for DP-SGD auditing?
+		- **[Q3]** Update: The other reviewers rightly point out the need to justify and corroborate the efficiency of unrolled updates in your paradigm with empirical evidence (runtime and memory used) and on more involved/expensive settings than CIFAR-10 and MNIST. Can the authors please address that? This is *key to me maintaining my current score*.
 		- TODO ==@Arielle== Please add an reference to the answer when you've done the response to the other reviewer.
 		- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 	- Scratchpad
