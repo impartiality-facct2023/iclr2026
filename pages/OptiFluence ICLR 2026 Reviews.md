@@ -58,7 +58,7 @@
 	- **A canary, under the DP definition, does not need to come from a particular data distribution at all.** As long as the model's behavior detectably changes in response to the existence of the canary in the training set, it fits the definition. **We note that prior work in privacy auditing uses far more unnatural-looking canaries.** See [1] for example where a square pattern is used. Therefore, not even prior work acknowledges the need for naturalness of privacy canaries for auditing purposes.
 	- > Q8:...Have you attempted to quantify the degree of deviation from the data distribution (e.g., via FID, nearest-neighbor distance, or classifier confidence)?
 	- We have not. Our only goal is to produce input canaries that fit the DP definition. "Visual naturalness" is therefore not within our desiderata. We publish canary figures to gain an intuitive understanding. One of these understanding is precisely that us humans cannot necessary find a pattern that turns out to be the best canary for privacy auditing.
-	- We understand the reasoning behind asking for naturalness (or low distance between an optimized sample and a canary) given the history of optimizing adversarial examples that are minimally perturbed. However, bounded perturbations is not reasonable requirement in this application.
+	- > W8: ...The paper does not report runtime, GPU memory usage, or total training cost.
 	-
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
@@ -181,7 +181,8 @@
 				- A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself.
 				- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
 				- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
-		- 8.  Some optimized canaries, particularly in CIFAR-10, appear visually unnatural or off-manifold. Have you attempted to quantify the degree of deviation from the data distribution (e.g., via FID, nearest-neighbor distance, or classifier confidence)? Could detectability be driven by such distributional shifts rather than true memorization?
+		- collapsed:: true
+		  8.  Some optimized canaries, particularly in CIFAR-10, appear visually unnatural or off-manifold. Have you attempted to quantify the degree of deviation from the data distribution (e.g., via FID, nearest-neighbor distance, or classifier confidence)? Could detectability be driven by such distributional shifts rather than true memorization?
 			- #response
 			- Since out canaries fit the DP definition perfectly, we are not convinced that "visual unnaturalness" is a metric worth optimizing for. Afterall, the threat model is different from an attack using adversarial example so "bounding the (visual) perturbation" is not a requirement.
 			- In the end, our guiding principle is the detectability using memebrship inference attacks; whatever means achieve this is considered fair game in privacy auditing (including changing the training procedure in substantial ways; see [[Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning]]). Our perturbed samples are far less invasive.
