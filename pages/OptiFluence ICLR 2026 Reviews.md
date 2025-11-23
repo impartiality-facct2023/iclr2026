@@ -3,7 +3,6 @@
 	- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	-
 	- ### Reviewer VkF8
-	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where additions are marked in blue, and fixes are marked in red.
 		- > W1/Q1: The files at the anonymous link do not open.
 		- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
@@ -74,8 +73,8 @@
 	- >W1: ... It would be interesting to see if these results generalize to much larger datasets or datasets with many more classes than 10 (viz. CIFAR-100)
 		- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
 	- > Could the authors please add experiments on lower values of $\varepsilon$ (viz. 1 and <1)? While these values may yield lower utility of the model, theoretically they are desirable (especially <1) and it would be useful to see how Optifluence (and its baselines) perform in this regime.
-		- We ran additional experiments for $\varepsilon \in \{0.5, 1\}$ with CIFAR10 and updated Table 3 accordingly. We get achieves 1.6% TPR@0.1FPR for $\varepsilon=1$ but does the attack is not successful for $\varepsilon=0.5$. We should emphasize that these values are very low for vision models and CIFAR10 models in particular; therefore
-		-
+		- We ran additional experiments for $\varepsilon \in \{0.5, 1\}$ with CIFAR10 and updated Table 3 accordingly. We get achieves 1.6% TPR@0.1FPR for $\varepsilon=1$ but does the attack is not successful for $\varepsilon=0.5$. We should emphasize that these values are very low for vision models and CIFAR10 models in particular; therefore we do not find these results surprising.
+		- As we discuss in Response W2 to Reviewer VkF8
 		-
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
