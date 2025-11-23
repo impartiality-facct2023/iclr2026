@@ -4,8 +4,11 @@
 		- > W1/Q1. The files at the anonymous link do not open.
 		- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
 		- ==TODO== Here's the anonymized link:
-		- > W2: ...Without theoretical guarantees or approximation bounds, it is unclear whether the optimized canary truly maximizes detectability in general or only within the specific experimental setup.
-			-
+	- > W2: ...Without theoretical guarantees or approximation bounds, it is unclear whether the optimized canary truly maximizes detectability in general or only within the specific experimental setup.
+	- We agree with the reviewer that formal results would be interesting. However, the lack of general bounds is expected given the bi-level characterization of the problem with the training loss objective (of a multi-million parameter neural network) in the constraint set. Even the state-of-the-art optimization results for neural networks are limited to a few layer networks.
+	- On the topic of "heursitical" approaches: previously, canaries had to be *hand-crafted* as there was no systematic way to generate canaries. **The important novelty of our work is that we can *automatically* generate canaries that outperform hand-crafted ones.**
+	- Our work empirically demonstrates the practical feasibility of optimized canaries as a framework. We do agree formal results would be intriguing but given the lack of relevant literature, and the density of the formalization and modeling already present in the paper; we intend to pursue formal results in future work.
+	- > Q2:
 		-
 -
 - # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
@@ -78,7 +81,6 @@
 			- Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
 			- To answer the reviewer’s concern regarding the computational efficiency of our method, we have updated Section 6.2 to include **Table 2 which reports the wall-time clock and VRAM usage.** We have also included a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. The latter demonstrates the scalability of our method: to fit the CIFAR100 model's training run in memory, we were able to reduce our truncation parameter $k$ for TBPTT from 4 to 2. Reminder that this parameter controls how many training steps are  included in the canary gradient calculation (see Figure 2(c)). The resulting canary still managed to achieve near-perfect detectability on CIFAR-100.
 	- #### Questions
-	  collapsed:: true
 		- 1.  The anonymous code link provided in the submission does not open. Could you please share a working repository or include a zip file in the supplementary material to ensure full reproducibility?
 			- ==TODO== Update Repo
 		- 2. Could you provide a more rigorous justification for treating the logit difference (Equation 5) as a valid surrogate for the likelihood-ratio statistic? Specifically, under what assumptions does maximizing this surrogate guarantee improved membership distinguishability, and can any theoretical bound or consistency argument be established?
