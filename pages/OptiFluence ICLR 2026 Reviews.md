@@ -74,7 +74,7 @@
 		- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
 	- > Could the authors please add experiments on lower values of $\varepsilon$ (viz. 1 and <1)? While these values may yield lower utility of the model, theoretically they are desirable (especially <1) and it would be useful to see how Optifluence (and its baselines) perform in this regime.
 		- We ran additional experiments for $\varepsilon \in \{0.5, 1\}$ with CIFAR10 and updated Table 3 accordingly. We get achieves 1.6% TPR@0.1FPR for $\varepsilon=1$ but does the attack is not successful for $\varepsilon=0.5$. We should emphasize that these values are very low for vision models and CIFAR10 models in particular; therefore we do not find these results surprising.
-		- As we discuss in Response W2 to Reviewer VkF8's Q5, tight DP-Auditing often requires canary gradients or
+		- As we discuss in Response W2 to Reviewer VkF8's Q5, tight DP-Auditing often requires canary gradients or manipulation of the training procedure. Input-space canaries therefore are at an inherent disadvantage
 		-
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
