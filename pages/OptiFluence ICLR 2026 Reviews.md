@@ -113,7 +113,9 @@
 		- > W1/Q5: The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below). How does OptiFluence fundamentally differ from the optimization-based canaries proposed by [1,2]?
 			- Maddock et al. 2022's algorithm CANIFE produces optimized canaries in the federated learning setup which means the canaries are in the parameter space. Our canaries are in the input (sample) space (i.e. model weights vs. pixels for a vision canary). Unfortunately, the two types of canaries cannot be used interchangeably given the difference in deployment context. We cite Maddock et al. 2022 in Line 107.
 			- In Nasr et al. 2023, tight auditing is possible for "canary gradients" which are again canaries in the parameter space; and not the input space. The closest canary discussed in Nasr et al. 2023 to us is the Black-box Auditing (Algorithm 1) where canaries used are mislabeled examples (thus heuristically chosen). We discuss Nasr et al. 2023 work in Line 40.
--
+			- [1] Nasr, Milad, et al. "Tight auditing of differentially private machine learning." 32nd USENIX Security Symposium (USENIX Security 23). 2023.
+			- [2] Maddock, Samuel, Alexandre Sablayrolles, and Pierre Stock. "Canife: Crafting canaries for empirical privacy measurement in federated learning." arXiv preprint arXiv:2210.02912 (2022).
+		-
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
@@ -352,6 +354,7 @@
 		- The attack is evaluated across a good range of datasets and privacy budgets.
 	- #### Weaknesses
 		- The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below).
+		  collapsed:: true
 			- #response
 			- Maddock et al. 2022's algorithm CANIFE produces optimized canaries in the federated learning setup which means the canaries are in the parameter space. Our canaries are in the input (sample) space (i.e. model weights vs. pixels for a vision canary). Unfortunately, the two types of canaries cannot be used interchangeably given the difference in deployment context. We cite Maddock et al. 2022 in Line 107.
 			- In Nasr et al. 2023, tight auditing is possible for "canary gradients" which are again canaries in the parameter space; and not the input space. The closest canary discussed in Nasr et al. 2023 to us is the Black-box Auditing (Algorithm 1) where canaries used are mislabeled examples (thus heuristically chosen). We discuss Nasr et al. 2023 work in Line 40.
@@ -383,6 +386,7 @@
 	   
 	    [2] Maddock, Samuel, Alexandre Sablayrolles, and Pierre Stock. "Canife: Crafting canaries for empirical privacy measurement in federated learning." arXiv preprint arXiv:2210.02912 (2022).
 	- Scratchpad
+	  collapsed:: true
 		- No mention of threat models
 		- What we propose is a method to optimize data (canary), one-run methods are auditing algorithms. They recieve canaries as an input; we produce canaries as output.
 		- In OptiFluence, we instead use the value of influence functions (aka, zero-order derivatives of influence functions) to search for a good initial canary instead.
