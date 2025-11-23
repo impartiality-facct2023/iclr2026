@@ -440,13 +440,13 @@
 			- #response
 			- We believe the manuscript already addresses both requests. First, Table 1 in Section 6.2 presents a baseline of using Adversarial examples; which at 0.45% TPR@0.1FPR is only marginally better than Mislabeled examples at 0.40%.
 			- Second, in the aforementioned section (Lines 228-229), in the loss objective that we derive for optimizing the hypothesis test statistic (Eq. 3), that the gradient resembling that of a adversarial example appears with a negative sign. That is, based on the derivation, we in fact do not want canaries to look like adversarial examples. Motivating this through years of research in adversarial training (whereby we train with adv. examples for robustness) is illuminating: since canaries are, by definition, going to be trained on, we want them to remain sensitive.
-	- **Missing threat-model specification.**
-	    The current presentation lacks a clear statement of the auditor’s capability—whether auditing assumes black-box, gray-box, or white-box access to the model.
-	    A formal threat model is essential to contextualize the results and interpret the claimed transferability.
-		- #response
-		- We agree that a threat model would be helpful, however, we do not think that black vs. white-box dichotomy is the right level of granularity for our approach. The fact that our canaries are transferable makes this clear: auditor does not need access to the model architecture to optimize a good canary; so this can be considered black-box. However, we have shown how much choosing a influential sample for the initialization of canary optimization makes a difference. This requires at least some knowledge about the auditee's data distribution. But does that mean auditing requires  white-box access to auditee's data? We believe not. This level of knowledge is assumed for any realistic auditor.
-		- Since the black/white-box characterization limits auditing to the box (aka, the algorithm), it fails to consider who does the auditing which is a much more important consideration. Privacy auditing with canaries enables third-party audits; while algorithmic audits (such as "Tight-", or "One-run" audits) often require first-party access which is often characterized as white-box.
-		- ==@Florian== What do you think of the point above?
+			- **Missing threat-model specification.**
+			    The current presentation lacks a clear statement of the auditor’s capability—whether auditing assumes black-box, gray-box, or white-box access to the model.
+			    A formal threat model is essential to contextualize the results and interpret the claimed transferability.
+				- #response
+				- We agree that a threat model would be helpful, however, we do not think that black vs. white-box dichotomy is the right level of granularity for our approach. The fact that our canaries are transferable makes this clear: auditor does not need access to the model architecture to optimize a good canary; so this can be considered black-box. However, we have shown how much choosing a influential sample for the initialization of canary optimization makes a difference. This requires at least some knowledge about the auditee's data distribution. But does that mean auditing requires  white-box access to auditee's data? We believe not. This level of knowledge is assumed for any realistic auditor.
+				- Since the black/white-box characterization limits auditing to the box (aka, the algorithm), it fails to consider who does the auditing which is a much more important consideration. Privacy auditing with canaries enables third-party audits; while algorithmic audits (such as "Tight-", or "One-run" audits) often require first-party access which is often characterized as white-box.
+				- ==@Florian== What do you think of the point above?
 	- #### Questions
 	    * **Unclear explanation of transferability.**
 	    While Section 6.2 claims strong cross-architecture transfer, the supporting evidence in Appendix C.4 (two MLPs on MNIST) is insufficient to substantiate general transferability.
