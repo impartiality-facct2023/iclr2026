@@ -20,8 +20,8 @@
 	    5. The paper is well-structured, with a clear presentation of motivation, methodology, and results.
 	- #### Weaknesses
 	    1. The files at the anonymous link do not open. Please either include a zip file with the source code and scripts in the supplementary material or update the link to ensure the files are accessible.
-		- TODO We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
-		- Here's the anonymized link:
+		- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
+		- ==TODO== Here's the anonymized link:
 	- 2. The central idea—to optimize the log-likelihood ratio via a bilevel objective—is elegant but remains largely heuristic. The paper argues that maximizing the difference in logits between models trained with and without the canary approximates the true likelihood-ratio test (Equation 5), yet provides no formal proof that this surrogate objective is consistent or unbiased. Without theoretical guarantees or approximation bounds, it is unclear whether the optimized canary truly maximizes detectability in general or only within the specific experimental setup.
 		- #response
 		- We agree with the reviewer that formal results would be interesting. However, the lack of general bounds is expected given the bi-level characterization of the problem with the training loss objective (of a multi-million parameter neural network) in the constraint set. Even the state-of-the-art optimization results for neural networks are limited to a few layer networks.
