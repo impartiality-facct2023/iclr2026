@@ -137,9 +137,13 @@
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1: Incomplete component description in the abstract
 			- Thank you for pointing out this inconsistency. We have fixed the issue in the updated manuscript.
-		- > W2: The paper should explicitly discuss how the proposed canary differs from conventional adversarial samples, conceptually and in objective formulation, and clarify why existing adversarial methods cannot directly be used to generate canaries.  Experimental comparisons between OptiFluence and adversarial samples are also needed.
+		- > W2/Q3: The paper should explicitly discuss how the proposed canary differs from conventional adversarial samples, conceptually and in objective formulation, and clarify why existing adversarial methods cannot directly be used to generate canaries.  Experimental comparisons between OptiFluence and adversarial samples are also needed.
 			- We believe the manuscript already addresses both requests. First, Table 1 in Section 6.2 presents a baseline of using Adversarial examples; which at 0.45% TPR@0.1FPR is only marginally better than Mislabeled examples at 0.40%.
 			- Second, in the aforementioned section (Lines 228-229), in the loss objective that we derive for optimizing the hypothesis test statistic (Eq. 3), that the gradient resembling that of a adversarial example appears with a negative sign. That is, based on the derivation, we in fact do not want canaries to look like adversarial examples. Motivating this through years of research in adversarial training (whereby we train with adv. examples for robustness) is illuminating: since canaries are, by definition, are going to be trained on; we want them to remain sensitive.
+		- > Q3. Relation to privacy–robustness trade-off.
+		  ...An experiment showing canary auditing after adversarial training would significantly strengthen the paper.
+			- #response
+			- Thank you for the references. Please see our response above. Note that as show in Algorithm 1, indeed the model is always trained with the canary in training set (Line 2). Therefore, we indeed do adversarial training for all results. As we explained in the weaknesses response,  we seek to "robustify" our canaries to being trained on.
 		- > W3: Missing threat-model specification.
 		    The current presentation lacks a clear statement of the auditor’s capability—whether auditing assumes black-box, gray-box, or white-box access to the model.
 			- We agree that a threat model would be helpful, however, **we do not think that black vs. white-box dichotomy is the right level of granularity for our approach.** The fact that our canaries are transferable makes this clear: auditor does not need access to the model architecture to optimize a good canary; so this can be considered black-box. However, we have shown how much choosing a influential sample for the initialization of canary optimization makes a difference. This requires at least some knowledge about the auditee's data distribution. But does that mean auditing requires  white-box access to auditee's data? We believe not. This level of knowledge is assumed for any realistic auditor.
@@ -156,11 +160,6 @@
 			  Algorithm 1 suggests that the canary is iteratively updated during model training. This may interfere with model convergence or degrade performance.  The paper should report whether incorporating such optimization affects model accuracy or training stability.
 				- Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that, unlike prior work, **we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition.** This means that **the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model.** This is the reason we do not report model accuracy consistantly. There is not much to report.
 				- This is of course understandable because performance is an average metric while privacy is a worst-case one. **We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.**
-			- > Q3. Relation to privacy–robustness trade-off.
-			    Given that OptiFluence’s optimization resembles adversarial training, it would be valuable to evaluate or at least discuss the potential trade-off between privacy auditing effectiveness and robustness, as widely documented in the literature [1–3].
-			    An experiment showing canary auditing after adversarial training would significantly strengthen the paper.
-				- #response
-				- Thank you for the references. Please see our response above. Note that as show in Algorithm 1, indeed the model is always trained with the canary in training set (Line 2). Therefore, we indeed do adversarial training for all results. As we explained in the weaknesses response,  we seek to "robustify" our canaries to being trained on.
 			-
 -
 -
