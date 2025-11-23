@@ -75,8 +75,8 @@
 	- > W2/Q2: ...Could the authors please add experiments on lower values of $\varepsilon$ (viz. 1 and <1)? While these values may yield lower utility of the model, theoretically they are desirable (especially <1) and it would be useful to see how Optifluence (and its baselines) perform in this regime.
 	- We ran additional experiments for $\varepsilon \in \{0.5, 1\}$ with CIFAR10 and updated Table 3 accordingly. We get achieves 1.6% TPR@0.1FPR for $\varepsilon=1$ but does the attack is not successful for $\varepsilon=0.5$. We should emphasize that these values are very low for vision models and CIFAR10 models in particular; therefore we do not find these results surprising.
 	- As we discuss in Response W2 to Reviewer VkF8's Q5, tight DP-Auditing often requires *canary gradients* or manipulation of the training procedure. Input-space canaries therefore are at an inherent disadvantage. However, they enable third-party auditing, are architecture-agnostic, and transfer. We nevertheless have included DP-Auditing results in Section 6.2 (Table 3) to show **where first-party tight audits are not possible optimized, canaries can provide a useful alternative.**
-	- Q3:
-		-
+	- > Q3: The other reviewers rightly point out the need to justify and corroborate the efficiency of unrolled updates in your paradigm with empirical evidence (runtime and memory used) and on more involved/expensive settings than CIFAR-10 and MNIST. Can the authors please address that?
+	- To answer the reviewer’s comment regarding empirical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
@@ -246,7 +246,7 @@
 		- **[Q2]** Can you investigate the efficacy of Optifluence and its baselines in low $\varepsilon$ (high privacy) regimes for DP-SGD auditing?
 		- **[Q3]** Update: The other reviewers rightly point out the need to justify and corroborate the efficiency of unrolled updates in your paradigm with empirical evidence (runtime and memory used) and on more involved/expensive settings than CIFAR-10 and MNIST. Can the authors please address that? This is *key to me maintaining my current score*.
 			- TODO ==@Arielle== Please add an reference to the answer when you've done the response to the other reviewer.
-			- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
+			- To answer the reviewer’s comment regarding empirical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 	- Scratchpad
 		- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
 		  the memorization and privacy risks that canaries are used to audit.
