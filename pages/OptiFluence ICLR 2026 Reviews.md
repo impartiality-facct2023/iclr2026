@@ -62,7 +62,6 @@
 			- #response
 			- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
 		- Sctachpad
-		  collapsed:: true
 			- Regarding the impact of truncation parameter $k$: Truncation was born out of necessity to be able to fit the training runs of larger models in memory. We do not need truncation for MNIST models for instance (hence the "exact gradient"), effectively $k=MAX$ where $MAX$ is the number of steps of the training steps.
 			- To answer the reviewer comment about resource usage, we have updated Section 6.2 that reports the requested metrics, with an paragraph of explanation of the scalability of our method.
 			- Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
@@ -95,7 +94,7 @@
 		- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
 	- 6. The optimization directly targets the LiRA hinge-based statistic. Would the optimized canaries remain highly detectable under alternative membership inference attacks (e.g., confidence-, entropy-, or loss-based)? Have you evaluated cross-auditor robustness?
 		- #response
-		- The LiRA hinge loss (although poorly named) follows from likelihood tests with a prior assumption of Gaussianity (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
+		- The LiRA hinge loss follows from likelihood tests with a prior assumption of Gaussianity (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
 		- Can the reviewer kindly let us know, under what conditions they think it makes sense to use the aforementioned confidence-, entorpy-, or loss-based attacks; instead of LiRA?
 	- 7. The transferability of optimized canaries across architectures is one of the key selling points of the paper. Can you provide a theoretical or empirical explanation for why canaries optimized on ResNet-9 remain highly detectable on ResNet-50 or WideResNet? Is this phenomenon architecture-dependent or data-dependent?
 		- #response
@@ -117,11 +116,9 @@
 			- Our final design for OptiFluence has several characteristics that simplifies scaling challenges. a) modularity; b) scalability knobs with truncation and influence calculation using EK-FAC approximations (which are scaled to transformers [[Studying Large Language Model Generalization with Influence Functions]]); c) first-party privacy auditing has a significant overhead. By showing transferability, one cost is amortized to multiple models; and even multiple parties.
 			- For a concrete example of this, see our response to W
 		- Scratchpad
-		  collapsed:: true
 			- On "Overfitting": We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
 			- We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
 - ### Reviewer_mvjG
-  collapsed:: true
 	- **Rating:** 8
 	- **Confidence:** 3
 	- #### Summary
