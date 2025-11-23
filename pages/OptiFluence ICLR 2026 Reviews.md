@@ -144,8 +144,10 @@
 		    The current presentation lacks a clear statement of the auditor’s capability—whether auditing assumes black-box, gray-box, or white-box access to the model.
 			- We agree that a threat model would be helpful, however, **we do not think that black vs. white-box dichotomy is the right level of granularity for our approach.** The fact that our canaries are transferable makes this clear: auditor does not need access to the model architecture to optimize a good canary; so this can be considered black-box. However, we have shown how much choosing a influential sample for the initialization of canary optimization makes a difference. This requires at least some knowledge about the auditee's data distribution. But does that mean auditing requires  white-box access to auditee's data? We believe not. This level of knowledge is assumed for any realistic auditor.
 			- Since the black/white-box characterization limits auditing to the box (aka, the algorithm), it fails to consider who does the auditing which is a much more important consideration. **Privacy auditing with canaries enables third-party audits; while algorithmic audits (such as "Tight-", or "One-run" audits) often require first-party access which is often characterized as white-box.**
-			- W4: **Unclear explanation of transferability.**
-			    While Section 6.2 claims strong cross-architecture transfer, the supporting evidence in Appendix C.4 (two MLPs on MNIST) is insufficient to substantiate general transferability.
+			- > W4: Unclear explanation of transferability.
+			  While Section 6.2 claims strong cross-architecture transfer, the supporting evidence in Appendix C.4 (two MLPs on MNIST) is insufficient to substantiate general transferability.
+			- In Line 424-426, we already share that we have trained multiple model architectures (ResNets 18, 50 and WideResNet) with canaries trained on ResNet9 and achieved nearly perfect (99% TPR@0.1FPR). So our transferability results are not only on MLPs.
+			-
 -
 -
 -
