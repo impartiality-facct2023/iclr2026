@@ -28,7 +28,18 @@
 	- These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack framing.
 	- [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. [[Bayesian Estimation of Differential Privacy]]. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
 	  [2] Kulynych, Bogdan, Juan Felipe Gomez, Georgios Kaissis, Flavio du Pin Calmon, and Carmela Troncoso. 2024. “Attack-Aware Noise Calibration for Differential Privacy.” arXiv:2407.02191. Preprint, arXiv, November 7. https://doi.org/10.48550/arXiv.2407.02191.
-	- >Q
+	- >Q5. Is there any attempt to estimate lower bounds on ε or compare to DP auditing baselines that produce numeric privacy budgets?
+	- We have addressed this question in W4. We want to additionally note that "DP Auditing" baselines often go beyond auditing with canary samples and produce canary gradients [1] or otherwise change the training procedure [2] to achieve the tightest lower-bounds possible. **Our work is strictly in the space of auditing using canaries in the input (sample) space. The benefit of this type of audit is its versatility (given its architecture-agnosticism) and transferability (that we have demonstrated).**
+	- We nevertheless have included DP-Auditing results in Section 6.2 (Table 3) with the TPR@0.1FPR metric to show **where first-party tight audits are not possible optimized, canaries can provide a useful alternative.** Additionally, to answer the reviewers question, using the [`privacy-estimates`](https://github.com/microsoft/responsible-ai-toolbox-privacy) by Zanella-Béguelin et al, we have calculated the following lower bounds for a MNIST model trained with DP-SGD with $\varepsilon \in \{1, 2, 6, 8\}$ and measured the lower-bounds. Given the time-sensitivity of the rebuttal we reduced our number of shadow models to 5K (instead of 20K) and the results are as follows:
+	  | $\varepsilon$ | TPR@0.1FPR | $\hat\varepsilon_{-}$|
+	  |0.5| | |
+	  |1| | |
+	  |2| | |
+	  |6| | |
+	  |8| | |
+	- We note that due to the nature of these algorithms the lowerbounds estimation itself comes as a confidence interval that shrinks with higher number of samples (here, shadow models).  We see that for
+	- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
+	- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
 - # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
