@@ -3,7 +3,6 @@
 	- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	-
 	- ### Reviewer_VkF8
-	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where additions are marked in blue, and fixes are marked in red.
 		- > W1/Q1: The files at the anonymous link do not open.
 		- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
@@ -81,6 +80,7 @@
 		- To answer the reviewer’s comment regarding empirical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_5zJV
+	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive.
 		- Our claim of scalability is in the context of the relevant baselines. The first being truly-unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in L304:  "When differentiating through many training steps, the computational graph grows linearly with the number of updates, leading to prohibitive memory usage." One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
