@@ -154,8 +154,13 @@
 				- Please also see our response to Reviewer_VkF8.
 			- > Q2. Potential performance degradation. 
 			  Algorithm 1 suggests that the canary is iteratively updated during model training. This may interfere with model convergence or degrade performance.  The paper should report whether incorporating such optimization affects model accuracy or training stability.
-				- Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that, unlike prior work, **we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition.** This means that the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model. This is the reason we do not report model accuracy consistantly. There is not much to report.
-				- This is of course understandable because performance is an average metric while privacy is a worst-case one. We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.
+				- Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that, unlike prior work, **we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition.** This means that **the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model.** This is the reason we do not report model accuracy consistantly. There is not much to report.
+				- This is of course understandable because performance is an average metric while privacy is a worst-case one. **We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.**
+			- > Q3. Relation to privacy–robustness trade-off.
+			    Given that OptiFluence’s optimization resembles adversarial training, it would be valuable to evaluate or at least discuss the potential trade-off between privacy auditing effectiveness and robustness, as widely documented in the literature [1–3].
+			    An experiment showing canary auditing after adversarial training would significantly strengthen the paper.
+				- #response
+				- Thank you for the references. Please see our response above. Note that as show in Algorithm 1, indeed the model is always trained with the canary in training set (Line 2). Therefore, we indeed do adversarial training for all results. As we explained in the weaknesses response,  we seek to "robustify" our canaries to being trained on.
 			-
 -
 -
@@ -481,7 +486,8 @@
 				- A transferable canary indicates that the notion of a canary is not a function of the minutaie of the hypothesis class, but rather the concept itself.
 				- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—and entirely different learner!
 				- We like to note however that the space of canaries is potentially much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
-		- * **Potential performance degradation.**
+		- collapsed:: true
+		  * **Potential performance degradation.**
 		    Algorithm 1 suggests that the canary is iteratively updated during model training. This may interfere with model convergence or degrade performance.
 		    The paper should report whether incorporating such optimization affects model accuracy or training stability.
 			- #response
