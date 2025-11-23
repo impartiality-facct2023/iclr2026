@@ -264,42 +264,43 @@
 		- Presentation: 2
 		- Contribution: 2
 	- #### Strengths
-	    1. The core idea is sound. Moving from "guessing" a canary to "optimizing" one is a logical step.
-	- 2. The results are undeniable. Table 1 shows that optimized canaries are 415x more detectable than standard ones on CIFAR-10.
-	- 3. The transferability result is the paper's strongest practical contribution.
-	- #### Weaknesses
-	    1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive. The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
-		- #response
-		- We thank the reviewer for their feedback.
-		- Our claim of scalability is in the context of the baselines we present. The first being truly-unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in L304:  "When differentiating through many training steps, the computational graph grows linearly with the number of updates, leading to prohibitive memory usage." One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
-		- Regarding datasets, we note that CIFAR10 is a standard dataset in privacy auditing of vision models given the sheer computation necessary to find rare privacy-infringing events [[Auditing Differentially Private Machine Learning: How Private is Private SGD?]]
-	- 2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
-		- #response
-		- We use TPR@Low FPR because for very successful privacy attacks (very high TPR@0.1FPR), AUC is almost 1. This makes reporting AUCs redundant.
-		- Furthermore, Prior work [[Membership Inference Attacks From First Principles]], shows that AUC "is often uncorrleated with low false-positive success rates."
-		- Finally AUC is considered an average-case success attack metric for the attacker, while TPR@lowFPR is a more stringent worst-case metric.
-	- 3. The baseline of MIA is kind of outdated. There are more recent and powerful MIA attacks such as "Zarifzadeh, Sajjad, Philippe Liu, and Reza Shokri. "Low-cost high-power membership inference attacks." Proceedings of the 41st International Conference on Machine Learning. 2024."
-		- #response
-		- We respectfully disagree with the statement that our attacks are outdated. We use the LIRA-based attacks introduced in [[Evaluations of Machine Learning Privacy Defenses are Misleading]] (CCS 2024).
-		- We note that **our contribution is not the evaluation (privacy attack)** which we adopted from Aerni 2024,  verbatim, but rather the canary to be used for the evolution. **We successfully show that under a fixed evaluation scheme (i.e. privacy atttack), our canaries improve 3 orders of magnitude compared to baselines. A stronger privacy attack (such as RMIA method from the cited paper) can only improve our already high TPR@lowFPR numbers.**
-		-
-	- 4. The entire optimization objective is to maximize the LiRA "hinge" score. The canaries are overfit to this specific MIA. More MIA attacks should be considered.
-		- #response
-		- We believe our response to W3 should clarify this question as well. We do not run evaluate LIRA attacks in the optimization procedure. Our evaluation is separate from our optimization.  **The resemblance of our privacy loss to the "hinge" loss comes from the shared theoretical formulation of a differential privacy distinguisher as a statistical test—which is well-known result in DP theory [[Hypothesis Testing Interpretations and Renyi Differential Privacy]].**
-		- It is inaccurate to claim this is overfitting because "overfitting" is rather well-defined in ML. For instance, we do not claim that models are overfitted because they use the same metrics that they optimize with (cross entropy loss and accuracy). Instead we claim overfitting if model behavior on unseen circumstances (i.e. loss on fresh test data) does not match its behavior during training (i.e. loss on training data).
-		- By methodically isolating canary optimization from privacy evaluation, as discussed, we do our due diligence to report metrics only on unseen circumstances. What is more, **we see that under the most stringent circumstances, namely a different architecture,  our canaries achieve high detectability which indicates generalizability rather than overfitting.**
+		- 1. The core idea is sound. Moving from "guessing" a canary to "optimizing" one is a logical step.
+		- 2. The results are undeniable. Table 1 shows that optimized canaries are 415x more detectable than standard ones on CIFAR-10.
+		- 3. The transferability result is the paper's strongest practical contribution.
+		- #### Weaknesses
+			- 1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive. The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
+				- #response
+				- We thank the reviewer for their feedback.
+				- Our claim of scalability is in the context of the baselines we present. The first being truly-unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in L304:  "When differentiating through many training steps, the computational graph grows linearly with the number of updates, leading to prohibitive memory usage." One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
+				- Regarding datasets, we note that CIFAR10 is a standard dataset in privacy auditing of vision models given the sheer computation necessary to find rare privacy-infringing events [[Auditing Differentially Private Machine Learning: How Private is Private SGD?]]
+			- 2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
+				- #response
+				- We use TPR@Low FPR because for very successful privacy attacks (very high TPR@0.1FPR), AUC is almost 1. This makes reporting AUCs redundant.
+				- Furthermore, Prior work [[Membership Inference Attacks From First Principles]], shows that AUC "is often uncorrleated with low false-positive success rates."
+				- Finally AUC is considered an average-case success attack metric for the attacker, while TPR@lowFPR is a more stringent worst-case metric.
+			- 3. The baseline of MIA is kind of outdated. There are more recent and powerful MIA attacks such as "Zarifzadeh, Sajjad, Philippe Liu, and Reza Shokri. "Low-cost high-power membership inference attacks." Proceedings of the 41st International Conference on Machine Learning. 2024."
+				- #response
+				- We respectfully disagree with the statement that our attacks are outdated. We use the LIRA-based attacks introduced in [[Evaluations of Machine Learning Privacy Defenses are Misleading]] (CCS 2024).
+				- We note that **our contribution is not the evaluation (privacy attack)** which we adopted from Aerni 2024,  verbatim, but rather the canary to be used for the evolution. **We successfully show that under a fixed evaluation scheme (i.e. privacy atttack), our canaries improve 3 orders of magnitude compared to baselines. A stronger privacy attack (such as RMIA method from the cited paper) can only improve our already high TPR@lowFPR numbers.**
+				-
+			- 4. The entire optimization objective is to maximize the LiRA "hinge" score. The canaries are overfit to this specific MIA. More MIA attacks should be considered.
+				- #response
+				- We believe our response to W3 should clarify this question as well. We do not run evaluate LIRA attacks in the optimization procedure. Our evaluation is separate from our optimization.  **The resemblance of our privacy loss to the "hinge" loss comes from the shared theoretical formulation of a differential privacy distinguisher as a statistical test—which is well-known result in DP theory [[Hypothesis Testing Interpretations and Renyi Differential Privacy]].**
+				- It is inaccurate to claim this is overfitting because "overfitting" is rather well-defined in ML. For instance, we do not claim that models are overfitted because they use the same metrics that they optimize with (cross entropy loss and accuracy). Instead we claim overfitting if model behavior on unseen circumstances (i.e. loss on fresh test data) does not match its behavior during training (i.e. loss on training data).
+				- By methodically isolating canary optimization from privacy evaluation, as discussed, we do our due diligence to report metrics only on unseen circumstances. What is more, **we see that under the most stringent circumstances, namely a different architecture,  our canaries achieve high detectability which indicates generalizability rather than overfitting.**
 	- #### Questions
-	    1. The "scalable" claim is tested on CIFAR-10. What is the actual wall-clock time and VRAM cost?  How can you claim this is feasible for large-scale models?
-		- We added table 2 in Section 6.2 for a measured wall-cock time and peak VRAM usage in response to reviewer for both the canary initialization step and the optimization step, we also added an additional paragraph for the explanation of the scalability of our method.
-		- As discussed in our earlier response, our method is scalable because it provides knobs to trade-off memory with time and accuracy without harming the effectiveness of our canaries. We take this opportunity to answer the scalability question from a different angle: our canary-based method enables effective 3rd party auditing through transferability. We have shown that canaries trained on small models are effective on larger models.
-		- In the bigger scope of auditing, this means, for example that a  public agency with limited compute can optimize a privacy canary, and ask the company to simply include this canary in its training runs of larger models. This is a much scalable approach to auditing than the existing first-party approaches which requires agency to have the size of the compute that matches the company to do privacy audits.
-		- ==@Nicolas @Florian== Do you think the above helps or might hurt?
+		- 1. The "scalable" claim is tested on CIFAR-10. What is the actual wall-clock time and VRAM cost?  How can you claim this is feasible for large-scale models?
+			- We added table 2 in Section 6.2 for a measured wall-cock time and peak VRAM usage in response to reviewer for both the canary initialization step and the optimization step, we also added an additional paragraph for the explanation of the scalability of our method.
+			- As discussed in our earlier response, our method is scalable because it provides knobs to trade-off memory with time and accuracy without harming the effectiveness of our canaries. We take this opportunity to answer the scalability question from a different angle: our canary-based method enables effective 3rd party auditing through transferability. We have shown that canaries trained on small models are effective on larger models.
+			- In the bigger scope of auditing, this means, for example that a  public agency with limited compute can optimize a privacy canary, and ask the company to simply include this canary in its training runs of larger models. This is a much scalable approach to auditing than the existing first-party approaches which requires agency to have the size of the compute that matches the company to do privacy audits.
+			- ==@Nicolas @Florian== Do you think the above helps or might hurt?
 	- 2. For Table 2, what is the performance of DP-SGD?
 		- #response
 		- We train the non-private CIFAR10 models to 92% accuracy and the private ones to 40-45% accuracy (depending on epsilon). We should clarify that we train these models with relatively few epochs (20) which degrades DP-SGD generalization. We note that tight auditing of DP-SGD is not a focus of our work. We seek to validate the relative performance of our method for different level of privacy parameter in Table 2—a goal that we achieve. Given the sheer amount of experiments and ablations necessary to validate Optifluence otherwise, we cannot afford to train individual models for 200+epochs which is necessary to achieve SOTA generalization for DP-SGD on CIFAR10.
 	- 3. Does your proposed method still work for other MIA?
 		- Please see our response above.
 	- Scratchpad
+	  collapsed:: true
 		- Having said that, we are happy to report AUC numbers; but given the above, we kindly ask the reviewer to elaborate what scenario an average-case metric could reveal that a worst-case metric does not.
 		-
 - ### Reviewer_5uPC
