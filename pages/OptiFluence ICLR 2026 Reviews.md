@@ -440,17 +440,17 @@
 			- #response
 			- We believe the manuscript already addresses both requests. First, Table 1 in Section 6.2 presents a baseline of using Adversarial examples; which at 0.45% TPR@0.1FPR is only marginally better than Mislabeled examples at 0.40%.
 			- Second, in the aforementioned section (Lines 228-229), in the loss objective that we derive for optimizing the hypothesis test statistic (Eq. 3), that the gradient resembling that of a adversarial example appears with a negative sign. That is, based on the derivation, we in fact do not want canaries to look like adversarial examples. Motivating this through years of research in adversarial training (whereby we train with adv. examples for robustness) is illuminating: since canaries are, by definition, going to be trained on, we want them to remain sensitive.
-			- **Missing threat-model specification.**
-			    The current presentation lacks a clear statement of the auditor’s capability—whether auditing assumes black-box, gray-box, or white-box access to the model.
-			    A formal threat model is essential to contextualize the results and interpret the claimed transferability.
-				- #response
-				- We agree that a threat model would be helpful, however, we do not think that black vs. white-box dichotomy is the right level of granularity for our approach. The fact that our canaries are transferable makes this clear: auditor does not need access to the model architecture to optimize a good canary; so this can be considered black-box. However, we have shown how much choosing a influential sample for the initialization of canary optimization makes a difference. This requires at least some knowledge about the auditee's data distribution. But does that mean auditing requires  white-box access to auditee's data? We believe not. This level of knowledge is assumed for any realistic auditor.
-				- Since the black/white-box characterization limits auditing to the box (aka, the algorithm), it fails to consider who does the auditing which is a much more important consideration. Privacy auditing with canaries enables third-party audits; while algorithmic audits (such as "Tight-", or "One-run" audits) often require first-party access which is often characterized as white-box.
-				- ==@Florian== What do you think of the point above?
+		- **Missing threat-model specification.**
+		    The current presentation lacks a clear statement of the auditor’s capability—whether auditing assumes black-box, gray-box, or white-box access to the model.
+		    A formal threat model is essential to contextualize the results and interpret the claimed transferability.
+			- #response
+			- We agree that a threat model would be helpful, however, we do not think that black vs. white-box dichotomy is the right level of granularity for our approach. The fact that our canaries are transferable makes this clear: auditor does not need access to the model architecture to optimize a good canary; so this can be considered black-box. However, we have shown how much choosing a influential sample for the initialization of canary optimization makes a difference. This requires at least some knowledge about the auditee's data distribution. But does that mean auditing requires  white-box access to auditee's data? We believe not. This level of knowledge is assumed for any realistic auditor.
+			- Since the black/white-box characterization limits auditing to the box (aka, the algorithm), it fails to consider who does the auditing which is a much more important consideration. Privacy auditing with canaries enables third-party audits; while algorithmic audits (such as "Tight-", or "One-run" audits) often require first-party access which is often characterized as white-box.
+			- ==@Florian== What do you think of the point above?
 	- #### Questions
-	    * **Unclear explanation of transferability.**
-	    While Section 6.2 claims strong cross-architecture transfer, the supporting evidence in Appendix C.4 (two MLPs on MNIST) is insufficient to substantiate general transferability.
-	    The authors should explain why optimized canaries can transfer between architectures (e.g., shared feature space, loss geometry) and include more diverse models or quantitative analyses.
+		- * **Unclear explanation of transferability.**
+		    While Section 6.2 claims strong cross-architecture transfer, the supporting evidence in Appendix C.4 (two MLPs on MNIST) is insufficient to substantiate general transferability.
+		    The authors should explain why optimized canaries can transfer between architectures (e.g., shared feature space, loss geometry) and include more diverse models or quantitative analyses.
 		- #response
 		- In Line 394-395, we already share that we have trained multiple model architectures (ResNets 18, 50 and WideResNet) with canaries trained on ResNet9 and achieved nearly perfect (99% TPR@0.1FPR). So our transferability results are not only on MLPs.
 		- A theoretical study of this phenomenon is outside of the scope of the current paper. We provide the following observational explanation of this phenomenon:
@@ -458,18 +458,17 @@
 			- A transferable canary indicates that the notion of a canary is not a function of the minutaie of the hypothesis class, but rather the concept itself.
 			- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—and entirely different learner!
 			- We like to note however that the space of canaries is potentially much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
-		-
-	- * **Potential performance degradation.**
-	    Algorithm 1 suggests that the canary is iteratively updated during model training. This may interfere with model convergence or degrade performance.
-	    The paper should report whether incorporating such optimization affects model accuracy or training stability.
-		- #response
-		- Thank you for the insightful comment. Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition. This means that the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model. This is the reason we do not report model accuracy consistantly. There is not much to report.
-		- This is of course understandable because performance is an average metric while privacy is a worst-case one. We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.
-	- * **Relation to privacy–robustness trade-off.**
-	    Given that OptiFluence’s optimization resembles adversarial training, it would be valuable to evaluate or at least discuss the potential trade-off between privacy auditing effectiveness and robustness, as widely documented in the literature [1–3].
-	    An experiment showing canary auditing after adversarial training would significantly strengthen the paper.
-		- #response
-		- Thank you for the references. Please see our response above. Note that as show in Algorithm 1, indeed the model is always trained with the canary in training set (Line 2). Therefore, we indeed do adversarial training for all results. As we explained in the weaknesses response,  we seek to "robustify" our canaries to being trained on.
-	- [1] Zhang, Z., Zhang, L. Y., Zheng, X., Abbasi, B. H., & Hu, S. (2022). Evaluating membership inference through adversarial robustness. The Computer Journal, 65(11), 2969-2978.
-	    [2] Lyu, L. et al. (2022). Privacy and robustness in federated learning: Attacks and defenses. IEEE TNNLS, 35(7), 8726-8746.
-	    [3] He, F., Fu, S., Wang, B., & Tao, D. (2020). Robustness, privacy, and generalization of adversarial training. arXiv preprint arXiv:2012.13573.
+		- * **Potential performance degradation.**
+		    Algorithm 1 suggests that the canary is iteratively updated during model training. This may interfere with model convergence or degrade performance.
+		    The paper should report whether incorporating such optimization affects model accuracy or training stability.
+			- #response
+			- Thank you for the insightful comment. Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition. This means that the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model. This is the reason we do not report model accuracy consistantly. There is not much to report.
+			- This is of course understandable because performance is an average metric while privacy is a worst-case one. We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.
+		- * **Relation to privacy–robustness trade-off.**
+		    Given that OptiFluence’s optimization resembles adversarial training, it would be valuable to evaluate or at least discuss the potential trade-off between privacy auditing effectiveness and robustness, as widely documented in the literature [1–3].
+		    An experiment showing canary auditing after adversarial training would significantly strengthen the paper.
+			- #response
+			- Thank you for the references. Please see our response above. Note that as show in Algorithm 1, indeed the model is always trained with the canary in training set (Line 2). Therefore, we indeed do adversarial training for all results. As we explained in the weaknesses response,  we seek to "robustify" our canaries to being trained on.
+		- [1] Zhang, Z., Zhang, L. Y., Zheng, X., Abbasi, B. H., & Hu, S. (2022). Evaluating membership inference through adversarial robustness. The Computer Journal, 65(11), 2969-2978.
+		    [2] Lyu, L. et al. (2022). Privacy and robustness in federated learning: Attacks and defenses. IEEE TNNLS, 35(7), 8726-8746.
+		    [3] He, F., Fu, S., Wang, B., & Tao, D. (2020). Robustness, privacy, and generalization of adversarial training. arXiv preprint arXiv:2012.13573.
