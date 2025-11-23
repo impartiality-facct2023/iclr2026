@@ -123,7 +123,8 @@
 			- One-run method is a privacy auditing technique which take canaries (many of them) as input (see Line 1 Alg.1 in Steinke et al. [1]). Our contribution is to optimize canaries to be used in privacy audits, so **canaries are the output of our method**. Since we are not contributing a new privacy audit (we use Aerni et. al 2024 as a our privacy auditing framework), one-run is not a comparable baseline.
 			- [1] Steinke, Thomas, Milad Nasr, and Matthew Jagielski. 2023. “Privacy Auditing with One (1) Training Run.” *Advances in Neural Information Processing Systems* 36 (December): 49268–49280.
 		- > Q2. Could the authors provide runtime/overhead comparisons against the baselines to substantiate claims of scalability?
-			- To answer the reviewer’s comment regarding empirical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well. The baselines are in a different setting since they do not optimize, it is more like heuristic with a constant runtime and only on CPU computation, which is why the detectability compared to our method is significantly lower.
+			- To answer the reviewer’s comment regarding empirical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
+			-
 			-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
