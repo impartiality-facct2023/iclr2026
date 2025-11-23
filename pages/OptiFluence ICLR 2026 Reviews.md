@@ -62,6 +62,8 @@
 	- To address the reviewer’s concern about computational efficiency, we have updated Section 6.2 to include **Table 2, which reports both wall-clock time and VRAM usage.** We also added a paragraph explaining why our method scales effectively from a small dataset like MNIST to a more complex one such as CIFAR-100. In particular, to fit CIFAR-100 training in memory, we reduced the TBPTT truncation parameter k from 4 to 2—this parameter controls how many training steps are included in the canary-gradient computation (see Fig. 2(c)). Despite this reduction, the optimized canary still achieved near-perfect detectability on CIFAR-100, further illustrating the scalability of our approach.
 	- > Q9: How would the approach scale to larger datasets or transformer architectures?
 	- Our final design for OptiFluence has several characteristics that simplifies scaling challenges. a) modularity; b) scalability knobs with truncation and influence calculation using EK-FAC approximations (which are scaled to transformers [[Studying Large Language Model Generalization with Influence Functions]]); c) first-party privacy auditing has a significant overhead. By showing transferability, one cost is amortized to multiple models; and even multiple parties. For a concrete example of this, see our response to W3.
+	- > Minor comment 1: The acronym ERM (Empirical Risk Minimization) is used without definition and should be introduced upon first mention.
+	- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
 	-
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
