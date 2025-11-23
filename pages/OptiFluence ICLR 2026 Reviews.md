@@ -120,8 +120,8 @@
 			- To address your question, in our updated manuscript, we have expanded our existing short description of this baseline in Line 341 in the paragraph titled "IF-Opt: First-Order Optimization of Influence Functions."
 		- > W3. The optimization process seems to be computationally expensive. Although the authors propose an approximation denoted, ReMat+TBPTT, no experimental results demonstrate its effectiveness or runtime benefits.
 			- In Figure 3, we do compare against "random" (which we take to be heuristic) canary methods such as mislabeling or taking a random in-distribution (ID) sample to be the canary.
-			- One-run method is a privacy auditing technique which take canaries (many of them) as input (see Alg.XX in [[One (1)]]). Our contribution is to optimize canaries to be used in privacy audits, so **canaries are the output of our method**. Since we are not contributing a new privacy audit (we use Aerni et. al 2024 as a our privacy auditing framework), one-run is not a comparable baseline.
--
+			- One-run method is a privacy auditing technique which take canaries (many of them) as input (see Line 1 Alg.1 in [1]). Our contribution is to optimize canaries to be used in privacy audits, so **canaries are the output of our method**. Since we are not contributing a new privacy audit (we use Aerni et. al 2024 as a our privacy auditing framework), one-run is not a comparable baseline.
+			- [1] Steinke, Thomas, Milad Nasr, and Matthew Jagielski. 2023. “Privacy Auditing with One (1) Training Run.” *Advances in Neural Information Processing Systems* 36 (December): 49268–49280.
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
   collapsed:: true
