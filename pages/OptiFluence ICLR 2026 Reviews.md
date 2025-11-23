@@ -87,11 +87,12 @@
 	- > The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
 		- Regarding datasets, we note that CIFAR10 is a standard dataset in privacy auditing of vision models given the sheer computation necessary to find rare privacy-infringing events [1,2]. Regarding the scalability comments: we have successfully shown that canaries trained for smaller models (ResNet9) are powerful in auditing much larger models (ResNet50, WideResNet).
 		- Finally, auditing language model privacy comes with its own unique challenges such as a) optimization space being the token-space (embeddings), b) the fact that the notion of the (differential) privacy unit is under-defined for language models("what is a 'sample' in a sequence-to-sequence language model?"). We nevertheless agree that extending our optimization framework to language model auditing is an exciting venue for future work.
-		- Regarding scalability, please see our response to Reviewer_VkF8 W8 and Q9.
+		- Regarding scalability, please also see our response to Reviewer VkF8's W8 and Q9.
 		-
 		- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
 		- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
--
+	- > W2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
+		-
 -
 -
 -
