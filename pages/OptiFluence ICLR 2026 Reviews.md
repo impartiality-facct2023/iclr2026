@@ -110,6 +110,7 @@
 			- We train the non-private CIFAR10 models to 92% accuracy and the private ones to 40-45% accuracy (depending on epsilon). We should clarify that we train these models with relatively few epochs (20) which degrades DP-SGD generalization. We note that tight auditing of DP-SGD is not a focus of our work. We seek to validate the relative performance of our method for different level of privacy parameter in Table 2—a goal that we achieve. Given the sheer amount of experiments and ablations necessary to validate Optifluence otherwise, we cannot afford to train individual models for 200+epochs which is necessary to achieve SOTA generalization for DP-SGD on CIFAR10.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_5uPC
+		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1/Q5: The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below). How does OptiFluence fundamentally differ from the optimization-based canaries proposed by [1,2]?
 			- Maddock et al. 2022's algorithm CANIFE produces optimized canaries in the federated learning setup which means the canaries are in the parameter space. Our canaries are in the input (sample) space (i.e. model weights vs. pixels for a vision canary). Unfortunately, the two types of canaries cannot be used interchangeably given the difference in deployment context. We cite Maddock et al. 2022 in Line 107.
 			- In Nasr et al. 2023, tight auditing is possible for "canary gradients" which are again canaries in the parameter space; and not the input space. The closest canary discussed in Nasr et al. 2023 to us is the Black-box Auditing (Algorithm 1) where canaries used are mislabeled examples (thus heuristically chosen). We discuss Nasr et al. 2023 work in Line 40.
@@ -129,7 +130,8 @@
 		- > Q2.Continued: There are no statements in the paper about how long this canary optimization process takes? Is this attack really practical for auditing?
 			- Empirically we observe that **once the optimization fits in memory, canary optimization takes seconds (for MNIST) or minutes (for CIFAR10) to complete (see Table 2).** By far the most time consuming part of an audit process for us is the training and attacking of the shadow models; which as we have mentioned, we adopt from Aerni 2024 and thus is not a contribution of our work at all. Therefore, canary optimization is not a bottleneck.
 		- > Q4. I would have liked to have seen a clearer ablation on the impact of using the influence function initialization vs. standard canary optimization (w/o this IF initialization) which appears to be missing from Figure 3?
-			-
+			- We believe the ablation you are looking for is shown in Figure 1 where we show both an in-distribution sample (car, lower left) that achieves 2.4% TPR@0.1FPR, after optimization (lower right) achieves 5.2% TPR@0.1FPR. Figure 3 is purposefully used to do a sequential ablation such that improvement using each subsequent choice over the previous one is clear.
+		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
   collapsed:: true
@@ -393,10 +395,12 @@
 	  3. Given the higher computational cost, what practical advantage does OptiFluence offer over one-run or random canary insertion attacks?
 		- #response
 		- See our response to the related weakness above.
-	- 4. I would have liked to have seen a clearer ablation on the impact of using the influence function initialization vs. standard canary optimization (w/o this IF initialization) which appears to be missing from Figure 3?
+	- collapsed:: true
+	  4. I would have liked to have seen a clearer ablation on the impact of using the influence function initialization vs. standard canary optimization (w/o this IF initialization) which appears to be missing from Figure 3?
 		- #response
 		- We believe the ablation you are looking for is shown in Figure 1 where we show both an in-distribution sample (car, lower left) that achieves 2.4% TPR@0.1FPR, after optimization (lower right) achieves 5.2% TPR@0.1FPR. Figure 3 is purposefully used to do a sequential ablation such that improvement using each subsequent choice over the previous one is clear.
-	- 5. How does OptiFluence fundamentally differ from the optimization-based canaries proposed by [1,2]?
+	- collapsed:: true
+	  5. How does OptiFluence fundamentally differ from the optimization-based canaries proposed by [1,2]?
 		- #response
 		- See our comparison in the weaknesses section.
 	- [1] Nasr, Milad, et al. "Tight auditing of differentially private machine learning." 32nd USENIX Security Symposium (USENIX Security 23). 2023.
