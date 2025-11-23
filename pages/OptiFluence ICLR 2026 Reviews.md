@@ -40,7 +40,7 @@
 		       $$\hat{\varepsilon}_{-}=\max \left\{\log \frac{1-\delta-\mathrm{FPR}}{\mathrm{FNR}}, \log \frac{1-\delta-\mathrm{FNR}}{\mathrm{FPR}}\right\}$$
 		  where FPR and FNR (1-TPR) of MIAs are estimated using a Monte Carlo approach.
 		- These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack framing.
-		- Please also see our [[response]] to the relevant question Q5.
+		- Please also see our response to the relevant question Q5.
 		- [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. [[Bayesian Estimation of Differential Privacy]]. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
 		  [2] Kulynych, Bogdan, Juan Felipe Gomez, Georgios Kaissis, Flavio du Pin Calmon, and Carmela Troncoso. 2024. “Attack-Aware Noise Calibration for Differential Privacy.” arXiv:2407.02191. Preprint, arXiv, November 7. https://doi.org/10.48550/arXiv.2407.02191.
 	- 5.  Because OptiFluence directly maximizes the LiRA hinge-based likelihood-ratio score, the optimized canaries may overfit to this particular attack formulation. The paper does not evaluate the canaries under alternative membership inference metrics (e.g., confidence-, entropy-, or loss-based scores), leaving open the question of whether detectability generalizes to unseen auditing methods.
