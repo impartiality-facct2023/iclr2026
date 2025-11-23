@@ -40,6 +40,7 @@
 	- We note that due to the nature of these algorithms the lowerbounds estimation itself comes as a confidence interval that shrinks with higher number of samples (here, shadow models).  We see that for
 	- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
 	- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
+	-
 - # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
@@ -61,7 +62,6 @@
 	    
 	    5. The paper is well-structured, with a clear presentation of motivation, methodology, and results.
 	- #### Weaknesses
-	  collapsed:: true
 		- collapsed:: true
 		  1. The files at the anonymous link do not open. Please either include a zip file with the source code and scripts in the supplementary material or update the link to ensure the files are accessible.
 			- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
@@ -130,7 +130,8 @@
 		- 4. What measures were taken to ensure optimization stability across seeds and models? Do different initialization points (e.g., influence-selected seeds vs. random) lead to consistent canary detectability, or is the outcome highly variable?
 			- For all of the baselines, we run three trials with different random initializations and report the mean and variance of FPR@0.1%TPR. The variances are included in Table 1 for the main results and shown as error bars in Figure 3 for the ablation studies.
 			- Initializations for OptiFluence are chosen according to the IF-INIT procedure explained in Section 5.1 where we find the most influential training samples according to the Normalized Self-Influence Scores and pick the top 3 consistently.
-		- 5. Since the framework is inspired by differential privacy but ultimately empirical, can you clarify how the metric (TPR@FPR) relates to formal ε or δ values? Is there any attempt to estimate lower bounds on ε or compare to DP auditing baselines that produce numeric privacy budgets?
+		- collapsed:: true
+		  5. Since the framework is inspired by differential privacy but ultimately empirical, can you clarify how the metric (TPR@FPR) relates to formal ε or δ values? Is there any attempt to estimate lower bounds on ε or compare to DP auditing baselines that produce numeric privacy budgets?
 			- We have addressed this question in W4. We want to additionally note that "DP Auditing" baselines often go beyond auditing with canary samples and produce canary gradients [1] or otherwise change the training procedure [2] to achieve the tightest lower-bounds possible. **Our work is strictly in the space of auditing using canaries in the input (sample) space. The benefit of this type of audit is its versatility (given its architecture-agnosticism) and transferability (that we have demonstrated).**
 			- We nevertheless have included DP-Auditing results in Section 6.2 (Table 3) with the TPR@0.1FPR metric to show **where first-party tight audits are not possible optimized, canaries can provide a useful alternative.** Additionally, to answer the reviewers question, using the [`privacy-estimates`](https://github.com/microsoft/responsible-ai-toolbox-privacy) by Zanella-Béguelin et al, we have calculated the following lower bounds for a MNIST model trained with DP-SGD with $\varepsilon \in \{1, 2, 6, 8\}$ and measured the lower-bounds. Given the time-sensitivity of the rebuttal we reduced our number of shadow models to 5K (instead of 20K) and the results are as follows:
 			  | $\varepsilon$ | TPR@0.1FPR | $\hat\varepsilon_{-}$|
