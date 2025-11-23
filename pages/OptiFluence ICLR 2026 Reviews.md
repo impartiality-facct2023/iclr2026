@@ -58,7 +58,8 @@
 	- **A canary, under the DP definition, does not need to come from a particular data distribution at all.** As long as the model's behavior detectably changes in response to the existence of the canary in the training set, it fits the definition. **We note that prior work in privacy auditing uses far more unnatural-looking canaries.** See [1] for example where a square pattern is used. Therefore, not even prior work acknowledges the need for naturalness of privacy canaries for auditing purposes.
 	- > Q8:...Have you attempted to quantify the degree of deviation from the data distribution (e.g., via FID, nearest-neighbor distance, or classifier confidence)?
 	- We have not. Our only goal is to produce input canaries that fit the DP definition. "Visual naturalness" is therefore not within our desiderata. We publish canary figures to gain an intuitive understanding. One of these understanding is precisely that us humans cannot necessary find a pattern that turns out to be the best canary for privacy auditing.
-	- We understand the reasoning behind asking for naturalness (or low distance between an optimized sample and a canary) given the history of optimizing adversarial examples that are minimally perturbed. However, this is not reasonable requirement in this application.
+	- We understand the reasoning behind asking for naturalness (or low distance between an optimized sample and a canary) given the history of optimizing adversarial examples that are minimally perturbed. However, bounded perturbations is not reasonable requirement in this application.
+	-
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
