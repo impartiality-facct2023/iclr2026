@@ -110,6 +110,7 @@
 			- We train the non-private CIFAR10 models to 92% accuracy and the private ones to 40-45% accuracy (depending on epsilon). We should clarify that we train these models with relatively few epochs (20) which degrades DP-SGD generalization. We note that tight auditing of DP-SGD is not a focus of our work. We seek to validate the relative performance of our method for different level of privacy parameter in Table 2—a goal that we achieve. Given the sheer amount of experiments and ablations necessary to validate Optifluence otherwise, we cannot afford to train individual models for 200+epochs which is necessary to achieve SOTA generalization for DP-SGD on CIFAR10.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_5uPC
+	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1/Q5: The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below). How does OptiFluence fundamentally differ from the optimization-based canaries proposed by [1,2]?
 			- Maddock et al. 2022's algorithm CANIFE produces optimized canaries in the federated learning setup which means the canaries are in the parameter space. Our canaries are in the input (sample) space (i.e. model weights vs. pixels for a vision canary). Unfortunately, the two types of canaries cannot be used interchangeably given the difference in deployment context. We cite Maddock et al. 2022 in Line 107.
@@ -132,6 +133,9 @@
 		- > Q4. I would have liked to have seen a clearer ablation on the impact of using the influence function initialization vs. standard canary optimization (w/o this IF initialization) which appears to be missing from Figure 3?
 			- We believe the ablation you are looking for is shown in Figure 1 where we show both an in-distribution sample (car, lower left) that achieves 2.4% TPR@0.1FPR, after optimization (lower right) achieves 5.2% TPR@0.1FPR. Figure 3 is purposefully used to do a sequential ablation such that improvement using each subsequent choice over the previous one is clear.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
+	- ### Reviewer_t7cL
+		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
+		-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
   collapsed:: true
@@ -412,7 +416,6 @@
 		- What we propose is a method to optimize data (canary), one-run methods are auditing algorithms. They recieve canaries as an input; we produce canaries as output.
 		- In OptiFluence, we instead use the value of influence functions (aka, zero-order derivatives of influence functions) to search for a good initial canary instead.
 - ### Reviewer_t7cL
-  collapsed:: true
 	- **Rating:** 4
 	- **Confidence:** 5
 	- #### Summary
