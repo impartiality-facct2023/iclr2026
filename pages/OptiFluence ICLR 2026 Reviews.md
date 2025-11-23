@@ -28,7 +28,7 @@
 	- These empirical quantities can be calculated for MIAs against any training algorithm—even non-DP ones that have no theoreitical privacy accounting for $\varepsilon$. Therefore, there is no inherent benefit in going through the proxy of $\varepsilon$ lowerbounds to present MIA attack socres. In fact, new work [2] shows that privacy risks and mitigations can be formalized directly within a privacy-attack framing.
 	- [1] Zanella-Béguelin, Santiago, Lukas Wutschitz, Shruti Tople, Ahmed Salem, Victor Rühle, Andrew Paverd, Mohammad Naseri, and Boris Köpf. 2022. [[Bayesian Estimation of Differential Privacy]]. arXiv:2206.05199. arXiv. https://doi.org/10.48550/arXiv.2206.05199.
 	  [2] Kulynych, Bogdan, Juan Felipe Gomez, Georgios Kaissis, Flavio du Pin Calmon, and Carmela Troncoso. 2024. “Attack-Aware Noise Calibration for Differential Privacy.” arXiv:2407.02191. Preprint, arXiv, November 7. https://doi.org/10.48550/arXiv.2407.02191.
--
+	- >Q
 - # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
@@ -50,6 +50,7 @@
 	    
 	    5. The paper is well-structured, with a clear presentation of motivation, methodology, and results.
 	- #### Weaknesses
+	  collapsed:: true
 		- collapsed:: true
 		  1. The files at the anonymous link do not open. Please either include a zip file with the source code and scripts in the supplementary material or update the link to ensure the files are accessible.
 			- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
@@ -102,7 +103,6 @@
 			- Note that our evaluation are done completely independent of our optimization. Unlike first party privacy audits, we just need to make sure that out canaries are sampled during training. Otherwise we use a standard privacy auditing framework.
 			- To answer the reviewer’s concern regarding the computational efficiency of our method, we have updated Section 6.2 to include **Table 2 which reports the wall-time clock and VRAM usage.** We have also included a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. The latter demonstrates the scalability of our method: to fit the CIFAR100 model's training run in memory, we were able to reduce our truncation parameter $k$ for TBPTT from 4 to 2. Reminder that this parameter controls how many training steps are  included in the canary gradient calculation (see Figure 2(c)). The resulting canary still managed to achieve near-perfect detectability on CIFAR-100.
 	- #### Questions
-	  collapsed:: true
 		- collapsed:: true
 		  1.  The anonymous code link provided in the submission does not open. Could you please share a working repository or include a zip file in the supplementary material to ensure full reproducibility?
 			- ==TODO== Update Repo
