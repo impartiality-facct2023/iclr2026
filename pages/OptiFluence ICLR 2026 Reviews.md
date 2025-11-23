@@ -440,7 +440,7 @@
 			- #response
 			- We believe the manuscript already addresses both requests. First, Table 1 in Section 6.2 presents a baseline of using Adversarial examples; which at 0.45% TPR@0.1FPR is only marginally better than Mislabeled examples at 0.40%.
 			- Second, in the aforementioned section (Lines 228-229), in the loss objective that we derive for optimizing the hypothesis test statistic (Eq. 3), that the gradient resembling that of a adversarial example appears with a negative sign. That is, based on the derivation, we in fact do not want canaries to look like adversarial examples. Motivating this through years of research in adversarial training (whereby we train with adv. examples for robustness) is illuminating: since canaries are, by definition, going to be trained on, we want them to remain sensitive.
-	- *Missing threat-model specification.**
+	- **Missing threat-model specification.**
 	    The current presentation lacks a clear statement of the auditor’s capability—whether auditing assumes black-box, gray-box, or white-box access to the model.
 	    A formal threat model is essential to contextualize the results and interpret the claimed transferability.
 		- #response
