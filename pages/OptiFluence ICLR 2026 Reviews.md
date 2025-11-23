@@ -239,8 +239,8 @@
 		- **[Q1]** Can you address W1 and add results on more datasets in different regimes (more classes, samples, different distributions)?
 		- **[Q2]** Can you investigate the efficacy of Optifluence and its baselines in low $\varepsilon$ (high privacy) regimes for DP-SGD auditing?
 		- **[Q3]** Update: The other reviewers rightly point out the need to justify and corroborate the efficiency of unrolled updates in your paradigm with empirical evidence (runtime and memory used) and on more involved/expensive settings than CIFAR-10 and MNIST. Can the authors please address that? This is *key to me maintaining my current score*.
-		- TODO ==@Arielle== Please add an reference to the answer when you've done the response to the other reviewer.
-		- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
+			- TODO ==@Arielle== Please add an reference to the answer when you've done the response to the other reviewer.
+			- To answer the reviewer’s comment regarding emperical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
 	- Scratchpad
 		- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
 		  the memorization and privacy risks that canaries are used to audit.
