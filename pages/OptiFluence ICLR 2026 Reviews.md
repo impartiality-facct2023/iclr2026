@@ -74,7 +74,8 @@
 	- >W1: ... It would be interesting to see if these results generalize to much larger datasets or datasets with many more classes than 10 (viz. CIFAR-100)
 		- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
 	- > Could the authors please add experiments on lower values of $\varepsilon$ (viz. 1 and <1)? While these values may yield lower utility of the model, theoretically they are desirable (especially <1) and it would be useful to see how Optifluence (and its baselines) perform in this regime.
-		- We ran experiments for
+		- We ran additional experiments for $\varepsilon \in \{0.5, 1\}$ with CIFAR10 and updated Table
+		-
 		-
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
