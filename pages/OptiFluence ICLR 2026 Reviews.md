@@ -102,8 +102,10 @@
 		- The LiRA hinge loss follows from likelihood tests with a prior assumption of Gaussianity (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
 		- Furthermore, attacks give a lower bound on privacy leakage. So it does not really matter if one "overfit" to one attack or not given that, by definition, we want the strongest possible attack to achieve the best possible lower bound. Since LiRA's statistic is a much stronger attack than other scores (such as confidence values, or cross entropy losses), it makes sense to focus on it.
 		- In response to your and Reviewer VkF8's feedback, in the updated manuscript, we have added a paragraph to further expand the derivation of our privacy loss. See our response to VkF8's Q2.
-		-
--
+	- > Q1: The "scalable" claim is tested on CIFAR-10. What is the actual wall-clock time and VRAM cost?
+	- We added table 2 in Section 6.2 for a measured wall-cock time and peak VRAM usage in response to reviewer for both the canary initialization step and the optimization step, we also added an additional paragraph for the explanation of the scalability of our method.
+	- > Q2: For Table 2, what is the performance of DP-SGD?
+	-
 -
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
@@ -292,6 +294,7 @@
 		- 2. The results are undeniable. Table 1 shows that optimized canaries are 415x more detectable than standard ones on CIFAR-10.
 		- 3. The transferability result is the paper's strongest practical contribution.
 	- #### Weaknesses
+	  collapsed:: true
 		- 1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive. The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
 			- #response
 			- Our claim of scalability is in the context of the relevant baselines. The first being truly-unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in L304:  "When differentiating through many training steps, the computational graph grows linearly with the number of updates, leading to prohibitive memory usage." One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
@@ -317,9 +320,9 @@
 			- As discussed in our earlier response, our method is scalable because it provides knobs to trade-off memory with time and accuracy without harming the effectiveness of our canaries. We take this opportunity to answer the scalability question from a different angle: our canary-based method enables effective 3rd party auditing through transferability. We have shown that canaries trained on small models are effective on larger models.
 			- In the bigger scope of auditing, this means, for example that a  public agency with limited compute can optimize a privacy canary, and ask the company to simply include this canary in its training runs of larger models. This is a much scalable approach to auditing than the existing first-party approaches which requires agency to have the size of the compute that matches the company to do privacy audits.
 			- ==@Nicolas @Florian== Do you think the above helps or might hurt?
-	- 2. For Table 2, what is the performance of DP-SGD?
-		- #response
-		- We train the non-private CIFAR10 models to 92% accuracy and the private ones to 40-45% accuracy (depending on epsilon). We should clarify that we train these models with relatively few epochs (20) which degrades DP-SGD generalization. We note that tight auditing of DP-SGD is not a focus of our work. We seek to validate the relative performance of our method for different level of privacy parameter in Table 2—a goal that we achieve. Given the sheer amount of experiments and ablations necessary to validate Optifluence otherwise, we cannot afford to train individual models for 200+epochs which is necessary to achieve SOTA generalization for DP-SGD on CIFAR10.
+		- 2. For Table 2, what is the performance of DP-SGD?
+			- #response
+			- We train the non-private CIFAR10 models to 92% accuracy and the private ones to 40-45% accuracy (depending on epsilon). We should clarify that we train these models with relatively few epochs (20) which degrades DP-SGD generalization. We note that tight auditing of DP-SGD is not a focus of our work. We seek to validate the relative performance of our method for different level of privacy parameter in Table 2—a goal that we achieve. Given the sheer amount of experiments and ablations necessary to validate Optifluence otherwise, we cannot afford to train individual models for 200+epochs which is necessary to achieve SOTA generalization for DP-SGD on CIFAR10.
 	- 3. Does your proposed method still work for other MIA?
 		- Please see our response above.
 	- Scratchpad
