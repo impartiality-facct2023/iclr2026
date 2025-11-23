@@ -64,7 +64,7 @@
 		- Our final design for OptiFluence has several characteristics that simplifies scaling challenges. a) modularity; b) scalability knobs with truncation and influence calculation using EK-FAC approximations (which are scaled to transformers [[Studying Large Language Model Generalization with Influence Functions]]); c) first-party privacy auditing has a significant overhead. By showing transferability, one cost is amortized to multiple models; and even multiple parties. For a concrete example of this, see our response to W3.
 		- > Minor comment 1: The acronym ERM (Empirical Risk Minimization) is used without definition and should be introduced upon first mention.
 		- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
-		- We thank the reviewer for their insightful commentary and hope to have answered their questions. We welcome further questiosn
+		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
