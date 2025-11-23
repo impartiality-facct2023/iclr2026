@@ -117,7 +117,8 @@
 			- [2] Maddock, Samuel, Alexandre Sablayrolles, and Pierre Stock. "Canife: Crafting canaries for empirical privacy measurement in federated learning." arXiv preprint arXiv:2210.02912 (2022).
 		- > W2/Q1:  What exactly  is IF-OPT? It doesn’t seem to be clearly defined in the experiments.
 			- IF-OPT is Influence-Optimized canaries: this is a baseline explained in detail in Appendix A. The approach involves using gradients of influence functions (aka, first-order derivatives of influence functions).
-			- To address your question, in our updated manuscript, we have expanded our existing short description of this baseline in Line 341 in the
+			- To address your question, in our updated manuscript, we have expanded our existing short description of this baseline in Line 341 in the paragraph titled "IF-Opt: First-Order Optimization of Influence Functions."
+		-
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
@@ -355,15 +356,16 @@
 		- The optimization-based formulation is well described and the approach of combining influence functions to intitialize an optimized canary is novel.
 		- The attack is evaluated across a good range of datasets and privacy budgets.
 	- #### Weaknesses
-		- The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below).
+		- W1. The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below).
 		  collapsed:: true
 			- #response
 			- Maddock et al. 2022's algorithm CANIFE produces optimized canaries in the federated learning setup which means the canaries are in the parameter space. Our canaries are in the input (sample) space (i.e. model weights vs. pixels for a vision canary). Unfortunately, the two types of canaries cannot be used interchangeably given the difference in deployment context. We cite Maddock et al. 2022 in Line 107.
 			- In Nasr et al. 2023, tight auditing is possible for "canary gradients" which are again canaries in the parameter space; and not the input space. The closest canary discussed in Nasr et al. 2023 to us is the Black-box Auditing (Algorithm 1) where canaries used are mislabeled examples (thus heuristically chosen). We discuss Nasr et al. 2023 work in Line 40.
-		- Aspects of the presentation related to the specific names of proposed/baseline methods could be improved to make the experiments more easily readable (see questions below).
+		- W2. Aspects of the presentation related to the specific names of proposed/baseline methods could be improved to make the experiments more easily readable (see questions below).
+		  collapsed:: true
 			- #response
 			- We thank the reviewer for their feedback. We have updated the baseline presentation in the new manuscript to address this problem.
-		- The optimization process seems to be computationally expensive. Although the authors propose an approximation denoted, ReMat+TBPTT, no experimental results demonstrate its effectiveness or runtime benefits. This makes it seem less practical than simpler alternatives (e.g., one-run or random canary methods).
+		- W3. The optimization process seems to be computationally expensive. Although the authors propose an approximation denoted, ReMat+TBPTT, no experimental results demonstrate its effectiveness or runtime benefits. This makes it seem less practical than simpler alternatives (e.g., one-run or random canary methods).
 			- #response
 			- In Figure 3, we do compare against "random" (which we take to be heursitic) canary methods such as mislabeling or taking a random in-distribution (ID) sample to be the canary.
 			- One-run method is a privacy auditing technique which takes canaries (many of them) as input (see Alg.XX in [[One (1)]]). Our contribution is to optimize canaries to be used in privacy audits, so **canaries are the output of our method**. Since we are not contributing a new privayc audit (we use Aerni et. al 2024 as a our privacy auditing framework), one-run is not a comparable baseline.
