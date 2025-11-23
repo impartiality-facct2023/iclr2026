@@ -69,6 +69,9 @@
 		- > Minor comment 1: The acronym ERM (Empirical Risk Minimization) is used without definition and should be introduced upon first mention.
 		- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
+	- ### Reviewer_mvjG
+	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
+	-
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
@@ -209,7 +212,6 @@
 				- On "Overfitting": We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
 				- We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
 - ### Reviewer_mvjG
-  collapsed:: true
 	- **Rating:** 8
 	- **Confidence:** 3
 	- #### Summary
