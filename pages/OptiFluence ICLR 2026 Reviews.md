@@ -116,6 +116,7 @@
 			- Our final design for OptiFluence has several characteristics that simplifies scaling challenges. a) modularity; b) scalability knobs with truncation and influence calculation using EK-FAC approximations (which are scaled to transformers [[Studying Large Language Model Generalization with Influence Functions]]); c) first-party privacy auditing has a significant overhead. By showing transferability, one cost is amortized to multiple models; and even multiple parties.
 			- For a concrete example of this, see our response to W
 		- Scratchpad
+		  collapsed:: true
 			- On "Overfitting": We cannot scientifically discuss "unseen auditing methods" of the future but our adversary model is that of the privacy adversary attempting to distinguish. Any future auditing method  that adopts this adversary model is benefit from our canaries.
 			- We need to tackle the memorization angle with care. It is used and abused in the literature. So, we use it as well. We can for example say we will ensure to clarify what we mean by memorization is purely from a privacy attack vulnerability. ==@Nicolas== makes sense?
 - ### Reviewer_mvjG
