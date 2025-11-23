@@ -53,6 +53,7 @@
 	- We can provide the following observational explanation of this phenomenon:
 	- > All models (i.e. hypothesis classes) seek to learn the same concept  from the data. A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself. For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
 	- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability of canaries would make sense in the first place.
+	- >
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
@@ -107,7 +108,8 @@
 		  5.  Because OptiFluence directly maximizes the LiRA hinge-based likelihood-ratio score, the optimized canaries may overfit to this particular attack formulation. The paper does not evaluate the canaries under alternative membership inference metrics (e.g., confidence-, entropy-, or loss-based scores), leaving open the question of whether detectability generalizes to unseen auditing methods.
 			- #response
 			- As discussed, attacks give a lower bound on privacy leakage. So it does not really matter if one "overfit" to one attack or not given that, by definition, we want the strongest possible attack to achieve the best possible lower bound. Since LiRA is a much stronger attack than the others mentioned, it makes sense to use it.
-		- 6. The reported transferability of canaries across architectures (e.g., ResNet-9 → ResNet-50) is intriguing but lacks theoretical explanation. The paper attributes it qualitatively to shared representation geometry, yet provides no analysis of why optimized samples remain highly distinguishable under different model dynamics. This weakens the claim that OptiFluence supports “third-party audits without retraining.”
+		- collapsed:: true
+		  6. The reported transferability of canaries across architectures (e.g., ResNet-9 → ResNet-50) is intriguing but lacks theoretical explanation. The paper attributes it qualitatively to shared representation geometry, yet provides no analysis of why optimized samples remain highly distinguishable under different model dynamics. This weakens the claim that OptiFluence supports “third-party audits without retraining.”
 			- #response
 			- As discussed in our answer to W2, given the absence of formal results for bi-level optimization problems involving large neural networks, we cannot make meaningful theoretical claims. This is even more true for the phenomenon of transferability where the shape of the hypothesis class (weight space) is different between optimization (e.g. ResNet9) to evaluation (WideResNet). Therefore, we do not make any theoretical claim about transferability but validate our transferability claim empirically.
 			- We agree that formal characterization of transferability is an exciting venue for future work. However, to the best of our knowledge, in prior cases of  transferability, such as adversarial examples, the community has not been able to characterize a theoretical reasoning for this phenomenon either. Yet it is useful to know that this property exists and it has been studied empirically extensively as a result.
