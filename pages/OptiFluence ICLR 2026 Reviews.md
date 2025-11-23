@@ -136,7 +136,11 @@
 	- ### Reviewer_t7cL
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > Incomplete component description in the abstract
-			-
+			- Thank you for pointing out this inconsistency. We have fixed the issue in the updated manuscript.
+		- > The paper should explicitly discuss how the proposed canary differs from conventional adversarial samples, conceptually and in objective formulation, and clarify why existing adversarial methods cannot directly be used to generate canaries.  Experimental comparisons between OptiFluence and adversarial samples are also needed.
+-
+-
+-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
   collapsed:: true
