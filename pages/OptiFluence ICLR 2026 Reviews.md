@@ -2,7 +2,8 @@
 	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 	- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	-
-	- ## Reviewer VkF8
+	- ### Reviewer VkF8
+	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where additions are marked in blue, and fixes are marked in red.
 		- > W1/Q1: The files at the anonymous link do not open.
 		- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
