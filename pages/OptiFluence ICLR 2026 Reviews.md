@@ -124,7 +124,8 @@
 			- [1] Steinke, Thomas, Milad Nasr, and Matthew Jagielski. 2023. “Privacy Auditing with One (1) Training Run.” *Advances in Neural Information Processing Systems* 36 (December): 49268–49280.
 		- > Q2. Could the authors provide runtime/overhead comparisons against the baselines to substantiate claims of scalability?
 			- To answer the reviewer’s comment regarding empirical evidences for efficiency of out method, we have updated Section 6.2 to report the requested metrics and added a paragraph explaining why our method scales effectively from a toy dataset such as MNIST to a more complex dataset like CIFAR-100. We have also updated Table 1, which now shows near-perfect detectability on CIFAR-100 as well.
-			-
+		- > The approximation approach ReMat+TBPTT is proposed but there seem to be no results that show why you should use it over the fully unrolled updates.
+			- We do, in fact, motivate the necessity of ReMat+TBPTT in Section
 			-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
