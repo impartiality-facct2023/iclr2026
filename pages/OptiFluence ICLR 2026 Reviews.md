@@ -45,11 +45,9 @@
 		- Furthermore, attacks give a lower bound on privacy leakage. So it does not really matter if one "overfit" to one attack or not given that, **by definition, we want the strongest possible attack to achieve the best possible lower bound. Since LiRA is a much stronger attack than the others (Carlini et al 2022 discusses and evaluates this point at length), it makes sense to focus on it.**
 	- > W7: ... Can you provide a theoretical or empirical explanation for why canaries optimized on ResNet-9 remain highly detectable on ResNet-50 or WideResNet? Is this phenomenon architecture-dependent or data-dependent?
 	- As discussed, a theoretical study of this phenomenon is outside of the scope of the current paper. We provide empirical transferability results in Section 6.2, paragraph "Optimized canaries transfer between architectures" which include results for both CIFAR10 (the architectures mentioned) and MNIST (different model widths in Appendix C.4). So our answer is yes.
-	- We provide the following observational explanation of this phenomenon:
-		- All models (i.e. hypothesis classes) seek to learn the same concept  from the data.
-		- A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself.
-		- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
-		- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
+	- We can provide the following observational explanation of this phenomenon:
+	- > All models (i.e. hypothesis classes) seek to learn the same concept  from the data. A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself. For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
+	- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
