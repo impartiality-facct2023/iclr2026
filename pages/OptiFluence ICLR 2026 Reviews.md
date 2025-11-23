@@ -491,7 +491,7 @@
 			- #response
 			- Thank you for the insightful comment. Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition. This means that the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model. This is the reason we do not report model accuracy consistantly. There is not much to report.
 			- This is of course understandable because performance is an average metric while privacy is a worst-case one. We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.
-		- * **Relation to privacy–robustness trade-off.**
+		- Q3. * **Relation to privacy–robustness trade-off.**
 		    Given that OptiFluence’s optimization resembles adversarial training, it would be valuable to evaluate or at least discuss the potential trade-off between privacy auditing effectiveness and robustness, as widely documented in the literature [1–3].
 		    An experiment showing canary auditing after adversarial training would significantly strengthen the paper.
 			- #response
