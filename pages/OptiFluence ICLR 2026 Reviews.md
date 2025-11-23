@@ -56,7 +56,8 @@
 	- >  W7: Figures 4 and 6 show that optimized canaries—particularly on CIFAR-10—often appear visually unnatural or out-of-distribution. This raises the possibility that their detectability stems from atypical low-level statistics rather than genuine memorization.
 	- We understand memorization is an umbrella term used in different context in machine learning. However, we respectfully disagree with the reviewer that learning "atypical low-level statistics" is not "genuine memorization." Since ultimately it does not matter how the model overfits to training samples, as long as it does and we can detect it.
 	- **A canary, under the DP definition, does not need to come from a particular data distribution at all.** As long as the model's behavior detectably changes in response to the existence of the canary in the training set, it fits the definition. **We note that prior work in privacy auditing uses far more unnatural-looking canaries.** See [1] for example where a square pattern is used. Therefore, not even prior work acknowledges the need for naturalness of privacy canaries for auditing purposes.
-	-
+	- > Q8: Some optimized canaries, particularly in CIFAR-10, appear visually unnatural or off-manifold. Have you attempted to quantify the degree of deviation from the data distribution (e.g., via FID, nearest-neighbor distance, or classifier confidence)?
+	- Since out canaries fit the DP definition perfectly, we are not convinced that "visual unnaturalness" is a metric worth optimizing for. Afterall, the threat model is different from an attack using adversarial example so "bounding the (visual) perturbation" is not a requirement.
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
