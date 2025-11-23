@@ -43,7 +43,13 @@
 	- > W5/Q6: ...OptiFluence directly maximizes the LiRA hinge-based likelihood-ratio score, the optimized canaries may overfit to this particular attack formulation. The paper does not evaluate the canaries under alternative membership inference metrics (e.g., confidence-, entropy-, or loss-based scores)...
 		- The LiRA hinge loss follows from likelihood tests with a prior assumption of Gaussianity (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
 		- Furthermore, attacks give a lower bound on privacy leakage. So it does not really matter if one "overfit" to one attack or not given that, **by definition, we want the strongest possible attack to achieve the best possible lower bound. Since LiRA is a much stronger attack than the others (Carlini et al 2022 discusses and evaluates this point at length), it makes sense to focus on it.**
-	-
+	- > W7: ... Can you provide a theoretical or empirical explanation for why canaries optimized on ResNet-9 remain highly detectable on ResNet-50 or WideResNet? Is this phenomenon architecture-dependent or data-dependent?
+	- As discussed, a theoretical study of this phenomenon is outside of the scope of the current paper. We provide extensive transferability
+	- We provide the following observational explanation of this phenomenon:
+		- All models (i.e. hypothesis classes) seek to learn the same concept  from the data.
+		- A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself.
+		- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
+		- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
