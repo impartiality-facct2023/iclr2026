@@ -117,7 +117,7 @@
 			- [2] Maddock, Samuel, Alexandre Sablayrolles, and Pierre Stock. "Canife: Crafting canaries for empirical privacy measurement in federated learning." arXiv preprint arXiv:2210.02912 (2022).
 		- > W2/Q1:  What exactly  is IF-OPT? It doesn’t seem to be clearly defined in the experiments.
 			- IF-OPT is Influence-Optimized canaries: this is a baseline explained in detail in Appendix A. The approach involves using gradients of influence functions (aka, first-order derivatives of influence functions).
-			- To address your question, in our updated manuscript, we have expanded our existing short description of this baseline in Line 326 ("One of our baselines in this section is a novel method based on first-order optimization of influence functions, called IF-Opt...").
+			- To address your question, in our updated manuscript, we have expanded our existing short description of this baseline in Line 341 in the
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
