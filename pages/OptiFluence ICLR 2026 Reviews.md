@@ -83,7 +83,8 @@
 		- > W1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive.
 		- Our claim of scalability is in the context of the baselines we present. The first being truly-unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in L304:  "When differentiating through many training steps, the computational graph grows linearly with the number of updates, leading to prohibitive memory usage." One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
 		- Regarding datasets, we note that CIFAR10 is a standard dataset in privacy auditing of vision models given the sheer computation necessary to find rare privacy-infringing events [[Auditing Differentially Private Machine Learning: How Private is Private SGD?]]
-	-
+	- > The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
+		-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
   collapsed:: true
