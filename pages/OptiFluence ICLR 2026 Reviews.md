@@ -47,7 +47,7 @@
 	- As discussed, a theoretical study of this phenomenon is outside of the scope of the current paper. We provide empirical transferability results in Section 6.2, paragraph "Optimized canaries transfer between architectures" which include results for both CIFAR10 (the architectures mentioned) and MNIST (different model widths in Appendix C.4). So our answer is yes.
 	- We can provide the following observational explanation of this phenomenon:
 	- > All models (i.e. hypothesis classes) seek to learn the same concept  from the data. A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself. For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
-	- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
+	- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability of concept canaries would sense in the first place.
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
