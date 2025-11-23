@@ -53,7 +53,9 @@
 	- We can provide the following observational explanation of this phenomenon:
 	- > All models (i.e. hypothesis classes) seek to learn the same concept  from the data. A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself. For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
 	- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability of canaries would make sense in the first place.
-	- >
+	- >  W7: Figures 4 and 6 show that optimized canaries—particularly on CIFAR-10—often appear visually unnatural or out-of-distribution. This raises the possibility that their detectability stems from atypical low-level statistics rather than genuine memorization.
+	- We understand memorization is an umbrella term used in different context in machine learning. However, we respectfully disagree with the reviewer that learning "atypical low-level statistics" is not "genuine memorization." Since ultimately it does not matter how the model overfits to training samples, as long as it does and we can detect it.
+	- A canary, under the DP definition, does not need to come from a particular data distribution at all. As long as the model's behavior detectably changes in response to the existence of the canary in the training set, it fits the definition. We note that prior work in privacy auditing uses far more unnatural-looking canaries. See [1] for example where a square pattern is used. Therefore, not even prior work acknowledges the need for naturalness of privacy canaries for auditing purposes.
 	-
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
