@@ -98,7 +98,8 @@
 		- We respectfully disagree with the statement that our attacks are outdated. We use the LIRA-based attacks introduced in Aerni 2024 et al. (CCS 2024) [1].
 		- We note that **our contribution is not the evaluation (privacy attack)** which we adopted from Aerni 2024  verbatim, but rather the canary to be used for its evaluation. **We successfully show that under a fixed evaluation scheme (i.e. privacy atttack), our canaries improve 3 orders of magnitude compared to baselines. A stronger privacy attack (such as RMIA method from the cited paper) can only improve our already high TPR@lowFPR numbers.**
 		- [1] Aerni, Michael, Jie Zhang, and Florian Tramèr. 2024. “Evaluations of Machine Learning Privacy Defenses Are Misleading.” arXiv:2404.17399. Preprint, arXiv, April 26. [http://arxiv.org/abs/2404.17399](http://arxiv.org/abs/2404.17399).
--
+	- > The entire optimization objective is to maximize the LiRA "hinge" score. The canaries are overfit to this specific MIA. More MIA attacks should be considered.
+		-
 -
 -
 -
