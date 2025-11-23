@@ -8,8 +8,11 @@
 	- We agree with the reviewer that formal results would be interesting. However, the lack of general bounds is expected given the bi-level characterization of the problem with the training loss objective (of a multi-million parameter neural network) in the constraint set. Even the state-of-the-art optimization results for neural networks are limited to a few layer networks.
 	- On the topic of "heursitical" approaches: previously, canaries had to be *hand-crafted* as there was no systematic way to generate canaries. **The important novelty of our work is that we can *automatically* generate canaries that outperform hand-crafted ones.**
 	- Our work empirically demonstrates the practical feasibility of optimized canaries as a framework. We do agree formal results would be intriguing but given the lack of relevant literature, and the density of the formalization and modeling already present in the paper; we intend to pursue formal results in future work.
-	- > Q2:
-		-
+	- > Q2: Could you provide a more rigorous justification for treating the logit difference (Equation 5) as a valid surrogate for the likelihood-ratio statistic? Specifically, under what assumptions does maximizing this surrogate guarantee improved membership distinguishability
+	- Of course:
+	  > Carlini et al. [1, Section IV.C] provide a justification for using logit-scaled confidence values instead their unscaled values, or even the cross entropy loss. Notably in Figure 4 it is shown that **logit-scaled confidence values provide a more Gaussian distribution. Gaussianity is important because it allows a more efficient parametric modeling of null and alternative distributions** $Q_\text{in}$ and $Q_\text{out}$. In our work, we optimize these parametric distributions by optimizing the canary sample, preserving Gaussianity is equally important to us. 
+	  > Finally, in Section VI.A, it is shown that in a neural network that produces pre-softmax (i.e. unnormalized) values $g(x)$, logit-scaled confidence $\phi(\frac{p}{1-p} )$ where $\phi$ is the logit function, and $p$ are confidence scores such that $p = \operatorname{softmax}(g(x))$. These logit-scaled confidence values can be calculated with more numerically stability using the "hinge" loss $g(\theta;x)_y - \operatorname{LogSumExp}_{y'} g(\theta;x)_{y'}$.
+	- We initially skip the above derivation in the paper as the original work tackles the question of test statistic modeling and efficient evaluation in broad detail. But we acknowledge that having this description would clarify the derivation; and have therefore added the above to the paper.
 -
 - # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
