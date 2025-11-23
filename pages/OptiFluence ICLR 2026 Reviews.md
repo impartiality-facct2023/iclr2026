@@ -1,6 +1,6 @@
 # Responses
 	- ## Reviewer VkF8
-		- We thank the r
+		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap. We will be answering them jointly. We use W(eakness) and Q(questions)
 -
 -
 - # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
