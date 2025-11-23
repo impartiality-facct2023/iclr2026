@@ -152,7 +152,12 @@
 				- > All models (i.e. hypothesis classes) seek to learn the same concept  from the data. A transferable canary indicates that the notion of a canary is not a function of the of the hypothesis class, but rather the concept class itself. For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and written in a bad handwriting, one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—an entirely different learner!
 				- We like to note however that the space of canaries are much larger than the above example. But the above should be sufficient to show why transferability of canaries would make sense in the first place.
 				- Please also see our response to Reviewer_VkF8.
-			-
+			- > QPotential performance degradation.**
+			    Algorithm 1 suggests that the canary is iteratively updated during model training. This may interfere with model convergence or degrade performance.
+			    The paper should report whether incorporating such optimization affects model accuracy or training stability.
+				- #response
+				- Thank you for the insightful comment. Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition. This means that the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model. This is the reason we do not report model accuracy consistantly. There is not much to report.
+				- This is of course understandable because performance is an average metric while privacy is a worst-case one. We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.
 			-
 -
 -
@@ -467,16 +472,17 @@
 			- Since the black/white-box characterization limits auditing to the box (aka, the algorithm), it fails to consider who does the auditing which is a much more important consideration. Privacy auditing with canaries enables third-party audits; while algorithmic audits (such as "Tight-", or "One-run" audits) often require first-party access which is often characterized as white-box.
 			- ==@Florian== What do you think of the point above?
 	- #### Questions
-		- * **Unclear explanation of transferability.**
+		- collapsed:: true
+		  * **Unclear explanation of transferability.**
 		    While Section 6.2 claims strong cross-architecture transfer, the supporting evidence in Appendix C.4 (two MLPs on MNIST) is insufficient to substantiate general transferability.
 		    The authors should explain why optimized canaries can transfer between architectures (e.g., shared feature space, loss geometry) and include more diverse models or quantitative analyses.
-		- #response
-		- In Line 394-395, we already share that we have trained multiple model architectures (ResNets 18, 50 and WideResNet) with canaries trained on ResNet9 and achieved nearly perfect (99% TPR@0.1FPR). So our transferability results are not only on MLPs.
-		- A theoretical study of this phenomenon is outside of the scope of the current paper. We provide the following observational explanation of this phenomenon:
-			- All models (i.e. hypothesis classes) seek to learn the same concept  from the data.
-			- A transferable canary indicates that the notion of a canary is not a function of the minutaie of the hypothesis class, but rather the concept itself.
-			- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—and entirely different learner!
-			- We like to note however that the space of canaries is potentially much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
+			- #response
+			- In Line 394-395, we already share that we have trained multiple model architectures (ResNets 18, 50 and WideResNet) with canaries trained on ResNet9 and achieved nearly perfect (99% TPR@0.1FPR). So our transferability results are not only on MLPs.
+			- A theoretical study of this phenomenon is outside of the scope of the current paper. We provide the following observational explanation of this phenomenon:
+				- All models (i.e. hypothesis classes) seek to learn the same concept  from the data.
+				- A transferable canary indicates that the notion of a canary is not a function of the minutaie of the hypothesis class, but rather the concept itself.
+				- For example, for digit classification, we know that a 2 and a 7 are reasonably close to each other; and one can be mistaken for the other. Therefore, a good canary can be an image that can reasonably be classified as either 2 or a 7 by even a human—and entirely different learner!
+				- We like to note however that the space of canaries is potentially much larger than the above example. But the above should be sufficient to show why transferability makes sense in the first place.
 		- * **Potential performance degradation.**
 		    Algorithm 1 suggests that the canary is iteratively updated during model training. This may interfere with model convergence or degrade performance.
 		    The paper should report whether incorporating such optimization affects model accuracy or training stability.
