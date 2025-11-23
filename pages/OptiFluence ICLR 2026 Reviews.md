@@ -119,7 +119,8 @@
 			- IF-OPT is Influence-Optimized canaries: this is a baseline explained in detail in Appendix A. The approach involves using gradients of influence functions (aka, first-order derivatives of influence functions).
 			- To address your question, in our updated manuscript, we have expanded our existing short description of this baseline in Line 341 in the paragraph titled "IF-Opt: First-Order Optimization of Influence Functions."
 		- > W3. The optimization process seems to be computationally expensive. Although the authors propose an approximation denoted, ReMat+TBPTT, no experimental results demonstrate its effectiveness or runtime benefits.
-			-
+			- In Figure 3, we do compare against "random" (which we take to be heuristic) canary methods such as mislabeling or taking a random in-distribution (ID) sample to be the canary.
+			- One-run method is a privacy auditing technique which take canaries (many of them) as input (see Alg.XX in [[One (1)]]). Our contribution is to optimize canaries to be used in privacy audits, so **canaries are the output of our method**. Since we are not contributing a new privacy audit (we use Aerni et. al 2024 as a our privacy auditing framework), one-run is not a comparable baseline.
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
@@ -369,7 +370,7 @@
 		- W3. The optimization process seems to be computationally expensive. Although the authors propose an approximation denoted, ReMat+TBPTT, no experimental results demonstrate its effectiveness or runtime benefits. This makes it seem less practical than simpler alternatives (e.g., one-run or random canary methods).
 			- #response
 			- In Figure 3, we do compare against "random" (which we take to be heuristic) canary methods such as mislabeling or taking a random in-distribution (ID) sample to be the canary.
-			- One-run method is a privacy auditing technique which takes canaries (many of them) as input (see Alg.XX in [[One (1)]]). Our contribution is to optimize canaries to be used in privacy audits, so **canaries are the output of our method**. Since we are not contributing a new privayc audit (we use Aerni et. al 2024 as a our privacy auditing framework), one-run is not a comparable baseline.
+			- One-run method is a privacy auditing technique which take canaries (many of them) as input (see Alg.XX in [[One (1)]]). Our contribution is to optimize canaries to be used in privacy audits, so **canaries are the output of our method**. Since we are not contributing a new privacy audit (we use Aerni et. al 2024 as a our privacy auditing framework), one-run is not a comparable baseline.
 	- #### Questions
 	    1. What exactly  is IF-OPT? It doesn’t seem to be clearly defined in the experiments.
 		- IF-OPT is Influence-Optimized canaries: this is a baseline explained in detail in Appendix A. The approach involves using gradients of influence functions (aka, first-order derivatives of influence functions).
