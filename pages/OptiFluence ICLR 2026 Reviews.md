@@ -5,7 +5,7 @@
 	- ### Reviewer_VkF8
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where additions are marked in blue, and fixes are marked in red.
 		- > W1/Q1: The files at the anonymous link do not open.
-		- We apologize for the link not working. We have re-uploaded and regenerated the link to the anonymous repository that contains the code.
+		- We apologize for the link not working. The Open Science service we used
 		- ==TODO== Here's the anonymized link:
 		- > W2: ...Without theoretical guarantees or approximation bounds, it is unclear whether the optimized canary truly maximizes detectability in general or only within the specific experimental setup.
 		- We agree with the reviewer that formal results would be interesting. However, the lack of general bounds is expected given the bi-level characterization of the problem with the training loss objective (of a multi-million parameter neural network) in the constraint set. Even the state-of-the-art optimization results for neural networks are limited to a few layer networks.
@@ -133,7 +133,6 @@
 			- We believe the ablation you are looking for is shown in Figure 1 where we show both an in-distribution sample (car, lower left) that achieves 2.4% TPR@0.1FPR, after optimization (lower right) achieves 5.2% TPR@0.1FPR. Figure 3 is purposefully used to do a sequential ablation such that improvement using each subsequent choice over the previous one is clear.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_t7cL
-	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1: Incomplete component description in the abstract
 			- Thank you for pointing out this inconsistency. We have fixed the issue in the updated manuscript.
