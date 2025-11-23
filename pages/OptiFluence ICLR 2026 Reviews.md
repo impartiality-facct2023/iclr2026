@@ -1,4 +1,4 @@
-# Responses
+## Responses
 	- ## Reviewer VkF8
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where additions are marked in blue, and fixes are marked in red.
 		- > W1/Q1: The files at the anonymous link do not open.
@@ -44,7 +44,7 @@
 		- The LiRA hinge loss follows from likelihood tests with a prior assumption of Gaussianity (an assumption that given large sample size, the central limit theorem well supports).  Neyman-Pearson lemma establishes that thresholding this statistic is the optimal test. Given the principled, and optimal derivation of the prior work, we fail to see the need for using other test statistics that are more heuristic and much less adopted.
 		- Furthermore, attacks give a lower bound on privacy leakage. So it does not really matter if one "overfit" to one attack or not given that, **by definition, we want the strongest possible attack to achieve the best possible lower bound. Since LiRA is a much stronger attack than the others (Carlini et al 2022 discusses and evaluates this point at length), it makes sense to focus on it.**
 	-
-- # Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
+- ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 - ### Reviewer_VkF8
 	- **Rating:** 4
 	- **Confidence:** 3
