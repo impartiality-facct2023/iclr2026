@@ -94,10 +94,10 @@
 	- > W2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
 		- We note that we already share ROC curves in Figure 7 in Appendix C.3. We are happy to add AUC numbers (area under these curves) to each figure, if doing so alleviate reviewer's concern.
 		- The reason we do not already report AUC numbers is that prior work [1] shows that AUC "is often uncorrleated with low false-positive success rates." AUC is considered an average-case success attack metric for the attacker, while TPR@lowFPR is a more stringent worst-case metric. Therefore, we chose to report the worst-case metric.
-	- > The baseline of MIA is kind of outdated.
-		- We respectfully disagree with the statement that our attacks are outdated. We use the LIRA-based attacks introduced in [[Evaluations of Machine Learning Privacy Defenses are Misleading]] (CCS 2024).
+	- > The baseline of MIA is kind of outdated.  There are more recent and powerful MIA attacks such as "Zarifzadeh, Sajjad, Philippe Liu, and Reza Shokri. "Low-cost high-power membership inference attacks." Proceedings of the 41st International Conference on Machine Learning. 2024."
+		- We respectfully disagree with the statement that our attacks are outdated. We use the LIRA-based attacks introduced in Aerni 2024 et al. (CCS 2024) [1].
 		- We note that **our contribution is not the evaluation (privacy attack)** which we adopted from Aerni 2024,  verbatim, but rather the canary to be used for the evolution. **We successfully show that under a fixed evaluation scheme (i.e. privacy atttack), our canaries improve 3 orders of magnitude compared to baselines. A stronger privacy attack (such as RMIA method from the cited paper) can only improve our already high TPR@lowFPR numbers.**
-		-
+		- [1] Aerni, Michael, Jie Zhang, and Florian Tramèr. 2024. “Evaluations of Machine Learning Privacy Defenses Are Misleading.” arXiv:2404.17399. Preprint, arXiv, April 26. [http://arxiv.org/abs/2404.17399](http://arxiv.org/abs/2404.17399).
 -
 -
 -
