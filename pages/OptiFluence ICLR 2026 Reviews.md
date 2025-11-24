@@ -36,9 +36,9 @@
 		  | $\varepsilon$ | TPR@0.1FPR | $\hat\varepsilon_{-}$|
 		  |0.5| 0.10| $(0, \infty)$|
 		  |1| 0.13| $(0, \infty)$|
-		  |2| 0.26| 0.93|
-		  |6| 0.31| |
-		  |8| 0.32| |
+		  |2| 0.26| |
+		  |6| 0.31| $(0.26, 0.93)$|
+		  |8| 0.32| $(0.35, 0.74)$|
 		- We note that due to the nature of these algorithms the lowerbounds estimation itself comes as a confidence interval that shrinks with higher number of samples (here, shadow models).  We see that for
 		- [1] Nasr, Milad, Jamie Hayes, Thomas Steinke, Borja Balle, Florian Tramèr, Matthew Jagielski, Nicholas Carlini, and Andreas Terzis. 2023. “Tight Auditing of Differentially Private Machine Learning.” *Proceedings of the 32nd USENIX Conference on Security Symposium* (Anaheim, CA, USA), Sec ’23, 2023.
 		- [2] Nasr, Milad, Shuang Song, Abhradeep Thakurta, Nicolas Papernot, and Nicholas Carlini. 2021. “Adversary Instantiation: Lower Bounds for Differentially Private Machine Learning.” *arXiv:2101.04535 [Cs]*, January 11, 2021. [http://arxiv.org/abs/2101.04535](http://arxiv.org/abs/2101.04535).
