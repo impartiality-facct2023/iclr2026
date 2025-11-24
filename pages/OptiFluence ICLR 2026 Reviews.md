@@ -71,6 +71,7 @@
 		- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_mvjG
+	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- >W1/Q1: ... It would be interesting to see if these results generalize to much larger datasets or datasets with many more classes than 10 (viz. CIFAR-100)
 		- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
