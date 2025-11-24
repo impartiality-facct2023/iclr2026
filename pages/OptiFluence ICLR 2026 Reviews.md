@@ -85,7 +85,6 @@
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive.
 		- Our claim of scalability is in the context of the relevant baselines. The first being truly-unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in L304:  "When differentiating through many training steps, the computational graph grows linearly with the number of updates, leading to prohibitive memory usage." One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
-		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
 		- Regarding datasets, we note that CIFAR10 is a standard dataset in privacy auditing of vision models given the sheer computation necessary to find rare privacy-infringing events [1,2]. Regarding the scalability comments: we have successfully shown that canaries trained for smaller models (ResNet9) are powerful in auditing much larger models (ResNet50, WideResNet).
 		- Finally, auditing language model privacy comes with its own unique challenges such as a) optimization space being the token-space (embeddings), b) the fact that the notion of the (differential) privacy unit is under-defined for language models("what is a 'sample' in a sequence-to-sequence language model?"). We nevertheless agree that extending our optimization framework to language model auditing is an exciting venue for future work.
@@ -134,6 +133,7 @@
 		- We believe the ablation you are looking for is shown in Figure 1 where we show both an in-distribution sample (car, lower left) that achieves 2.4% TPR@0.1FPR, after optimization (lower right) achieves 5.2% TPR@0.1FPR. Figure 3 is purposefully used to do a sequential ablation such that improvement using each subsequent choice over the previous one is clear.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_t7cL
+	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1: Incomplete component description in the abstract
 		- Thank you for pointing out this inconsistency. We have fixed the issue in the updated manuscript.
@@ -163,8 +163,8 @@
 -
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
-  collapsed:: true
 	- ### Reviewer_VkF8
+	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 3
 		- #### Summary
@@ -335,7 +335,6 @@
 			- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
 			  the memorization and privacy risks that canaries are used to audit.
 	- ### Reviewer_5zJV
-	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 4
 		- #### Summary
@@ -349,7 +348,6 @@
 			- 2. The results are undeniable. Table 1 shows that optimized canaries are 415x more detectable than standard ones on CIFAR-10.
 			- 3. The transferability result is the paper's strongest practical contribution.
 		- #### Weaknesses
-		  collapsed:: true
 			- 1. Calling this "scalable" in the title is a serious overstatement. The method is built on unrolled optimization, which is notoriously memory- and compute-intensive. The experiments are confined to MNIST and CIFAR-10. This will not scale to any model we actually care about auditing (e.g., LLMs).
 				- #response
 				- Our claim of scalability is in the context of the relevant baselines. The first being truly-unrolled (exact) canary gradient, which we dubbed Unrolled-OPT (Section 5.2). These are indeed memory intensive, as we point out in L304:  "When differentiating through many training steps, the computational graph grows linearly with the number of updates, leading to prohibitive memory usage." One of the novelties of OptiFluence, in comparison, is making unrolled gradients computationally feasible through rematerialization (trade-off memory with time) and  truncation (trade-off exactness with memory); hence we have provided knobs for scaling the computational load of optimizing canaries.
@@ -442,6 +440,7 @@
 			- What we propose is a method to optimize data (canary), one-run methods are auditing algorithms. They recieve canaries as an input; we produce canaries as output.
 			- In OptiFluence, we instead use the value of influence functions (aka, zero-order derivatives of influence functions) to search for a good initial canary instead.
 	- ### Reviewer_t7cL
+	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 5
 		- #### Summary
