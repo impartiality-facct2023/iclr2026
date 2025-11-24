@@ -71,7 +71,6 @@
 		- We have updated the manuscript to explain the model is achieved as the result of the minimization of the empirical loss.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_mvjG
-	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- >W1/Q1: ... It would be interesting to see if these results generalize to much larger datasets or datasets with many more classes than 10 (viz. CIFAR-100)
 		- In Table1, we have updated the results for CIFAR100 using our method as well, which achieved also nearly perfect detectability, showing our method is able to generalize to more challenging and complex datasets.
@@ -94,6 +93,7 @@
 		- > W2. Only report TPR @ Low FPR; other metrics such as AUC should also be considered.
 		- We note that we already share ROC curves in Figure 7 in Appendix C.3. We are happy to add AUC numbers (area under these curves) to each figure, if doing so alleviates reviewer's concern.
 		- The reason we do not already report AUC numbers is that prior work [1] shows that AUC "is often uncorrleated with low false-positive success rates." AUC is considered an average-case success attack metric for the attacker, while TPR@lowFPR is a more stringent worst-case metric. Finally worst-case TPR, FPR numbers have a direct relationship with privayc parameter lowerbounds $\varepsilon_{-}$ (see our response to Reviewer VkF8's W4).  Therefore, we chose to report TPR@lowFPR.
+		- [1] Carlini, Nicholas, Steve Chien, Milad Nasr, Shuang Song, Andreas Terzis, and Florian Tramèr. 2022. “Membership Inference Attacks From First Principles.” May 1, 2022, 1897–1914. [https://doi.org/10.1109/SP46214.2022.9833649](https://doi.org/10.1109/SP46214.2022.9833649).
 		- > The baseline of MIA is kind of outdated.  There are more recent and powerful MIA attacks such as "Zarifzadeh, Sajjad, Philippe Liu, and Reza Shokri. "Low-cost high-power membership inference attacks." Proceedings of the 41st International Conference on Machine Learning. 2024."
 		- We respectfully disagree with the statement that our attacks are outdated. We use the LIRA-based attacks introduced in Aerni 2024 et al. (CCS 2024) [1].
 		- We note that **our contribution is not the evaluation (privacy attack)** which we adopted from Aerni 2024  verbatim, but rather the canary to be used for its evaluation. **We successfully show that under a fixed evaluation scheme (i.e. privacy atttack), our canaries improve 3 orders of magnitude compared to baselines. A stronger privacy attack (such as RMIA method from the cited paper) can only improve our already high TPR@lowFPR numbers.**
@@ -108,7 +108,6 @@
 		- We train the non-private CIFAR10 models to 92% accuracy and the private ones to 40-45% accuracy (depending on epsilon). We should clarify that we train these models with relatively few epochs (20) which degrades DP-SGD generalization. We note that tight auditing of DP-SGD is not a focus of our work. We seek to validate the relative performance of our method for different level of privacy parameter in Table 2—a goal that we achieve. Given the sheer amount of experiments and ablations necessary to validate Optifluence otherwise, we cannot afford to train individual models for 200+epochs which is necessary to achieve SOTA generalization for DP-SGD on CIFAR10.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_5uPC
-	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1/Q5: The exact contribution over prior work that utilizes optimized canaries in the white-box or federated setting is unclear (see below). How does OptiFluence fundamentally differ from the optimization-based canaries proposed by [1,2]?
 		- Maddock et al. 2022's algorithm CANIFE produces optimized canaries in the federated learning setup which means the canaries are in the parameter space. Our canaries are in the input (sample) space (i.e. model weights vs. pixels for a vision canary). Unfortunately, the two types of canaries cannot be used interchangeably given the difference in deployment context. We cite Maddock et al. 2022 in Line 107.
@@ -132,7 +131,6 @@
 		- We believe the ablation you are looking for is shown in Figure 1 where we show both an in-distribution sample (car, lower left) that achieves 2.4% TPR@0.1FPR, after optimization (lower right) achieves 5.2% TPR@0.1FPR. Figure 3 is purposefully used to do a sequential ablation such that improvement using each subsequent choice over the previous one is clear.
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	- ### Reviewer_t7cL
-	  collapsed:: true
 		- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 		- > W1: Incomplete component description in the abstract
 		- Thank you for pointing out this inconsistency. We have fixed the issue in the updated manuscript.
