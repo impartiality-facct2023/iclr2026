@@ -2,10 +2,10 @@
 	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
 		- I would like to thank the authors for their detailed rebuttal and revised version of their paper.
 			- #response
-			- We are pleased to see that we have answered reviewers concerns regarding W2/Q1, Q2 and Q4 (at least partially).  We answer the follow-up questions.
+			- We are pleased to see that we have answered reviewers concerns regarding W2/Q1, Q2 and Q4.  We answer the follow-up questions.
 		- > For W1/Q5, please correct me if I am wrong, but both referenced works do study input-space canaries? In particular, Nasr et al. consider adversarial examples and their own input-space canary construction (Algorithm 3), see also Appendix C.3. I believe this should be made more explicit in the main paper discussion.
 			- #response {{renderer :wordcount_}}
-				- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain. **Below we provide an extensive technical discussion and a new empirical result to answer your question definitively.** We have also updated the manuscript again to add a **new Appendix D** with the content of this response and added appropriate references to it in the Related Work section in Line 110.
+				- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference with prior work in terms of optimization space (in) vs. application domain. **Below we provide an extensive technical discussion and a new empirical result to answer your question definitively.** We have also updated the manuscript again to add a **new Appendix D** with the content of this response and added appropriate references to it in the Related Work section in Line 110.
 				-
 				- We will tackle each work separately to position our technical contribution more clearly with respect to Maddock et al 2023 and Nasr et al. 2023:
 				- **Maddock et. al 2023's CANIFE**
