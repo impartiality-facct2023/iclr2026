@@ -9,6 +9,7 @@
 				  \mathcal{L}\left(z_t\right) \leftarrow \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z_t\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2 \tag{Line 5}
 				  $$
 				- Note that however,  calculating the above loss, requires a "pool of clients" that send model updates  $u_i$ (Line 2); therefore crafting $z$ requires a federated set-up with a pool of model updates are present.
+				- We think the point of our confusion with CANIFE (and other)
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
 		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
