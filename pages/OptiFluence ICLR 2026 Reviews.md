@@ -21,7 +21,8 @@
 						  \min_{(x,y)} l_{\text {adv }}(x, y) =\left|\frac{\nabla l(\theta,(x, y)) \cdot \vec{g}_{\text {dist }}}{|\nabla l(\theta,(x, y))|\left|\overrightarrow{g}_\text{dist }\right|}\right| \text{ where }
 						  \vec{g}_{\text {dist }}=\frac{1}{|D|} \sum_{\left(x_i, y_i\right) \in D} \nabla l\left(\theta,\left(x_i, y_i\right)\right)
 						  \end{aligned}
-					- Therefore,
+					- Therefore, indeed the threat model here is that of a input-space canary. In response to
+					-
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
 			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
