@@ -24,7 +24,7 @@
 					- Unlike CANIFE, the threat model here indeed is the release of input-space canaries. Therefore, in response to your question, we have implemented Alg.3 and share results on MNIST. We optimize the objective down to $$\ell_\text{adv} \leq 0.0001$$. We then evaluate the resulting canaries (see updated manuscript)
 						- Initializing the in-distribution sample (following Line 4 of the algorithm) we achieve, 0.2% TPR@0.1FPR.
 						- Initializing from a canary sampled uniformly at random, and optimizing using Alg. 3, we achieve 7.4% FPR@0.1FPR.
-						-
+					- These results are close to in-distribution and adversarial example baselines for MNIST in Table 2.
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
 			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
