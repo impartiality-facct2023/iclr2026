@@ -33,7 +33,7 @@
 					  &\in \arg\min_\theta \tfrac{1}{|D|+1}\!\!\sum_{z_i\in D\cup\{(x,y)\}}\! \mathcal{L}(\theta; z_i), \quad \theta_{D}
 					  &\in \arg\min_\theta \tfrac{1}{|D|}\!\!\sum_{z_i\in D}\! \mathcal{L}(\theta; z_i),\nonumber
 					  \end{align}
-					- Our first constraint depend on the canary that is being put in the training set, therefore, a change in the canary $(x, y)$ lead to changes in the resulting model $\theta_{D\cup\{(x,y)\}};x,y)$ that needs to be taken into consideration in the unrolled loss. Nasr's $\ell_adv$ does not take into conside
+					- Our first constraint depend on the canary that is being put in the training set, therefore, a change in the canary $(x, y)$ lead to changes in the resulting model $\theta_{D\cup\{(x,y)\}};x,y)$ that needs to be taken into consideration in the unrolled loss. Thus, Nasr's $\ell_adv$ does not take the impact of the inclusion of the canary in the training procedure directly, but rather approximates it by
 					-
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
 			-
