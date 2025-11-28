@@ -47,7 +47,7 @@
 						  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
 						  $$
 						- We see that the key approximation that leads to the orthogonality condition is the Hessian inverse product $\nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z)$  which Maddock et. al consider infeasible to do with SGD.
-						- But this inverse-hessian-product (IVHP) calculation is what we do efficiently using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our
+						- But this inverse-hessian-product (IVHP) calculation is exactly what we do efficiently using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our manuscript; and improve upon using unrolled gradients in the main matter for OptiFluence!
 					-
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
 			-
