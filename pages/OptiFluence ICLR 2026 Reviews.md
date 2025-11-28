@@ -4,6 +4,7 @@
 		- > For W1/Q5, please correct me if I am wrong, but both referenced works do study input-space canaries? In particular, Nasr et al. consider adversarial examples and their own input-space canary construction (Algorithm 3), see also Appendix C.3. I believe this should be made more explicit in the main paper discussion.
 			- #response
 			- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain. We will tackle each work separately to position our statements more clearly:
+				- **CANIFE**
 				- In CANIFE's Alg.1, the optimization is indeed over the canary sample $z$ which happens in the input-space through minimization of the following canary loss:
 				  $$
 				  \min_{z \in \mathbb R^d}\mathcal{L}\left(z\right) = \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z\right)\right\|, 0\right)^2 \tag{Line 5}
@@ -14,7 +15,7 @@
 				  \min_{u_c \in \Theta} \mathcal{\tilde L}(u_c) = \sum_i\left\langle u_i, C \cdot u_c \right\rangle^2+\max \left(C-\left\|u_c\right\|, 0\right)^2
 				  $$
 				- Therefore, while one certainly *can* optimize canaries  in the input-space $\mathbb R^d$, they can do so directly in the space of model parameters $\Theta$. Therefore, **the effective threat model here is weight-space gradients. This is supported by the pipeline diagram in Figure 2 where we clearly see that the adversary releases the update canary $u_c$ and not the canary sample $z$.**
-				- our original statement that this is not an applicable baseline stands.
+			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
 		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
