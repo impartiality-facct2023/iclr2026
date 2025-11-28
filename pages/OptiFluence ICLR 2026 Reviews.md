@@ -10,7 +10,9 @@
 				  $$
 				- Note that however,  calculating the above loss, requires a "pool of clients" that send model updates  $u_i$ (Line 2); therefore crafting $z$ requires a federated set-up with a pool of model updates are present.
 				- We think the point of our confusion with CANIFE is from the fact that we can write the above loss re-factorized  in terms of the canary gradient $\nabla_\theta \ell\left(z_t\right)$ trivially:
-				  $$\mathcal L = $$
+				  $$
+				  \mathcal{\tilde L}(u_t) \left(z_t\right) \leftarrow \sum_i\left\langle u_i, C \cdot u_ \right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2
+				  $$
 				  
 				    Therefore, while one certainly *can* optimize canaries in the input space
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
