@@ -31,9 +31,10 @@
 					  \text{s.t.}\quad
 					  \theta_{D\cup\{(x,y)\}} 
 					  &\in \arg\min_\theta \tfrac{1}{|D|+1}\!\!\sum_{z_i\in D\cup\{(x,y)\}}\! \mathcal{L}(\theta; z_i), \quad \theta_{D}
-					  &\in \arg\min_\theta \tfrac{1}{|D|}\!\!\sum_{z_i\in D}\! \mathcal{L}(\theta; z_i).\nonumber
+					  &\in \arg\min_\theta \tfrac{1}{|D|}\!\!\sum_{z_i\in D}\! \mathcal{L}(\theta; z_i),\nonumber
 					  \end{align}
-					- Our constraints
+					- Our first constraint depend on the canary that is being put in the training set, therefore, the changes in the resulting model
+					-
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
 			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
