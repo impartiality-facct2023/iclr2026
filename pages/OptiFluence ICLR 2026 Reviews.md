@@ -46,7 +46,7 @@
 						  > $$
 						  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
 						  $$
-						- We see that the key approximation that leads to the orthogonlity condition
+						- We see that the key approximation that leads to the orthogonality condition
 					-
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
 			-
