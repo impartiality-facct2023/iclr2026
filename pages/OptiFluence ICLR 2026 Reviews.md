@@ -35,7 +35,8 @@
 					  &\in \arg\min_\theta \tfrac{1}{|D|}\!\!\sum_{z_i\in D}\! \mathcal{L}(\theta; z_i),\nonumber
 					  \end{align}
 					  note that the first constraint depend on the canary that is being put in the training set, therefore, a change in the canary $(x, y)$ lead to changes in the resulting model $\theta_{D\cup\{(x,y)\}}$ that needs to be taken into consideration in the unrolled loss. Nasr's $\ell_\text{adv}$ does not take the impact of the inclusion of the canary in the training procedure directly as we do, but rather approximates it by optimizing the proxy objective $\ell_\text{adv}$.
-					- The reasoning behind the choice of this proxy objective is perhaps better explained in Maddock et al 2023 Appendix A where the authors connect their objective to the likelihood ratio test and derive the "orthogonality condition" under the assumption that "updates follows a Gaussian distribution N (μ, Σ). The sum of k model updates then either follows N (kμ, kΣ) (without the canary) or N (kμ + ∇l(z), kΣ)"
+					- The reasoning behind the choice of this proxy objective is perhaps better explained in Maddock et al. 2023 Appendix A where the authors connect their objective to the likelihood ratio test and derive the "orthogonality condition" under the assumption that "updates follows a Gaussian distribution N (μ, Σ). The sum of k model updates then either follows N (kμ, kΣ) (without the canary) or N (kμ + ∇l(z), kΣ)"
+						- Under this assumption, Maddock et al. derive the likelihood ratio test between the null and a
 						-
 					-
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
