@@ -3,7 +3,7 @@
 		- I would like to thank the authors for their detailed rebuttal and revised version of their paper.
 		- > For W1/Q5, please correct me if I am wrong, but both referenced works do study input-space canaries? In particular, Nasr et al. consider adversarial examples and their own input-space canary construction (Algorithm 3), see also Appendix C.3. I believe this should be made more explicit in the main paper discussion.
 			- #response
-			- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain.
+			- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain. We will tackle each individual work separately. We
 				- In CANIFE's Alg.1, the optimization is indeed over the canary sample $z$ which happens in the input-space through minimization of the following canary loss:
 				  $$
 				  \mathcal{L}\left(z_t\right) \leftarrow \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z_t\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2 \tag{Line 5}
@@ -13,7 +13,7 @@
 				  $$
 				  \mathcal{\tilde L}(u_t) \leftarrow \sum_i\left\langle u_i, C \cdot u_c \right\rangle^2+\max \left(C-\left\|u_c\right\|, 0\right)^2
 				  $$
-				- Therefore, while one certainly *can* optimize canaries  $z_t$ in the input-space, they do not need to. Therefore, the effective threat model here is weight-space gradients. This is supported by the pipeline diagram in Figure 2 where we clearly see that the adversary releases the update canary $u_c$ and not the canary sample $z$.
+				- Therefore, while one certainly *can* optimize canaries  $z_t$ in the input-space, they do not need to. Therefore, **the effective threat model here is weight-space gradients. This is supported by the pipeline diagram in Figure 2 where we clearly see that the adversary releases the update canary $u_c$ and not the canary sample $z$.**
 				-
 				- Therefore, our original statement that this is not an applicable baseline stands.
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
