@@ -14,7 +14,7 @@
 				  \mathcal{\tilde L}(u_t) \leftarrow \sum_i\left\langle u_i, C \cdot u_c \right\rangle^2+\max \left(C-\left\|u_c\right\|, 0\right)^2
 				  $$
 				  
-				  Therefore, while one certainly *can* optimize canaries  $z_t$ in the input-space, but they do not need to. Therefore, the effective threat model here is weight-space gradients $u_t \in \Theta$. This
+				  Therefore, while one certainly *can* optimize canaries  $z_t$ in the input-space, but they do not need to. Therefore, the effective threat model here is weight-space gradients. This is supported by the pipeline diagram in Figure 2 where we clearly see that the adversary releases the update canary $
 				-
 				- Therefore, our original statement that this is not an applicable baseline stands.
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
