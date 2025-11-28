@@ -16,7 +16,7 @@
 					  $$
 					- Therefore, while one certainly *can* optimize canaries  in the input-space $\mathbb R^d$, they can do so directly in the space of model parameters $\Theta$. Therefore, **the effective threat model here is weight-space gradients. This is supported by the pipeline diagram in Figure 2 where we clearly see that the adversary releases the update canary $u_c$ and not the canary sample $z$.**
 				- **Nasr et. al 2023**
-					- Similarly, Nasr
+					- Similarly, Nasr et al. Algorithm 3 implements
 			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
