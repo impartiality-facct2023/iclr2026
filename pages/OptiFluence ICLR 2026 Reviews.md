@@ -8,8 +8,8 @@
 				  $$
 				  \mathcal{L}\left(z_t\right) \leftarrow \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z_t\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2 \tag{Line 5}
 				  $$
-				- Note that however,  calculating the above loss, requires a "pool of clients" that send model updates  $u_i$ (Line 2); **therefore crafting $z$ requires a federated set-up with a pool of model updates are avaialble .**
-				- However, note that we can write the above loss $\mathcal{L}\left(z_t\right)$ re-factorized  in terms of a canary gradient $u_c \triangleq \nabla_\theta \ell\left(z_t\right)$:
+				- Note that however,  calculating the above loss, requires a "pool of clients" that send model updates  $u_i$ (Line 2); **therefore crafting the canary $z$ requires a federated set-up with a pool of model updates are available (which is not a requirement in our setting).**
+				- Regarding weight-space vs. input-space: note that we can write the above loss $\mathcal{L}\left(z_t\right)$ re-factorized  in terms of a canary gradient $u_c \triangleq \nabla_\theta \ell\left(z_t\right)$:
 				  $$
 				  \mathcal{\tilde L}(u_t) \leftarrow \sum_i\left\langle u_i, C \cdot u_c \right\rangle^2+\max \left(C-\left\|u_c\right\|, 0\right)^2
 				  $$
