@@ -42,7 +42,7 @@
 						  > $$
 						  \log \left(\frac{p_1(u)}{p_0(u)}\right)= \pm \frac{1}{2} \nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z) .
 						  $$
-						  > Maximizing this term will thus help separate the two Gaussians. However, doing this directly is infeasible as it requires to form and invert the full covariance matrix $\Sigma$ in very high dimensions. Instead, we propose to minimize $z \mapsto\left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z))$ as it is tractable and can be done with SGD. Note that for sample model updates $\left\{u_i\right\}$ we can estimate the (uncentered) covariance matrix as $\frac{1}{n} \sum_i u_i u_i^T$ and thus
+						  > Maximizing this term will thus help separate the two Gaussians. **However, doing this directly is infeasible as it requires to form and invert the full covariance matrix $\Sigma$ in very high dimensions.** Instead, we propose to minimize $z \mapsto\left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z))$ as it is tractable and can be done with SGD. Note that for sample model updates $\left\{u_i\right\}$ we can estimate the (uncentered) covariance matrix as $\frac{1}{n} \sum_i u_i u_i^T$ and thus
 						  > $$
 						  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
 						  $$
