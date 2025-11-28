@@ -2,8 +2,8 @@
 	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
 		- I would like to thank the authors for their detailed rebuttal and revised version of their paper.
 		- > For W1/Q5, please correct me if I am wrong, but both referenced works do study input-space canaries? In particular, Nasr et al. consider adversarial examples and their own input-space canary construction (Algorithm 3), see also Appendix C.3. I believe this should be made more explicit in the main paper discussion.
-			- #response
-			- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain. We will tackle each work separately to position our technical contribution more clearly with respect to Maddock et al 2023 and Nasr et al. 2023:
+			- #response {{renderer :wordcount_}}
+				- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain. We will tackle each work separately to position our technical contribution more clearly with respect to Maddock et al 2023 and Nasr et al. 2023:
 				- **Maddock et. al 2023's CANIFE**
 					- In CANIFE's Alg.1, the optimization is indeed over the canary sample $z$ which happens in the input-space through minimization of the following canary loss:
 					  $$
@@ -15,38 +15,38 @@
 					  \min_{u_c \in \Theta} \mathcal{\tilde L}(u_c) = \sum_i\left\langle u_i, C \cdot u_c \right\rangle^2+\max \left(C-\left\|u_c\right\|, 0\right)^2
 					  $$
 					- Therefore, while one certainly *can* optimize canaries  in the input-space $\mathbb R^d$, they can do so directly in the space of model parameters $\Theta$. Therefore, **the effective threat model here is weight-space gradients. This is supported by the pipeline diagram in Figure 2 where we clearly see that the adversary releases the update canary $u_c$ and not the canary sample $z$.**
-				- **Nasr et. al 2023**
-					- Nasr et al. Algorithm 3 implements a canary loss that seeks to "align" the canary gradient with the average in-distribution gradient $\overrightarrow{g}_\text{dist}$
-						- \begin{aligned}
-						  \min_{(x,y)} l_{\text {adv }}(x, y) =\left|\frac{\nabla l(\theta,(x, y)) \cdot \vec{g}_{\text {dist }}}{|\nabla l(\theta,(x, y))|\left|\overrightarrow{g}_\text{dist }\right|}\right| \text{ where }
-						  \vec{g}_{\text {dist }}=\frac{1}{|D|} \sum_{\left(x_i, y_i\right) \in D} \nabla l\left(\theta,\left(x_i, y_i\right)\right)
-						  \end{aligned}
-					- Unlike CANIFE, the threat model here indeed is the release of input-space canaries. Therefore, in response to your question, we have implemented Alg.3 and share results on MNIST. We optimize the objective down to $$\ell_\text{adv} \leq 0.0001$$. We then evaluate the resulting canaries (see updated manuscript)
-						- Initializing the in-distribution sample (following Line 4 of the algorithm) we achieve, 0.2% TPR@0.1FPR.
-						- Initializing from a canary sampled uniformly at random, and optimizing using Alg. 3, we achieve 7.4% FPR@0.1FPR.
-					- These results are close to in-distribution and adversarial example baselines for MNIST in Table 2, respectively. What these baseline share is the fact that the canary gradients are not being shaped by the model training dynamics. The **average in-distribution gradient in-distribution gradient $\overrightarrow{g}_\text{dist}$ is essentially a constant.**
-					- Comparing this to our bi-level objective formulation in Eq. 5 (reproduced here for convenience):
-					  \begin{align}
-					  \max_{(x,y)}\; \ell_{\text{priv}}(x,y)
-					  &= f(\theta_{D\cup\{(x,y)\}};x,y) - f(\theta_{D};x,y) \\
-					  \text{s.t.}\quad
-					  \theta_{D\cup\{(x,y)\}} 
-					  &\in \arg\min_\theta \tfrac{1}{|D|+1}\!\!\sum_{z_i\in D\cup\{(x,y)\}}\! \mathcal{L}(\theta; z_i), \quad \theta_{D}
-					  &\in \arg\min_\theta \tfrac{1}{|D|}\!\!\sum_{z_i\in D}\! \mathcal{L}(\theta; z_i),\nonumber
-					  \end{align}
-					  note that the first constraint depend on the canary that is being put in the training set, therefore, a change in the canary $(x, y)$ lead to changes in the resulting model $\theta_{D\cup\{(x,y)\}}$ that needs to be taken into consideration in the unrolled loss. Nasr's $\ell_\text{adv}$ does not take the impact of the inclusion of the canary in the training procedure directly as we do, but rather approximates it by optimizing the proxy objective $\ell_\text{adv}$.
-					- Nasr et al. 2023 justify their choice of the proxy objective empirically, noting in Section B.2 "using the dot product between the privatized gradient and the canary gradient is a sufficient metric for auditing DP-SGD." For the sake of the presentation, let us call this the "orthogonality condition"
-					- To the best of our knowledge Maddock et al. 2023, first derived the orthogonality condition. Notably, in Appendix A authors connect their objective to the likelihood ratio test and derive the condition under the assumption that "model update follow Gaussian distribution $\mathcal{N}(\mu, \Sigma)$. The sum of $k$ model updates then either follows $\mathcal{N}(k \mu, k \Sigma)$ (without the canary) or $\mathcal{N}(k \mu+\nabla \ell(z), k \Sigma)$ (with the canary), recalling that $u_c \propto \nabla \ell(z)$." Under this assumption, Maddock et al. derive the likelihood ratio test between the null $p_0$ and alternative $p_1$ distributions:
-					- > In particular for the centers of the Gaussian with and without the canary, $u \in\{k \mu, k \mu+\nabla \ell(z)\}$,
-					  > $$
-					  \log \left(\frac{p_1(u)}{p_0(u)}\right)= \pm \frac{1}{2} \nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z) .
-					  $$
-					  > Maximizing this term will thus help separate the two Gaussians. **However, doing this directly is infeasible as it requires to form and invert the full covariance matrix $\Sigma$ in very high dimensions.** Instead, we propose to minimize $z \mapsto\left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z))$ as it is tractable and can be done with SGD. Note that for sample model updates $\left\{u_i\right\}$ we can estimate the (uncentered) covariance matrix as $\frac{1}{n} \sum_i u_i u_i^T$ and thus
-					  > $$
-					  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
-					  $$
-					- We see that **the key approximation that leads to the orthogonality condition is the inverse-product-Hessian (IVHP)  $\nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z)$  which Maddock et. al consider infeasible to do with SGD. But this IVHP calculation is exactly what we do efficiently** using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our manuscript; and improve upon using unrolled gradients in the main matter for OptiFluence!
-			-
+					- **Nasr et. al 2023**
+						- Nasr et al. Algorithm 3 implements a canary loss that seeks to "align" the canary gradient with the average in-distribution gradient $\overrightarrow{g}_\text{dist}$
+							- \begin{aligned}
+							  \min_{(x,y)} l_{\text {adv }}(x, y) =\left|\frac{\nabla l(\theta,(x, y)) \cdot \vec{g}_{\text {dist }}}{|\nabla l(\theta,(x, y))|\left|\overrightarrow{g}_\text{dist }\right|}\right| \text{ where }
+							  \vec{g}_{\text {dist }}=\frac{1}{|D|} \sum_{\left(x_i, y_i\right) \in D} \nabla l\left(\theta,\left(x_i, y_i\right)\right)
+							  \end{aligned}
+						- Unlike CANIFE, the threat model here indeed is the release of input-space canaries. Therefore, in response to your question, we have implemented Alg.3 and share results on MNIST. We optimize the objective down to $$\ell_\text{adv} \leq 0.0001$$. We then evaluate the resulting canaries (see updated manuscript)
+							- Initializing the in-distribution sample (following Line 4 of the algorithm) we achieve, 0.2% TPR@0.1FPR.
+							- Initializing from a canary sampled uniformly at random, and optimizing using Alg. 3, we achieve 7.4% FPR@0.1FPR.
+						- These results are close to in-distribution and adversarial example baselines for MNIST in Table 2, respectively. What these baseline share is the fact that the canary gradients are not being shaped by the model training dynamics. The **average in-distribution gradient in-distribution gradient $\overrightarrow{g}_\text{dist}$ is essentially a constant.**
+						- Comparing this to our bi-level objective formulation in Eq. 5 (reproduced here for convenience):
+						  \begin{align}
+						  \max_{(x,y)}\; \ell_{\text{priv}}(x,y)
+						  &= f(\theta_{D\cup\{(x,y)\}};x,y) - f(\theta_{D};x,y) \\
+						  \text{s.t.}\quad
+						  \theta_{D\cup\{(x,y)\}} 
+						  &\in \arg\min_\theta \tfrac{1}{|D|+1}\!\!\sum_{z_i\in D\cup\{(x,y)\}}\! \mathcal{L}(\theta; z_i), \quad \theta_{D}
+						  &\in \arg\min_\theta \tfrac{1}{|D|}\!\!\sum_{z_i\in D}\! \mathcal{L}(\theta; z_i),\nonumber
+						  \end{align}
+						  note that the first constraint depend on the canary that is being put in the training set, therefore, a change in the canary $(x, y)$ lead to changes in the resulting model $\theta_{D\cup\{(x,y)\}}$ that needs to be taken into consideration in the unrolled loss. Nasr's $\ell_\text{adv}$ does not take the impact of the inclusion of the canary in the training procedure directly as we do, but rather approximates it by optimizing the proxy objective $\ell_\text{adv}$.
+						- Nasr et al. 2023 justify their choice of the proxy objective empirically, noting in Section B.2 "using the dot product between the privatized gradient and the canary gradient is a sufficient metric for auditing DP-SGD." For the sake of the presentation, let us call this the "orthogonality condition"
+						- To the best of our knowledge Maddock et al. 2023, first derived the orthogonality condition. Notably, in Appendix A authors connect their objective to the likelihood ratio test and derive the condition under the assumption that "model update follow Gaussian distribution $\mathcal{N}(\mu, \Sigma)$. The sum of $k$ model updates then either follows $\mathcal{N}(k \mu, k \Sigma)$ (without the canary) or $\mathcal{N}(k \mu+\nabla \ell(z), k \Sigma)$ (with the canary), recalling that $u_c \propto \nabla \ell(z)$." Under this assumption, Maddock et al. derive the likelihood ratio test between the null $p_0$ and alternative $p_1$ distributions:
+						- > In particular for the centers of the Gaussian with and without the canary, $u \in\{k \mu, k \mu+\nabla \ell(z)\}$,
+						  > $$
+						  \log \left(\frac{p_1(u)}{p_0(u)}\right)= \pm \frac{1}{2} \nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z) .
+						  $$
+						  > Maximizing this term will thus help separate the two Gaussians. **However, doing this directly is infeasible as it requires to form and invert the full covariance matrix $\Sigma$ in very high dimensions.** Instead, we propose to minimize $z \mapsto\left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z))$ as it is tractable and can be done with SGD. Note that for sample model updates $\left\{u_i\right\}$ we can estimate the (uncentered) covariance matrix as $\frac{1}{n} \sum_i u_i u_i^T$ and thus
+						  > $$
+						  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
+						  $$
+						- We see that **the key approximation that leads to the orthogonality condition is the inverse-product-Hessian (IVHP)  $\nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z)$  which Maddock et. al consider infeasible to do with SGD. But this IVHP calculation is exactly what we do efficiently** using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our manuscript; and improve upon using unrolled gradients in the main matter for OptiFluence!
+				-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
 		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
