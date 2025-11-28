@@ -2,7 +2,7 @@
 	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
 		- I would like to thank the authors for their detailed rebuttal and revised version of their paper.
 			- #response
-			- We are pleased to see that we have answered reviewers concerns regarding W2/Q1 and Q2.  We answer the follow-up questions.
+			- We are pleased to see that we have answered reviewers concerns regarding W2/Q1, Q2 and Q4 (at least partially).  We answer the follow-up questions.
 		- > For W1/Q5, please correct me if I am wrong, but both referenced works do study input-space canaries? In particular, Nasr et al. consider adversarial examples and their own input-space canary construction (Algorithm 3), see also Appendix C.3. I believe this should be made more explicit in the main paper discussion.
 			- #response {{renderer :wordcount_}}
 				- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain. **Below we provide an extensive technical discussion and a new empirical result to answer your question definitively.** We have also updated the manuscript again to add a **new Appendix D** with the content of this response and added appropriate references to it in the Related Work section in Line 110.
@@ -50,11 +50,7 @@
 				  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
 				  $$
 				- We see that **the key approximation that leads to the orthogonality condition is the inverse-product-Hessian (IVHP)  $\nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z)$  which Maddock et. al consider infeasible to do with SGD. But this IVHP calculation is exactly what we do efficiently** using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our manuscript; and improve upon using unrolled gradients in the main matter for OptiFluence!
-				-
-		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
-		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
-		-
-		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
+		- > For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
 			- We understand. To respond to your request we run more experiments on MNIST:
 				- | Dataset | Method             | Result                    |
 				  |---------|---------------------|----------------------------|
