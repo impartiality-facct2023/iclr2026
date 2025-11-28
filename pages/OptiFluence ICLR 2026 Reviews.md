@@ -21,9 +21,9 @@
 						  \min_{(x,y)} l_{\text {adv }}(x, y) =\left|\frac{\nabla l(\theta,(x, y)) \cdot \vec{g}_{\text {dist }}}{|\nabla l(\theta,(x, y))|\left|\overrightarrow{g}_\text{dist }\right|}\right| \text{ where }
 						  \vec{g}_{\text {dist }}=\frac{1}{|D|} \sum_{\left(x_i, y_i\right) \in D} \nabla l\left(\theta,\left(x_i, y_i\right)\right)
 						  \end{aligned}
-					- Unlike CANIFE, the threat model here indeed is the release of input-space canaries. Therefore, in response to your question, we have implemented Alg.3 and share results on MNIST. Our evaluation follows that of our published results, albeit with 5k shadow models.
-						- Initializing the in-distribution sample (following Line 4 of the algorithm) we achieve, 0.2 FPR@lowTPR.
-						- Initializing from a canary sampled uniformly at random, and optimizing using Alg. 3, we achieve
+					- Unlike CANIFE, the threat model here indeed is the release of input-space canaries. Therefore, in response to your question, we have implemented Alg.3 and share results on MNIST. Our evaluation follows that of our published results, albeit with 5k shadow models. In all cases we optimiz
+						- Initializing the in-distribution sample (following Line 4 of the algorithm) we achieve, 0.2% TPR@lowFPR.
+						- Initializing from a canary sampled uniformly at random, and optimizing using Alg. 3, we achieve 7.4% FPR@lowFPR.
 					-
 					- Note that they consider this a white-box access model and in appendix B.2 note "Unfortunately, it is not trivial to extend either the adversarial example or our crafting approach to the black-box setting and therefore we do not use them in the black-box experiments."
 			-
