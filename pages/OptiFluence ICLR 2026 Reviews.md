@@ -54,7 +54,7 @@
 			- We understand. To respond to your request we run more experiments on MNIST, our aggregated results follow:
 				- | Dataset | Method             | Result                    |
 				  |---------|---------------------|----------------------------|
-				  | MNIST   | preselect_unrolled | 0.99827 ± 0.00142         |
+				  | MNIST   | IF-Init + Unrolled-Opt | 0.99827 ± 0.00142         |
 				  | MNIST   | unrolled           | 0.70407 ± 0.23573         |
 				  | CIFAR10 | preselect_remat    | 0.99479 ± 0.00425         |
 				  | CIFAR10 | id_remat           | 0.36458 ± 0.25951         |
