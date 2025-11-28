@@ -55,9 +55,9 @@
 				- | Dataset | Method             | Result                    |
 				  |---------|---------------------|----------------------------|
 				  | MNIST   | IF-Init + Unrolled-Opt | 0.99827 ± 0.00142         |
-				  | MNIST   | Random-Init + Unrolled-Opt           | 0.70407 ± 0.23573         |
+				  | MNIST   | ID-Init + Unrolled-Opt           | 0.70407 ± 0.23573         |
 				  | CIFAR10 | IF-Init + ReMat Unrolled    | 0.99479 ± 0.00425         |
-				  | CIFAR10 | id_remat           | 0.36458 ± 0.25951         |
+				  | CIFAR10 | ID-Init + ReMat Unrolled            | 0.36458 ± 0.25951         |
 -
 - ## Responses
 	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
