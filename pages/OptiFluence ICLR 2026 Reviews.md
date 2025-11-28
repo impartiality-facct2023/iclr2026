@@ -52,14 +52,14 @@
 				  $$
 				- We see that **the key approximation that leads to the orthogonality condition is the inverse-product-Hessian (IVHP)  $\nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z)$  which Maddock et. al consider infeasible to do with SGD. But this IVHP calculation is exactly what we do efficiently** using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our manuscript; and improve upon using unrolled gradients in the main matter for OptiFluence!
 		- > For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
-			- We understand. To respond to your request we ran more experiments on MNIST, our aggregated results follow:
-				- | Dataset | Method             | Result                    |
-				  |---------|---------------------|----------------------------|
-				  | MNIST   | IF-Init + Unrolled-Opt | 0.99827 ± 0.00142         |
-				  | MNIST   | ID-Init + Unrolled-Opt           | 0.70407 ± 0.23573         |
-				  | CIFAR10 | IF-Init + ReMat Unrolled    | 0.99479 ± 0.00425         |
-				  | CIFAR10 | ID-Init + ReMat Unrolled            | 0.36458 ± 0.25951         |
-			- These results makes the contribution of initialization clear. We observe a consistent improvement in attack success using influence functions (IF-Init) compared to ID initialization (picking an In-Distribution sample at random). However, the gap between the ID- vs. IF-Init is much larger for CIFAR10 compared to MNIST. We attribute this to the fact that we have to use approximate canary gradients (ReMat) for the CIFAR10 model, which makes proper initialization ever more essential to the success of the canary optimization (as discussed in Section 6.3: Proper initialization is essential...).
+		- We understand. To respond to your request we ran more experiments on MNIST, our aggregated results follow:
+			- | Dataset | Method             | Result                    |
+			  |---------|---------------------|----------------------------|
+			  | MNIST   | IF-Init + Unrolled-Opt | 0.99827 ± 0.00142         |
+			  | MNIST   | ID-Init + Unrolled-Opt           | 0.70407 ± 0.23573         |
+			  | CIFAR10 | IF-Init + ReMat Unrolled    | 0.99479 ± 0.00425         |
+			  | CIFAR10 | ID-Init + ReMat Unrolled            | 0.36458 ± 0.25951         |
+		- These results makes the contribution of initialization clear. We observe a consistent improvement in attack success using influence functions (IF-Init) compared to ID initialization (picking an In-Distribution sample at random). However, the gap between the ID- vs. IF-Init is much larger for CIFAR10 compared to MNIST. We attribute this to the fact that we have to use approximate canary gradients (ReMat) for the CIFAR10 model, which makes proper initialization ever more essential to the success of the canary optimization (as discussed in Section 6.3: Proper initialization is essential...).
 -
 - ## Responses
 	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
