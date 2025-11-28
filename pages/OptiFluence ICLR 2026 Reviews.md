@@ -35,9 +35,9 @@
 					  &\in \arg\min_\theta \tfrac{1}{|D|}\!\!\sum_{z_i\in D}\! \mathcal{L}(\theta; z_i),\nonumber
 					  \end{align}
 					  note that the first constraint depend on the canary that is being put in the training set, therefore, a change in the canary $(x, y)$ lead to changes in the resulting model $\theta_{D\cup\{(x,y)\}}$ that needs to be taken into consideration in the unrolled loss. Nasr's $\ell_\text{adv}$ does not take the impact of the inclusion of the canary in the training procedure directly as we do, but rather approximates it by optimizing the proxy objective $\ell_\text{adv}$.
-					- Nasr et al. 2023 justify their choice of the proxy objective empirically, noting in Section B.2 "using the dot product between the privatized gradient and the canary gradient is a sufficient metric for auditing DP-SGD." For the sake of the presentation, let us call this the "orth
-						-
-						- The reasoning behind the choice of this proxy objective is perhaps better explained in Maddock et al. 2023 Appendix A where the authors connect their objective to the likelihood ratio test and derive the "orthogonality condition" under the assumption that "updates follows a Gaussian distribution N (μ, Σ). The sum of k model updates then either follows N (kμ, kΣ) (without the canary) or N (kμ + ∇l(z), kΣ)"
+					- Nasr et al. 2023 justify their choice of the proxy objective empirically, noting in Section B.2 "using the dot product between the privatized gradient and the canary gradient is a sufficient metric for auditing DP-SGD." For the sake of the presentation, let us call this the "orthogonality principle"
+					- To the best of our knowledge Maddock et al. 2023, first derived the org
+						- Appendix A  the authors connect their objective to the likelihood ratio test and derive the "orthogonality condition" under the assumption that "updates follows a Gaussian distribution N (μ, Σ). The sum of k model updates then either follows N (kμ, kΣ) (without the canary) or N (kμ + ∇l(z), kΣ)"
 						- Under this assumption, Maddock et al. derive the likelihood ratio test between the null and alternative distributions
 						-
 					-
