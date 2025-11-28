@@ -58,7 +58,7 @@
 				  | MNIST   | ID-Init + Unrolled-Opt           | 0.70407 ± 0.23573         |
 				  | CIFAR10 | IF-Init + ReMat Unrolled    | 0.99479 ± 0.00425         |
 				  | CIFAR10 | ID-Init + ReMat Unrolled            | 0.36458 ± 0.25951         |
-			- These results makes the contribution of initialization clear. We observe a consistent improvement in attack success using influence functions (IF-Init) compared to initialization (picking an In-Distribution sample at random).
+			- These results makes the contribution of initialization clear. We observe a consistent improvement in attack success using influence functions (IF-Init) compared to ID initialization (picking an In-Distribution sample at random). However, the gap between the ID- vs. IF-Init is much larger for CIFAR10 compared to MNIST. We attribute this to the fact that  we
 -
 - ## Responses
 	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
