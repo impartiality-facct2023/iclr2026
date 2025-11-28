@@ -56,7 +56,7 @@
 				  |---------|---------------------|----------------------------|
 				  | MNIST   | IF-Init + Unrolled-Opt | 0.99827 ± 0.00142         |
 				  | MNIST   | Random-Init + Unrolled-Opt           | 0.70407 ± 0.23573         |
-				  | CIFAR10 | preselect_remat    | 0.99479 ± 0.00425         |
+				  | CIFAR10 | IF-Init + ReMat Unrolled    | 0.99479 ± 0.00425         |
 				  | CIFAR10 | id_remat           | 0.36458 ± 0.25951         |
 -
 - ## Responses
