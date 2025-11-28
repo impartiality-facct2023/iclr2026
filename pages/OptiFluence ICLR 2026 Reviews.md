@@ -14,7 +14,7 @@
 				  \mathcal{\tilde L}(u_t) \leftarrow \sum_i\left\langle u_i, C \cdot u_c \right\rangle^2+\max \left(C-\left\|u_c\right\|, 0\right)^2
 				  $$
 				  
-				    Therefore, while one certainly *can* optimize canaries in the input space
+				  Therefore, while one certainly *can* optimize canaries in the input space, the effective threat model here is that of a
 				- Therefore, our original statement that this is not an applicable baseline stands.
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
