@@ -37,16 +37,15 @@
 					  note that the first constraint depend on the canary that is being put in the training set, therefore, a change in the canary $(x, y)$ lead to changes in the resulting model $\theta_{D\cup\{(x,y)\}}$ that needs to be taken into consideration in the unrolled loss. Nasr's $\ell_\text{adv}$ does not take the impact of the inclusion of the canary in the training procedure directly as we do, but rather approximates it by optimizing the proxy objective $\ell_\text{adv}$.
 					- Nasr et al. 2023 justify their choice of the proxy objective empirically, noting in Section B.2 "using the dot product between the privatized gradient and the canary gradient is a sufficient metric for auditing DP-SGD." For the sake of the presentation, let us call this the "orthogonality condition"
 					- To the best of our knowledge Maddock et al. 2023, first derived the orthogonality condition. Notably, in Appendix A authors connect their objective to the likelihood ratio test and derive the condition under the assumption that "model update follow Gaussian distribution $\mathcal{N}(\mu, \Sigma)$. The sum of $k$ model updates then either follows $\mathcal{N}(k \mu, k \Sigma)$ (without the canary) or $\mathcal{N}(k \mu+\nabla \ell(z), k \Sigma)$ (with the canary), recalling that $u_c \propto \nabla \ell(z)$." Under this assumption, Maddock et al. derive the likelihood ratio test between the null $p_0$ and alternative $p_1$ distributions:
-						- > In particular for the centers of the Gaussian with and without the canary, $u \in\{k \mu, k \mu+\nabla \ell(z)\}$,
-						  > $$
-						  \log \left(\frac{p_1(u)}{p_0(u)}\right)= \pm \frac{1}{2} \nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z) .
-						  $$
-						  > Maximizing this term will thus help separate the two Gaussians. **However, doing this directly is infeasible as it requires to form and invert the full covariance matrix $\Sigma$ in very high dimensions.** Instead, we propose to minimize $z \mapsto\left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z))$ as it is tractable and can be done with SGD. Note that for sample model updates $\left\{u_i\right\}$ we can estimate the (uncentered) covariance matrix as $\frac{1}{n} \sum_i u_i u_i^T$ and thus
-						  > $$
-						  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
-						  $$
-						- We see that the key approximation that leads to the orthogonality condition is the Hessian inverse product $\nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z)$  which Maddock et. al consider infeasible to do with SGD.
-						- But this inverse-hessian-product (IVHP) calculation is exactly what we do efficiently using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our manuscript; and improve upon using unrolled gradients in the main matter for OptiFluence!
+					- > In particular for the centers of the Gaussian with and without the canary, $u \in\{k \mu, k \mu+\nabla \ell(z)\}$,
+					  > $$
+					  \log \left(\frac{p_1(u)}{p_0(u)}\right)= \pm \frac{1}{2} \nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z) .
+					  $$
+					  > Maximizing this term will thus help separate the two Gaussians. **However, doing this directly is infeasible as it requires to form and invert the full covariance matrix $\Sigma$ in very high dimensions.** Instead, we propose to minimize $z \mapsto\left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z))$ as it is tractable and can be done with SGD. Note that for sample model updates $\left\{u_i\right\}$ we can estimate the (uncentered) covariance matrix as $\frac{1}{n} \sum_i u_i u_i^T$ and thus
+					  > $$
+					  \left(\nabla \ell(z)^T\right) \Sigma(\nabla \ell(z)) \approx \frac{1}{n} \sum \nabla \ell(z)^T\left(u_i u_i^T\right) \nabla \ell(z)=\frac{1}{n} \sum\left\langle u_i, \nabla \ell(z)\right\rangle^2 .
+					  $$
+					- We see that **the key approximation that leads to the orthogonality condition is the inverse-product-Hessian (IVHP)  $\nabla \ell(z)^T(k \Sigma)^{-1} \nabla \ell(z)$  which Maddock et. al consider infeasible to do with SGD. But this IVHP calculation is exactly what we do efficiently** using influence function in Appendix A (for the IF-OPT baseline); see Eq. 10 in our manuscript; and improve upon using unrolled gradients in the main matter for OptiFluence!
 			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
