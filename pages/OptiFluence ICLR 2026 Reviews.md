@@ -4,7 +4,11 @@
 		- > For W1/Q5, please correct me if I am wrong, but both referenced works do study input-space canaries? In particular, Nasr et al. consider adversarial examples and their own input-space canary construction (Algorithm 3), see also Appendix C.3. I believe this should be made more explicit in the main paper discussion.
 			- #response
 			- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain.
-				- In Canife's Alg.1, the optimization is indeed over the canary sample $z$ which is in the input-space (Line 5). However, Canife remains applicable  where there is a "pool of clients" that send model updates  $u_i$ (Line 2),
+				- In CANIFE's Alg.1, the optimization is indeed over the canary sample $z$ which is in the input-space (Line 5) the following canary loss:
+				  $$
+				  \mathcal{L}\left(z_t\right) \leftarrow \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z_t\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2
+				  $$
+				   However, CANIFE remains applicable  where there is a "pool of clients" that send model updates  $u_i$ (Line 2),
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
 		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
