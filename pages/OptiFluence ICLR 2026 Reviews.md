@@ -1,5 +1,10 @@
 ## Reviewer Responses
-	-
+	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
+		- I would like to thank the authors for their detailed rebuttal and revised version of their paper.
+		- For W1/Q5, please correct me if I am wrong, but both referenced works do study input-space canaries? In particular, Nasr et al. consider adversarial examples and their own input-space canary construction (Algorithm 3), see also Appendix C.3. I believe this should be made more explicit in the main paper discussion.
+		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
+		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
+		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
 -
 - ## Responses
 	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
