@@ -9,12 +9,13 @@
 				  \mathcal{L}\left(z_t\right) \leftarrow \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z_t\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2 \tag{Line 5}
 				  $$
 				- Note that however,  calculating the above loss, requires a "pool of clients" that send model updates  $u_i$ (Line 2); therefore crafting $z$ requires a federated set-up with a pool of model updates are present.
-				- However, note that we can write the above loss re-factorized  in terms of a canary gradient $u_c \triangleq \nabla_\theta \ell\left(z_t\right)$:
+				- However, note that we can write the above loss $\mathcal{L}\left(z_t\right)$ re-factorized  in terms of a canary gradient $u_c \triangleq \nabla_\theta \ell\left(z_t\right)$:
 				  $$
 				  \mathcal{\tilde L}(u_t) \leftarrow \sum_i\left\langle u_i, C \cdot u_c \right\rangle^2+\max \left(C-\left\|u_c\right\|, 0\right)^2
 				  $$
 				  
 				    Therefore, while one certainly *can* optimize canaries in the input space
+				- Therefore, our original statement that this is not an applicable baseline stands.
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
 		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
