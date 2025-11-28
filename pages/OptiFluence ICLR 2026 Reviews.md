@@ -54,6 +54,12 @@
 		-
 		- For Q4, I think I understand your point via Figure 1, which partially addresses my concern for CIFAR-10. However, I would prefer to see this studied more concretely across additional datasets to better illustrate the impact of the IF initialization.
 			- We understand. To respond to your request we run more experiments on MNIST:
+				- | Dataset | Method             | Result                    |
+				  |---------|---------------------|----------------------------|
+				  | MNIST   | preselect_unrolled | 0.99827 ± 0.00142         |
+				  | MNIST   | unrolled           | 0.70407 ± 0.23573         |
+				  | CIFAR10 | preselect_remat    | 0.99479 ± 0.00425         |
+				  | CIFAR10 | id_remat           | 0.36458 ± 0.25951         |
 -
 - ## Responses
 	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
