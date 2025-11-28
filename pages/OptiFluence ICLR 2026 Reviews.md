@@ -6,7 +6,7 @@
 			- Thank you for the follow-up. We think you have a point here and we now understand how our wording may confuse the reader regarding difference in the input-space vs. application domain. We will tackle each work separately to position our statements more clearly:
 				- In CANIFE's Alg.1, the optimization is indeed over the canary sample $z$ which happens in the input-space through minimization of the following canary loss:
 				  $$
-				  \mathcal{L}\left(z_t\right) \leftarrow \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z_t\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2 \tag{Line 5}
+				  \min_{z_t}\mathcal{L}\left(z_t\right) = \sum_i\left\langle u_i, C \cdot \nabla_\theta \ell\left(z_t\right)\right\rangle^2+\max \left(C-\left\|\nabla_\theta \ell\left(z_t\right)\right\|, 0\right)^2 \tag{Line 5}
 				  $$
 				- Note that however,  calculating the above loss, requires a "pool of clients" that send model updates  $u_i$ (Line 2); **therefore crafting the canary $z$ requires a federated set-up with a pool of model updates are available (which is not a requirement in our setting).**
 				- Regarding weight-space vs. input-space: note that we can write the above loss $\mathcal{L}\left(z_t\right)$ re-factorized  in terms of a canary gradient $u_c \triangleq \nabla_\theta \ell\left(z_t\right)$:
