@@ -21,7 +21,7 @@
 						  \min_{(x,y)} l_{\text {adv }}(x, y) =\left|\frac{\nabla l(\theta,(x, y)) \cdot \vec{g}_{\text {dist }}}{|\nabla l(\theta,(x, y))|\left|\overrightarrow{g}_\text{dist }\right|}\right| \text{ where }
 						  \vec{g}_{\text {dist }}=\frac{1}{|D|} \sum_{\left(x_i, y_i\right) \in D} \nabla l\left(\theta,\left(x_i, y_i\right)\right)
 						  \end{aligned}
-					- Note that they consider this a white-box access model, this
+					- Note that they consider this a white-box access model.
 			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
 		- For Q2, I appreciate the extended response and the new experiments benchmarking the canary optimization runtime.
