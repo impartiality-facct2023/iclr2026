@@ -18,8 +18,8 @@
 				- **Nasr et. al 2023**
 					- Similarly, Nasr et al. Algorithm 3 implements a canary loss that seeks to "align" the canary gradient with the average in-distribution gradient
 						- \begin{aligned}
-						  & \vec{g}_{\text {dist }}=\frac{1}{|D|} \sum_{\left(x_i, y_i\right) \in D} \nabla l\left(\theta,\left(x_i, y_i\right)\right) \\
-						  & l_{\text {adv }}(x, y)=\left|\frac{\nabla l(\theta,(x, y)) \cdot \vec{g}_{\text {dist }}}{|\nabla l(\theta,(x, y))|\left|\overrightarrow{g_{\text {dist }}}\right|}\right|
+						  &\min_{(x,y)} l_{\text {adv }}(x, y)&=\left|\frac{\nabla l(\theta,(x, y)) \cdot \vec{g}_{\text {dist }}}{|\nabla l(\theta,(x, y))|\left|\overrightarrow{g_{\text {dist }}}\right|}\right| \\
+						  & \vec{g}_{\text {dist }}=\frac{1}{|D|} \sum_{\left(x_i, y_i\right) \in D} \nabla l\left(\theta,\left(x_i, y_i\right)\right)
 						  \end{aligned}
 			-
 		- For W2/Q1, thank you for the clarification. The corresponding changes in the main paper make this much clearer.
