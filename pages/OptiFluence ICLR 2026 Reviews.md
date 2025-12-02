@@ -1,6 +1,5 @@
 ### Final Comment
 	- Positives
-		-
 		- VkF8
 			- 1. The proposed OptiFluence pipeline combines influence-based initialization (IF-Init) with unrolled optimization enhanced by rematerialization and truncated backpropagation (ReMat+TBPTT) for scalability.
 			- 2. Achieves near-perfect canary detectability (up to 99.8% TPR at 0.1% FPR) and up to 415× improvement over heuristic baselines on MNIST and CIFAR-10.
@@ -25,8 +24,8 @@
 		- t7cL
 			- The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
 			- The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
-	- Rev
-	-
+	- Rebuttal additions
+		-
 -
 - ## Reviewer Responses
   collapsed:: true
