@@ -7,8 +7,19 @@
 			- 3. Optimized canaries generalize well across architectures (e.g., ResNet-9 → ResNet-50), enabling efficient third-party or regulatory auditing without model retraining.
 			- 4. Includes detailed ablation studies, comparisons to prior methods (e.g., metagradient-based optimization), and evaluations under DP-SGD training.
 			- 5. The paper is well-structured, with a clear presentation of motivation, methodology, and results.
+		- mvjG
+			- **[S1]** Very well-motivated and concretely described methodology, with an attention to detail to practical concerns like compute and memory costs, yielding a practical design that vastly outperforms baselines, which is outstanding.
+			- **[S2]** Use of influence functions to initialize canary is very well motivated and grounded in existing research, and its utility firmly corroborated by ablation studies.
+			- **[S3]** Speaking of which, all the components of the OptiFluence method are covered and ablated in the ablation study section, which very clearly shows each component’s significance. Put another way, I think this is a very well executed ablation study section. In addition, figure 3 provides a good overview of how all the components come together to yield strong canaries (high TPR at very low FPR) as compared to other (ablated) variants.
+			- **[S4]** Good takeaways, viz. pointing out the limitations of mislabeling for canary generation, illustrating how initializing with influence functions provides a more effective and principled approach.
+			- **[S5]** Transferability of generated canaries is a huge positive and contributes to efficient auditing practices.
+			- **[S6]** Auditing (with and without DP-SGD) is well done, with strong choices of auditing methods and well-executed DP-SGD training with a Renyi DP based accountant.
+			- **[S7]** The authors provide an anonymized link to the code and relevant hyperparameters in the appendix, aiding in reproducibility of their results.
+		- 5zJV
 			-
 		-
+			-
+			-
 			- The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
 			- The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
 		-
@@ -408,7 +419,6 @@
 			- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
 			  the memorization and privacy risks that canaries are used to audit.
 	- ### Reviewer_5zJV
-	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 4
 		- #### Summary
