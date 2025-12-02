@@ -1,5 +1,9 @@
 ### Final Comment
 	- Positives
+		- VKF8
+		  * The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
+		  
+		  * The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
 		-
 	- Contributions
 	-
@@ -377,7 +381,6 @@
 			- Presentation: 4
 			- Contribution: 3
 		- #### Strengths
-		  collapsed:: true
 			- **[S1]** Very well-motivated and concretely described methodology, with an attention to detail to practical concerns like compute and memory costs, yielding a practical design that vastly outperforms baselines, which is outstanding.
 			- **[S2]** Use of influence functions to initialize canary is very well motivated and grounded in existing research, and its utility firmly corroborated by ablation studies.
 			- **[S3]** Speaking of which, all the components of the OptiFluence method are covered and ablated in the ablation study section, which very clearly shows each component’s significance. Put another way, I think this is a very well executed ablation study section. In addition, figure 3 provides a good overview of how all the components come together to yield strong canaries (high TPR at very low FPR) as compared to other (ablated) variants.
@@ -507,7 +510,6 @@
 			- What we propose is a method to optimize data (canary), one-run methods are auditing algorithms. They recieve canaries as an input; we produce canaries as output.
 			- In OptiFluence, we instead use the value of influence functions (aka, zero-order derivatives of influence functions) to search for a good initial canary instead.
 	- ### Reviewer_t7cL
-	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 5
 		- #### Summary
