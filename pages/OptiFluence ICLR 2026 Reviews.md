@@ -19,6 +19,7 @@
 	- **Relationship to adversarial examples**: We emphasized Table 1 already shows adversarial examples perform poorly (0.45% vs. our 99.8%). Our derivation yields adversarial-like gradients with **negative sign**: canaries must remain sensitive during training, unlike adversarial examples designed for robustness.
 	- **Overfitting concerns**: Since our goal is the tightest possible privacy lower bound, maximizing detectability under the strongest principled attack (derived from Neyman-Pearson optimality) is appropriate by definition.
 	- #### 4. Addressed Specific Concerns
+	- We believe we have addressed the concerns.
 	- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
 	- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
 	- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes negligible accuracy impact
