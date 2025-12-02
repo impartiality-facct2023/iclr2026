@@ -5,6 +5,7 @@
 	-
 -
 - ## Reviewer Responses
+  collapsed:: true
 	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
 		-
 		- I would like to thank the authors for their detailed rebuttal and revised version of their paper.
@@ -68,6 +69,7 @@
 				- These results makes the contribution of initialization clear. We observe a consistent improvement in attack success using influence functions (IF-Init) compared to ID initialization (picking an In-Distribution sample at random). However, the gap between the ID- vs. IF-Init is much larger for CIFAR10 compared to MNIST. We attribute this to the fact that we have to use approximate canary gradients (ReMat) for the CIFAR10 model, which makes proper initialization ever more essential to the success of the canary optimization (as discussed in Section 6.3: Proper initialization is essential...).
 -
 - ## Responses
+  collapsed:: true
 	- We thank the reviewer for their detailed feedback. Since the points raised in the weaknesses and the questions can have a significant overlap, we will be answering them jointly. We use numbered W(eakness) and Q(questions) to refer to the comments. We kindly invite the reviewer to consult the **updated manuscript** while considering out responses where *additions are marked in blue*, and *fixes are marked in red*.
 	- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
 	-
@@ -225,7 +227,6 @@
 		- Indeed in prior work, injecting samples (like poisons) comes at a trade-off with model performance. However, please note that, unlike prior work, **we inject exactly one sample as the canary in order to stay maximally compliant with the DP definition.** This means that **the contribution of the single sample error to the loss is 1/|Size of Training Set|; therefore, we do not observe any noticeable degradation in the accuracy of the model.** This is the reason we do not report model accuracy consistantly. There is not much to report.
 		- This is of course understandable because performance is an average metric while privacy is a worst-case one. **We optimize the worst-case (an "outlier" sample) which does not affect the average considerable.**
 		- We thank the reviewer for their insightful commentary and hope to have answered their questions. If so, we would appreciate it if they increased their score. We welcome any follow-up questions.
--
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 	- ### Reviewer_VkF8
@@ -400,6 +401,7 @@
 			- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
 			  the memorization and privacy risks that canaries are used to audit.
 	- ### Reviewer_5zJV
+	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 4
 		- #### Summary
