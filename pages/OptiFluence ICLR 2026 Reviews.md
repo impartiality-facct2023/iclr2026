@@ -1,6 +1,14 @@
 ### Final Comment
 	- Positives
 		-
+		- VkF8
+			- 1. The proposed OptiFluence pipeline combines influence-based initialization (IF-Init) with unrolled optimization enhanced by rematerialization and truncated backpropagation (ReMat+TBPTT) for scalability.
+			- 2. Achieves near-perfect canary detectability (up to 99.8% TPR at 0.1% FPR) and up to 415× improvement over heuristic baselines on MNIST and CIFAR-10.
+			- 3. Optimized canaries generalize well across architectures (e.g., ResNet-9 → ResNet-50), enabling efficient third-party or regulatory auditing without model retraining.
+			- 4. Includes detailed ablation studies, comparisons to prior methods (e.g., metagradient-based optimization), and evaluations under DP-SGD training.
+			- 5. The paper is well-structured, with a clear presentation of motivation, methodology, and results.
+			-
+		-
 			- The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
 			- The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
 		-
@@ -234,6 +242,7 @@
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 	- ### Reviewer_VkF8
+	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 3
 		- #### Summary
@@ -243,15 +252,11 @@
 			- Presentation: 3
 			- Contribution: 2
 		- #### Strengths
-		    1. The proposed OptiFluence pipeline combines influence-based initialization (IF-Init) with unrolled optimization enhanced by rematerialization and truncated backpropagation (ReMat+TBPTT) for scalability.
-		    
-		    2. Achieves near-perfect canary detectability (up to 99.8% TPR at 0.1% FPR) and up to 415× improvement over heuristic baselines on MNIST and CIFAR-10.
-		    
-		    3. Optimized canaries generalize well across architectures (e.g., ResNet-9 → ResNet-50), enabling efficient third-party or regulatory auditing without model retraining.
-		    
-		    4. Includes detailed ablation studies, comparisons to prior methods (e.g., metagradient-based optimization), and evaluations under DP-SGD training.
-		    
-		    5. The paper is well-structured, with a clear presentation of motivation, methodology, and results.
+			- 1. The proposed OptiFluence pipeline combines influence-based initialization (IF-Init) with unrolled optimization enhanced by rematerialization and truncated backpropagation (ReMat+TBPTT) for scalability.
+			- 2. Achieves near-perfect canary detectability (up to 99.8% TPR at 0.1% FPR) and up to 415× improvement over heuristic baselines on MNIST and CIFAR-10.
+			- 3. Optimized canaries generalize well across architectures (e.g., ResNet-9 → ResNet-50), enabling efficient third-party or regulatory auditing without model retraining.
+			- 4. Includes detailed ablation studies, comparisons to prior methods (e.g., metagradient-based optimization), and evaluations under DP-SGD training.
+			- 5. The paper is well-structured, with a clear presentation of motivation, methodology, and results.
 		- #### Weaknesses
 			- collapsed:: true
 			  1. The files at the anonymous link do not open. Please either include a zip file with the source code and scripts in the supplementary material or update the link to ensure the files are accessible.
