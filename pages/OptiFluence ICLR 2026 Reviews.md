@@ -25,7 +25,7 @@
 	- We believe we have addressed the concerns.
 	- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
 	- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
-	- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes negligible accuracy impact
+	- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes no detectable accuracy impact
 	- ### Remaining Limitations and Future Work
 	- We acknowledge that **formal theoretical characterization** of both the bilevel optimization guarantees and transferability phenomenon remains future work, as noted by Reviewers VkF8 and 5zJV. However, this is expected given the complexity of bilevel optimization over multi-million parameter networks—even state-of-the-art results are limited to small networks. We note that analogous phenomena (e.g., adversarial example transferability) lack formal characterization yet remain extensively studied empirically.
 	- We also acknowledge that **scaling to large language models** presents unique challenges (token-space optimization, undefined privacy units for sequences) that extend beyond the scope of this work focused on vision models, as noted by Reviewer 5zJV.
