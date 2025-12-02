@@ -16,14 +16,10 @@
 	- **New Figure 12** demonstrating robustness to truncation parameter k, showing that even k=2 achieves near-perfect detectability (Reviewer VkF8, Q3)
 	- **Detailed scalability discussion** explaining how rematerialization and truncation provide practical knobs for memory-time trade-offs (Reviewers 5zJV and VkF8)
 	- ### 3. Clarified Positioning and Methodology
-	  
-	  **Input-space vs. weight-space canaries**: We clarified that prior optimization-based work (Maddock et al., Nasr et al.) operates in weight-space (federated learning, canary gradients), while OptiFluence generates input-space canaries enabling architecture-agnostic, transferable third-party auditing—a fundamentally different threat model and deployment context.
-	  
-	  **"Exact gradients" terminology**: We explained this refers to our unrolled baseline using complete computational graphs via automatic differentiation. ReMat trades memory for time without sacrificing gradient accuracy, while TBPTT provides a tunable approximation that empirically maintains effectiveness.
-	  
-	  **Relationship to adversarial examples**: We emphasized Table 1 already shows adversarial examples perform poorly (0.45% vs. our 99.8%). Our derivation yields adversarial-like gradients with **negative sign**—canaries must remain sensitive during training, unlike adversarial examples designed for robustness.
-	  
-	  **Overfitting concerns**: Since our goal is the tightest possible privacy lower bound, maximizing detectability under the strongest principled attack (derived from Neyman-Pearson optimality) is appropriate by definition. Evaluation on separate shadow models prevents classical overfitting.
+	- **Input-space vs. weight-space canaries**: We clarified that prior optimization-based work (Maddock et al., Nasr et al.) operates in weight-space (federated learning, canary gradients), while OptiFluence generates input-space canaries enabling architecture-agnostic, transferable third-party auditing—a fundamentally different threat model and deployment context.
+	- **"Exact gradients" terminology**: We explained this refers to our unrolled baseline using complete computational graphs via automatic differentiation. ReMat trades memory for time without sacrificing gradient accuracy, while TBPTT provides a tunable approximation that empirically maintains effectiveness.
+	- **Relationship to adversarial examples**: We emphasized Table 1 already shows adversarial examples perform poorly (0.45% vs. our 99.8%). Our derivation yields adversarial-like gradients with **negative sign**—canaries must remain sensitive during training, unlike adversarial examples designed for robustness.
+	- **Overfitting concerns**: Since our goal is the tightest possible privacy lower bound, maximizing detectability under the strongest principled attack (derived from Neyman-Pearson optimality) is appropriate by definition.
 	- ### 4. Addressed Specific Concerns
 	- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
 	- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
