@@ -1,9 +1,9 @@
 ### Final Comment
 	- Positives
-		- VKF8
-		  * The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
-		  
-		  * The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
+		-
+			- The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
+			- The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
+		-
 		-
 	- Contributions
 	-
@@ -234,7 +234,6 @@
 -
 - ## Reviews for: OptiFluence: Scalable and Principled Design of Privacy Canaries
 	- ### Reviewer_VkF8
-	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 3
 		- #### Summary
@@ -510,6 +509,7 @@
 			- What we propose is a method to optimize data (canary), one-run methods are auditing algorithms. They recieve canaries as an input; we produce canaries as output.
 			- In OptiFluence, we instead use the value of influence functions (aka, zero-order derivatives of influence functions) to search for a good initial canary instead.
 	- ### Reviewer_t7cL
+	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 5
 		- #### Summary
