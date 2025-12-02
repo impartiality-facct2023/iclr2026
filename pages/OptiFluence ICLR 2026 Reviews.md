@@ -28,7 +28,6 @@
 		-
 -
 - ## Reviewer Responses
-  collapsed:: true
 	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
 		-
 		- I would like to thank the authors for their detailed rebuttal and revised version of their paper.
