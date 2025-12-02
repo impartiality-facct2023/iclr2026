@@ -16,15 +16,16 @@
 			- **[S6]** Auditing (with and without DP-SGD) is well done, with strong choices of auditing methods and well-executed DP-SGD training with a Renyi DP based accountant.
 			- **[S7]** The authors provide an anonymized link to the code and relevant hyperparameters in the appendix, aiding in reproducibility of their results.
 		- 5zJV
-			-
-		-
-			-
-			-
+			- 1. The core idea is sound. Moving from "guessing" a canary to "optimizing" one is a logical step.
+			- 2. The results are undeniable. Table 1 shows that optimized canaries are 415x more detectable than standard ones on CIFAR-10.
+			- 3. The transferability result is the paper's strongest practical contribution.
+		- 5uPC
+			- The optimization-based formulation is well described and the approach of combining influence functions to intitialize an optimized canary is novel.
+			- The attack is evaluated across a good range of datasets and privacy budgets.
+		- t7cL
 			- The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
 			- The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
-		-
-		-
-	- Contributions
+	- Rev
 	-
 -
 - ## Reviewer Responses
@@ -419,6 +420,7 @@
 			- The reviewer may argue that a formal result might be possible for small linear models (logistic regression); we would counter then that prior work <CITE> have shown that such small models typically do not represent 
 			  the memorization and privacy risks that canaries are used to audit.
 	- ### Reviewer_5zJV
+	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 4
 		- #### Summary
@@ -524,7 +526,6 @@
 			- What we propose is a method to optimize data (canary), one-run methods are auditing algorithms. They recieve canaries as an input; we produce canaries as output.
 			- In OptiFluence, we instead use the value of influence functions (aka, zero-order derivatives of influence functions) to search for a good initial canary instead.
 	- ### Reviewer_t7cL
-	  collapsed:: true
 		- **Rating:** 4
 		- **Confidence:** 5
 		- #### Summary
