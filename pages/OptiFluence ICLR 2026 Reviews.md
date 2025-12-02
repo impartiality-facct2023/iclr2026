@@ -26,8 +26,6 @@
 	  **Overfitting concerns**: Since our goal is the tightest possible privacy lower bound, maximizing detectability under the strongest principled attack (derived from Neyman-Pearson optimality) is appropriate by definition. Evaluation on separate shadow models prevents classical overfitting.
 	- ### 4. Addressed Specific Concerns
 	- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
-	- **Abstract inconsistency** (Reviewer t7cL): Corrected component count
-	- **ERM definition** (Reviewer VkF8): Added explanation of empirical risk minimization
 	- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
 	- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes negligible accuracy impact
 	- ## Remaining Limitations and Future Work
@@ -68,7 +66,6 @@
 			- The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
 	- Rebuttal additions
 		-
--
 - ## Reviewer Responses
   collapsed:: true
 	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
