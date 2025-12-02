@@ -1,4 +1,4 @@
-### Rebuttal Summary
+### Rebuttal Summary {{renderer :wordcountchar_}}
 	- ## Authors' Summary of Rebuttal
 	  We thank all reviewers for their thorough and constructive feedback. We are encouraged that **all reviewers recognized the core strengths of OptiFluence**: the principled bilevel optimization framework, the strong empirical results (up to 99.8% TPR@0.1FPR and 415× improvement over baselines), the novel combination of influence-based initialization with unrolled optimization, and particularly the **transferability of optimized canaries across architectures**—which multiple reviewers highlighted as a significant practical contribution enabling efficient third-party auditing.
 	-
