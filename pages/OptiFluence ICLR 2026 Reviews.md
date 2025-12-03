@@ -16,7 +16,7 @@
 	- **Initialization ablation study** showing IF-Init substantially outperforms random ID-Init (MNIST: 0.998 vs. 0.704; CIFAR-10: 0.995 vs. 0.365), clarifying concerns raised by Reviewer 5uPC
 	- #### 2. Technical Clarifications and New Content
 	- **New Appendix D** with extensive technical discussion and empirical implementation of Nasr et al.'s Algorithm 3, definitively positioning our contribution relative to prior work (Reviewers 5uPC and VkF8)
-	- **Enhanced justification** for the logit difference surrogate, incorporating Carlini et al.'s Gaussianity results and Neyman-Pearson optimality (Reviewer VkF8, Q2)
+	- **Enhanced justification** for the logit difference surrogate, incorporating Carlini et al.'s Gaussianity discussion and Neyman-Pearson optimality (Reviewer VkF8, Q2)
 	- **New Figure 12** demonstrating the effect of the truncation parameter k on canary optimization loss. We additionally show show that even k=2 achieves near-perfect detectability (Reviewer VkF8, Q3)
 	- **Detailed scalability discussion** explaining how rematerialization and truncation provide practical knobs for memory-time trade-offs (Reviewers 5zJV and VkF8)
 	- #### 3. Clarified Positioning and Methodology
@@ -27,8 +27,9 @@
 	- ### Remaining Limitations and Future Work
 	- We acknowledge that **formal theoretical characterization** of both the bilevel optimization guarantees and transferability phenomenon remains future work, as noted by Reviewers VkF8 and 5zJV. However, this is expected given the complexity of bilevel optimization over multi-million parameter networks—even state-of-the-art results are limited to small networks. We note that analogous phenomena (e.g., adversarial example transferability) lack formal characterization yet remain extensively studied empirically.
 	- We also acknowledge that **scaling to large language models** presents unique challenges (token-space optimization, undefined privacy units for sequences) that extend beyond the scope of this work focused on vision models, as noted by Reviewer 5zJV.
-- ### Conclusion
-  Our rebuttal demonstrates OptiFluence's robustness through additional datasets, lower privacy budgets, comprehensive ablations, and detailed computational analysis. The automatic generation of highly detectable, transferable canaries represents a significant advance over hand-crafted approaches, with practical implications for regulatory and third-party privacy auditing. We believe these substantial additions address all major reviewer concerns and hope reviewers will consider increasing their scores accordingly. We welcome any remaining questions or suggestions for further clarification.
+	- ### Conclusion
+	  Our rebuttal demonstrates OptiFluence's robustness through additional datasets, lower privacy budgets, comprehensive ablations, and detailed computational analysis. The automatic generation of highly detectable, transferable canaries represents a significant advance over hand-crafted approaches, with practical implications for regulatory and third-party privacy auditing. We believe these substantial additions address all major reviewer concerns and hope reviewers will consider increasing their scores accordingly.
+- We welcome any remaining questions or suggestions for further clarification.
 -
 - ### Positives
   collapsed:: true
