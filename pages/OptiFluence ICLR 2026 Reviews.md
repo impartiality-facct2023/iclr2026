@@ -1,12 +1,4 @@
-- Scratchpad
-	- In what follows, we do our best to summarize the discussion while acknowledging the unfortunate fact that the rebuttal process was cut short.
-	- #### 4. Addressed Specific Concerns
-	- We believe we have addressed the concerns.
-	- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
-	- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
-	- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes no detectable accuracy impact
-	- We welcome any remaining questions or suggestions for further clarification.
-- ### Rebuttal Summary {{renderer :wordcountchar_}}
+### Rebuttal Summary {{renderer :wordcountchar_}}
 	- ## Authors' Summary of Rebuttal
 	  We thank all reviewers for their thorough and constructive feedback. We are encouraged that **all reviewers recognized the core strengths of OptiFluence**: the principled bilevel optimization framework, the strong empirical results (up to 99.8% TPR@0.1FPR and 415× improvement over baselines), the novel combination of influence-based initialization with unrolled optimization, and particularly the **transferability of optimized canaries across architectures**—which multiple reviewers highlighted as a significant practical contribution enabling efficient third-party auditing.
 	- ### Substantial Additions During Rebuttal
@@ -34,8 +26,8 @@
 -
 -
 - ### Positives
-  collapsed:: true
 	- Positives
+	  collapsed:: true
 		- VkF8
 			- 1. The proposed OptiFluence pipeline combines influence-based initialization (IF-Init) with unrolled optimization enhanced by rematerialization and truncated backpropagation (ReMat+TBPTT) for scalability.
 			- 2. Achieves near-perfect canary detectability (up to 99.8% TPR at 0.1% FPR) and up to 415× improvement over heuristic baselines on MNIST and CIFAR-10.
@@ -61,7 +53,15 @@
 			- The paper tackles an important problem in empirical privacy auditing, providing a more principled alternative to heuristic canary constructions.
 			- The bilevel optimization formulation is elegant and connects privacy auditing with influence functions and gradient unrolling.
 	- Rebuttal additions
-		-
+	- Scratchpad
+	  collapsed:: true
+		- In what follows, we do our best to summarize the discussion while acknowledging the unfortunate fact that the rebuttal process was cut short.
+		- #### 4. Addressed Specific Concerns
+		- We believe we have addressed the concerns.
+		- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
+		- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
+		- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes no detectable accuracy impact
+		- We welcome any remaining questions or suggestions for further clarification.
 - ## Reviewer Responses
   collapsed:: true
 	- #### [5uPC](https://openreview.net/forum?id=V99zh4LmSd&noteId=6s8HmUUmwq)
