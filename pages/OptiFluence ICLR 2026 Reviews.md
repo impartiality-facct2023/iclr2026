@@ -17,7 +17,7 @@
 	- #### 2. Technical Clarifications and New Content
 	- **New Appendix D** with extensive technical discussion and empirical implementation of Nasr et al.'s Algorithm 3, definitively positioning our contribution relative to prior work (Reviewers 5uPC and VkF8)
 	- **Enhanced justification** for the logit difference surrogate, incorporating Carlini et al.'s Gaussianity discussion and Neyman-Pearson optimality (Reviewer VkF8, Q2)
-	- **New Figure 12** demonstrating the effect of the truncation parameter k on canary optimization loss. We additionally show show that even k=2 achieves near-perfect detectability (Reviewer VkF8, Q3)
+	- **New Figure 12** demonstrating the effect of the truncation parameter k on canary optimization loss. We show show that even k=2 achieves near-perfect detectability (Reviewer VkF8, Q3)
 	- **Detailed scalability discussion** explaining how rematerialization and truncation provide practical knobs for memory-time trade-offs (Reviewers 5zJV and VkF8)
 	- #### 3. Clarified Positioning and Methodology
 	- **Input-space vs. weight-space canaries**: We clarified that while prior optimization-based work Maddock et al. also takes place in the input-space; their canaries are released in the weight-space (due to the federated learning setting). OptiFluence however exclusively generates input-space canaries enabling architecture-agnostic, transferable third-party auditing—a fundamentally different threat model and deployment context. We provided an extensive comparison with Maddock et al. 2023 and Nasr et al. 2023 in Appendix D.
