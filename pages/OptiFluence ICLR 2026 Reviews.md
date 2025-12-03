@@ -1,27 +1,27 @@
 ### Rebuttal Summary {{renderer :wordcountchar_}}
-	- ## Authors' Summary of Rebuttal
+	- # Authors' Summary of Rebuttal
 	  We thank all reviewers for their thorough and constructive feedback. We are encouraged that **all reviewers recognized the core strengths of OptiFluence**: the principled bilevel optimization framework, the strong empirical results (up to 99.8% TPR@0.1FPR and 415× improvement over baselines), the novel combination of influence-based initialization with unrolled optimization, and particularly the **transferability of optimized canaries across architectures**—which multiple reviewers highlighted as a significant practical contribution enabling efficient third-party auditing.
-	- ### Substantial Additions During Rebuttal
+	- ## Substantial Additions During Rebuttal
 	  We have significantly strengthened the manuscript through the following additions:
-	- #### 1. Extended Experimental Validation
+	- ### 1. Extended Experimental Validation
 	- **New CIFAR-100 results** (Table 1) demonstrating near-perfect detectability (99%+) on a more complex dataset with 10× more classes, addressing concerns from Reviewers mvjG and VkF8 about generalization
 	- **Additional low-ε experiments** (ε ∈ {0.5, 1}) for DP-SGD auditing (Table 3), as requested by Reviewer mvjG
 	- **Computational efficiency metrics** in new Table 2, reporting wall-clock time and VRAM usage for both initialization and optimization phases, addressing requests from Reviewers VkF8, mvjG, 5zJV, and 5uPC
 	- **Initialization ablation study** showing IF-Init substantially outperforms random ID-Init (MNIST: 0.998 vs. 0.704; CIFAR-10: 0.995 vs. 0.365), clarifying concerns raised by Reviewer 5uPC
-	- #### 2. Technical Clarifications and New Content
+	- ### 2. Technical Clarifications and New Content
 	- **New Appendix D** with extensive technical discussion and empirical implementation of Nasr et al.'s Algorithm 3, definitively positioning our contribution relative to prior work (Reviewers 5uPC and VkF8)
 	- **Enhanced justification** for the logit difference surrogate, incorporating Carlini et al.'s Gaussianity discussion and Neyman-Pearson optimality (Reviewer VkF8, Q2)
 	- **New Figure 12** demonstrating the effect of the truncation parameter k on canary optimization loss. We show show that even k=2 achieves near-perfect detectability (Reviewer VkF8, Q3)
 	- **Detailed scalability discussion** explaining how rematerialization and truncation provide practical knobs for memory-time trade-offs (Reviewers 5zJV and VkF8)
-	- #### 3. Clarified Positioning and Methodology
+	- ### 3. Clarified Positioning and Methodology
 	- **Input-space vs. weight-space canaries**: We clarified that while prior optimization-based work Maddock et al. also takes place in the input-space; their canaries are released in the weight-space (due to the federated learning setting). OptiFluence however exclusively generates input-space canaries enabling architecture-agnostic, transferable third-party auditing—a fundamentally different threat model and deployment context. We provided an extensive comparison with Maddock et al. 2023 and Nasr et al. 2023 in Appendix D.
 	- **"Exact gradients" terminology**: We explained this refers to our unrolled baseline using complete computational graphs via automatic differentiation. ReMat trades memory for time without sacrificing gradient accuracy, while TBPTT provides a tunable approximation that empirically maintains effectiveness.
 	- **Relationship to adversarial examples**: We emphasized Table 1 already shows adversarial examples perform poorly (0.45% vs. our 99.8%). Our derivation yields adversarial-like gradients with **negative sign**: canaries must remain sensitive during training, unlike adversarial examples designed for robustness.
 	- **Overfitting concerns**: Since our goal is the tightest possible privacy lower bound, maximizing detectability under the strongest principled attack (derived from Neyman-Pearson optimality) is appropriate by definition.
-	- ### Remaining Limitations and Future Work
+	- ## Remaining Limitations and Future Work
 	- We acknowledge that **formal theoretical characterization** of both the bilevel optimization guarantees and transferability phenomenon remains future work, as noted by Reviewers VkF8 and 5zJV. However, this is expected given the complexity of bilevel optimization over multi-million parameter networks—even state-of-the-art results are limited to small networks. We note that analogous phenomena (e.g., adversarial example transferability) lack formal characterization yet remain extensively studied empirically.
 	- We also acknowledge that **scaling to large language models** presents unique challenges (token-space optimization, undefined privacy units for sequences) that extend beyond the scope of this work focused on vision models, as noted by Reviewer 5zJV.
-	- ### Conclusion
+	- ## Conclusion
 	  Our rebuttal demonstrates OptiFluence's robustness through additional datasets, lower privacy budgets, and comprehensive ablations. The automatic generation of highly detectable, transferable canaries represents a significant advance over hand-crafted approaches, with practical implications for regulatory and third-party privacy auditing. We believe these substantial additions address all major reviewer concerns and hope reviewers will consider increasing their scores accordingly.
 -
 -
