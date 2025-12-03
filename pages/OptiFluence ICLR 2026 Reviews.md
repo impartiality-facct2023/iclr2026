@@ -1,12 +1,14 @@
-#### 4. Addressed Specific Concerns
-- We believe we have addressed the concerns.
-- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
-- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
-- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes no detectable accuracy impact
+- Scratchpad
+	- In what follows, we do our best to summarize the discussion while acknowledging the unfortunate fact that the rebuttal process was cut short.
+	- #### 4. Addressed Specific Concerns
+	- We believe we have addressed the concerns.
+	- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
+	- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
+	- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes no detectable accuracy impact
+	- We welcome any remaining questions or suggestions for further clarification.
 - ### Rebuttal Summary {{renderer :wordcountchar_}}
 	- ## Authors' Summary of Rebuttal
 	  We thank all reviewers for their thorough and constructive feedback. We are encouraged that **all reviewers recognized the core strengths of OptiFluence**: the principled bilevel optimization framework, the strong empirical results (up to 99.8% TPR@0.1FPR and 415× improvement over baselines), the novel combination of influence-based initialization with unrolled optimization, and particularly the **transferability of optimized canaries across architectures**—which multiple reviewers highlighted as a significant practical contribution enabling efficient third-party auditing.
-	- In what follows, we do our best to summarize the discussion while acknowledging the unfortunate fact that the rebuttal process was cut short.
 	- ### Substantial Additions During Rebuttal
 	  We have significantly strengthened the manuscript through the following additions:
 	- #### 1. Extended Experimental Validation
@@ -29,7 +31,7 @@
 	- We also acknowledge that **scaling to large language models** presents unique challenges (token-space optimization, undefined privacy units for sequences) that extend beyond the scope of this work focused on vision models, as noted by Reviewer 5zJV.
 	- ### Conclusion
 	  Our rebuttal demonstrates OptiFluence's robustness through additional datasets, lower privacy budgets, and comprehensive ablations. The automatic generation of highly detectable, transferable canaries represents a significant advance over hand-crafted approaches, with practical implications for regulatory and third-party privacy auditing. We believe these substantial additions address all major reviewer concerns and hope reviewers will consider increasing their scores accordingly.
-- We welcome any remaining questions or suggestions for further clarification.
+-
 -
 - ### Positives
   collapsed:: true
