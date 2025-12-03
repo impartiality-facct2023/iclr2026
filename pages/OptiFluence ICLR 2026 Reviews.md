@@ -1,9 +1,7 @@
 ### Rebuttal Summary {{renderer :wordcountchar_}}
 	- ## Authors' Summary of Rebuttal
 	  We thank all reviewers for their thorough and constructive feedback. We are encouraged that **all reviewers recognized the core strengths of OptiFluence**: the principled bilevel optimization framework, the strong empirical results (up to 99.8% TPR@0.1FPR and 415× improvement over baselines), the novel combination of influence-based initialization with unrolled optimization, and particularly the **transferability of optimized canaries across architectures**—which multiple reviewers highlighted as a significant practical contribution enabling efficient third-party auditing.
-	-
 	- In what follows, we do our best to summarize the discussion while acknowledging the unfortunate fact that the rebuttal process was cut short.
-	-
 	- ### Substantial Additions During Rebuttal
 	  We have significantly strengthened the manuscript through the following additions:
 	- #### 1. Extended Experimental Validation
@@ -17,7 +15,7 @@
 	- **New Figure 12** demonstrating the effect of the truncation parameter k on canary optimization loss. We additionally show show that even k=2 achieves near-perfect detectability (Reviewer VkF8, Q3)
 	- **Detailed scalability discussion** explaining how rematerialization and truncation provide practical knobs for memory-time trade-offs (Reviewers 5zJV and VkF8)
 	- #### 3. Clarified Positioning and Methodology
-	- **Input-space vs. weight-space canaries**: We clarified that prior optimization-based work (Maddock et al., Nasr et al.) operates in weight-space (federated learning, canary gradients), while OptiFluence generates input-space canaries enabling architecture-agnostic, transferable third-party auditing—a fundamentally different threat model and deployment context.
+	- **Input-space vs. weight-space canaries**: We clarified that prior optimization-based work (Maddock et al., Nasr et al.) threat models ()in weight-space (federated learning, canary gradients), while OptiFluence generates input-space canaries enabling architecture-agnostic, transferable third-party auditing—a fundamentally different threat model and deployment context.
 	- **"Exact gradients" terminology**: We explained this refers to our unrolled baseline using complete computational graphs via automatic differentiation. ReMat trades memory for time without sacrificing gradient accuracy, while TBPTT provides a tunable approximation that empirically maintains effectiveness.
 	- **Relationship to adversarial examples**: We emphasized Table 1 already shows adversarial examples perform poorly (0.45% vs. our 99.8%). Our derivation yields adversarial-like gradients with **negative sign**: canaries must remain sensitive during training, unlike adversarial examples designed for robustness.
 	- **Overfitting concerns**: Since our goal is the tightest possible privacy lower bound, maximizing detectability under the strongest principled attack (derived from Neyman-Pearson optimality) is appropriate by definition.
