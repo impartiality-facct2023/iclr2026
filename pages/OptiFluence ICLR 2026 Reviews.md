@@ -1,4 +1,9 @@
-### Rebuttal Summary {{renderer :wordcountchar_}}
+#### 4. Addressed Specific Concerns
+- We believe we have addressed the concerns.
+- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
+- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
+- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes no detectable accuracy impact
+- ### Rebuttal Summary {{renderer :wordcountchar_}}
 	- ## Authors' Summary of Rebuttal
 	  We thank all reviewers for their thorough and constructive feedback. We are encouraged that **all reviewers recognized the core strengths of OptiFluence**: the principled bilevel optimization framework, the strong empirical results (up to 99.8% TPR@0.1FPR and 415× improvement over baselines), the novel combination of influence-based initialization with unrolled optimization, and particularly the **transferability of optimized canaries across architectures**—which multiple reviewers highlighted as a significant practical contribution enabling efficient third-party auditing.
 	- In what follows, we do our best to summarize the discussion while acknowledging the unfortunate fact that the rebuttal process was cut short.
@@ -19,16 +24,11 @@
 	- **"Exact gradients" terminology**: We explained this refers to our unrolled baseline using complete computational graphs via automatic differentiation. ReMat trades memory for time without sacrificing gradient accuracy, while TBPTT provides a tunable approximation that empirically maintains effectiveness.
 	- **Relationship to adversarial examples**: We emphasized Table 1 already shows adversarial examples perform poorly (0.45% vs. our 99.8%). Our derivation yields adversarial-like gradients with **negative sign**: canaries must remain sensitive during training, unlike adversarial examples designed for robustness.
 	- **Overfitting concerns**: Since our goal is the tightest possible privacy lower bound, maximizing detectability under the strongest principled attack (derived from Neyman-Pearson optimality) is appropriate by definition.
-	- #### 4. Addressed Specific Concerns
-	- We believe we have addressed the concerns.
-	- **Code accessibility** (Reviewer VkF8): Re-uploaded anonymous repository
-	- **Threat model** (Reviewer t7cL): Clarified first-party vs. third-party auditing distinction, which we believe is more relevant than black/white-box dichotomy given our transferability results
-	- **Performance degradation** (Reviewer t7cL): Explained single-canary injection (1/|D| loss contribution) causes no detectable accuracy impact
 	- ### Remaining Limitations and Future Work
 	- We acknowledge that **formal theoretical characterization** of both the bilevel optimization guarantees and transferability phenomenon remains future work, as noted by Reviewers VkF8 and 5zJV. However, this is expected given the complexity of bilevel optimization over multi-million parameter networks—even state-of-the-art results are limited to small networks. We note that analogous phenomena (e.g., adversarial example transferability) lack formal characterization yet remain extensively studied empirically.
 	- We also acknowledge that **scaling to large language models** presents unique challenges (token-space optimization, undefined privacy units for sequences) that extend beyond the scope of this work focused on vision models, as noted by Reviewer 5zJV.
-	- ### Conclusion
-	  Our rebuttal demonstrates OptiFluence's robustness through additional datasets, lower privacy budgets, comprehensive ablations, and detailed computational analysis. The automatic generation of highly detectable, transferable canaries represents a significant advance over hand-crafted approaches, with practical implications for regulatory and third-party privacy auditing. We believe these substantial additions address all major reviewer concerns and hope reviewers will consider increasing their scores accordingly. We welcome any remaining questions or suggestions for further clarification.
+- ### Conclusion
+  Our rebuttal demonstrates OptiFluence's robustness through additional datasets, lower privacy budgets, comprehensive ablations, and detailed computational analysis. The automatic generation of highly detectable, transferable canaries represents a significant advance over hand-crafted approaches, with practical implications for regulatory and third-party privacy auditing. We believe these substantial additions address all major reviewer concerns and hope reviewers will consider increasing their scores accordingly. We welcome any remaining questions or suggestions for further clarification.
 -
 - ### Positives
   collapsed:: true
